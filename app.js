@@ -26,7 +26,7 @@ let toastTimer;
 function notify(message) { el.toast.textContent = message; el.toast.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.toast.classList.remove('show'),2400); }
 function readVocab() {try {const x=JSON.parse(localStorage.getItem('barti.vocab') || '{}'); return x && typeof x === 'object' && !Array.isArray(x) ? x : {};}catch{return {};}}
 function saveVocab() { try { localStorage.setItem('barti.vocab',JSON.stringify(s.vocab)); }catch { notify('Nie udało się zapisać słówek w przeglądarce.'); } updateSavedCount(); }
-function updateSavedCount() {el.savedCount.textContent=Object.keys(s.vocab).length;}
+function updateSavedCount() {el.savedCount.textContent=Object.keys(s.vocab).length; window.BartiExperience?.onVocab?.();}
 
 async function boot() {
   try {
@@ -39,6 +39,8 @@ async function boot() {
     selectStory(s.stories.find(v=>v.id===last)?.id || s.stories[0].id);
     bind();
     updateSavedCount();
+    window.BartiBridge.ready=true;
+    document.dispatchEvent(new CustomEvent('barti:ready'));
     if('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./sw.js').catch(()=>{});
   } catch(error) {
     el.statusText.textContent='Błąd ładowania';
@@ -68,7 +70,7 @@ function selectStory(id) {
   el.storySource.textContent='Opracowanie bajki ludowej';el.playerStory.textContent=story.title;
   document.querySelectorAll('.story-tile').forEach(btn=>{const active=btn.dataset.storyId===id;btn.classList.toggle('active',active);btn.setAttribute('aria-current',active?'true':'false');});
   renderText();loadParagraph(0,false,0);clearDict();setMode('idle');closeLibrary();
-  el.reader.scrollTop=0;
+  el.reader.scrollTop=0; window.BartiExperience?.onStory?.();
 }
 function renderText() {
   el.reader.replaceChildren();s.wordButtons=[];
@@ -196,6 +198,7 @@ function highlightCurrentWord(){
 }
 function setMode(mode){
   el.mascotStage.dataset.mode=mode;
+  window.BartiExperience?.onMode?.(mode);
   const mobileMascot=document.querySelector('.head-barti-mobile');
   if(mobileMascot) mobileMascot.dataset.mode=mode;
   const labels={idle:['Cześć! Poczytamy?','Gotowy do czytania','Odtwarzacz gotowy'],talking:['Barti właśnie opowiada…','Barti czyta','Odtwarzanie bajki'],paused:['Czekam na Ciebie ♡','Pauza','Odtwarzanie wstrzymane'],finished:['Brawo! Jeszcze jedna?','Bajka skończona','Koniec nagrania']};
@@ -341,4 +344,15 @@ async function toggleMusic(){
     notify(s.music?'Delikatna muzyka włączona':'Muzyka wyłączona');
   }catch{notify('Przeglądarka zablokowała muzykę. Spróbuj ponownie.');}
 }
+window.BartiBridge={
+ ready:false,
+ getStories:()=>s.stories.slice(),
+ durations:()=>s.durations,
+ getVocab:()=>({...s.vocab}),
+ getCurrentId:()=>s.story?.id||'repka',
+ openStory:selectStory,
+ pause:()=>{el.narration.pause();s.playing=false;},
+ removeWord:(word)=>{if(Object.prototype.hasOwnProperty.call(s.vocab,word)){delete s.vocab[word];saveVocab();}},
+ quiz:openQuiz
+};
 boot();

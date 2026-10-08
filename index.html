@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f4f2ed">
+<meta name="theme-color" content="#ffeff7">
 <meta name="description" content="Barti czyta rosyjskie bajki. Słuchaj, czytaj i zapamiętuj słowa w swoim rytmie.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -15,9 +15,97 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap"></noscript>
 <link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./experience.css">
+<link rel="stylesheet" href="./fairytale.css">
 </head>
-<body>
-<div class="app-shell" id="appShell">
+<body data-page="home">
+<div id="experienceShell" class="experience">
+  <header class="experience-topbar">
+    <button type="button" class="xp-brand" data-go="home" aria-label="Barti — ekran startowy">
+      <span class="xp-brandmark">b<span>•</span></span>
+      <span class="xp-brandname"><span class="xp-wordmark">barti<span>.</span></span><small>STORY CLUB</small></span>
+    </button>
+    <nav class="xp-desktop-nav" aria-label="Główna nawigacja">
+      <button type="button" data-go="home" data-nav="home">Start</button>
+      <button type="button" data-go="library" data-nav="library">Biblioteka</button>
+      <button type="button" data-go="words" data-nav="words">Moje słowa</button>
+    </nav>
+    <button type="button" class="xp-top-action" data-go="library">Wybierz bajkę <span aria-hidden="true">↗</span></button>
+  </header>
+
+  <main id="homeScreen" class="xp-screen" aria-label="Ekran startowy">
+    <div class="xp-inner">
+      <section class="home-hero">
+        <div class="home-hero-copy">
+          <div class="xp-kicker"><span class="xp-spark">✦</span> ROSYJSKI PRZEZ BAJKI</div>
+          <h1>Cześć, tu <span>Barti!</span><br><em>Wybierzmy</em><br>nową bajkę.</h1>
+          <p>Rosyjskie bajki, które możesz usłyszeć, przeczytać i zrozumieć słowo po słowie.</p>
+
+        </div>
+        <div class="hero-art-area">
+          <div class="hero-halo"></div>
+          <div class="xp-magic-star star-one" aria-hidden="true">✦</div>
+          <div class="xp-magic-star star-two" aria-hidden="true">✧</div>
+          <div class="xp-magic-star star-three" aria-hidden="true">✳</div>
+          <div id="homeBarti" class="barti-puppet hero-puppet" role="img" aria-label="Barti, różowy bajkowy stworek, animowany, z tabletem" data-mode="idle">
+            <div class="puppet-film"></div><span class="puppet-eye one"></span><span class="puppet-eye two"></span><span class="puppet-mouth"></span>
+          </div>
+          <div class="hero-caption"><span class="xp-caption-dot"></span><span id="heroSpeech">Razem odkryjemy każde słowo!</span></div>
+        </div>
+          <div class="home-actions">
+            <button id="heroExplore" class="xp-button xp-button-primary" type="button" data-go="library">Wejdź do biblioteki <span aria-hidden="true">→</span></button>
+            <button class="xp-button xp-button-quiet" type="button" id="heroContinue">Kontynuuj <span aria-hidden="true">↗</span></button>
+          </div>
+        <div class="hero-edge-note">CZYTAJ · SŁUCHAJ · ODKRYWAJ</div>
+      </section>
+
+      <div class="section-heading home-library-title">
+        <div><span class="xp-eyebrow">OTWÓRZ OPOWIEŚĆ</span><h2>Wybierz swoją historię</h2></div>
+        <button type="button" class="xp-inline-link" data-go="library">Cała biblioteka <span aria-hidden="true">↗</span></button>
+      </div>
+      <div id="homeStoryCards" class="home-stories"></div>
+
+      <section class="home-lower">
+        <div class="home-tip"><span aria-hidden="true">✳</span><div><strong>Rozumiej każdy wyraz.</strong><p>Dotknij rosyjskiego słowa w bajce, żeby zobaczyć tłumaczenie i zapisać je do powtórki.</p></div></div>
+        <div class="home-progress"><div><span class="xp-eyebrow">TWÓJ SŁOWNICZEK</span><strong id="homeWordsCount">0</strong><span>zapisanych słów</span></div><button type="button" data-go="words">Zobacz słowa →</button></div>
+      </section>
+    </div>
+  </main>
+
+  <main id="libraryScreen" class="xp-screen" aria-label="Biblioteka" hidden>
+    <div class="xp-inner">
+      <div class="xp-pagehead"><span class="xp-eyebrow">ZBIÓR OPOWIEŚCI / 01</span><div class="xp-headline-row"><div><h1>Biblioteka<span class="xp-pink-dot">.</span></h1><p>Trzy klasyczne bajki ludowe. Wybierz świat, do którego chcesz wejść.</p></div><div class="xp-headnote"><img src="./assets/visuals/sprites/wave.webp" alt=""><span>Wybierz bajkę,<br>a ja ją przeczytam.</span></div></div></div>
+      <div class="library-tools"><label class="xp-search"><span aria-hidden="true">⌕</span><input id="storySearch" type="search" placeholder="Szukaj bajki..." autocomplete="off" aria-label="Szukaj bajki"></label><div class="library-filters" role="group" aria-label="Poziom"><button type="button" data-filter="all" aria-pressed="true">Wszystkie</button><button type="button" data-filter="A1" aria-pressed="false">A1</button><button type="button" data-filter="A2" aria-pressed="false">A1–A2</button></div></div>
+      <div class="library-meta"><span id="libraryCount">3 opowieści</span><span>BEZ REKLAM · DOSTĘPNE OFFLINE</span></div>
+      <div class="library-grid" id="libraryGrid"></div>
+      <div class="library-empty" id="libraryEmpty" hidden>Nie znaleziono bajki. Spróbuj krótszej frazy lub wybierz „Wszystkie”.</div>
+    </div>
+  </main>
+
+  <main id="wordsScreen" class="xp-screen" aria-label="Moje słowa" hidden>
+    <div class="xp-inner">
+      <div class="xp-pagehead"><span class="xp-eyebrow">TWOJA MAŁA KOLEKCJA</span><h1>Moje słowa<span class="xp-pink-dot">.</span></h1><p>Wszystko, co zapisałeś podczas czytania, w jednym miejscu.</p></div>
+      <div class="words-banner"><div><span class="xp-eyebrow">DO ZAPAMIĘTANIA</span><strong id="xpWordsCount">0</strong><span>rosyjskich słów</span></div><button type="button" class="xp-button xp-button-primary" id="wordsQuizBtn">Sprawdź się ✳</button></div>
+      <div id="xpWordsList" class="xp-words-list"></div>
+      <div id="xpWordsEmpty" class="xp-words-empty" hidden><span aria-hidden="true">♡</span><strong>Tu będą Twoje odkrycia.</strong><p>Otwórz bajkę, kliknij rosyjskie słowo i zapisz jego tłumaczenie.</p><button class="xp-button xp-button-primary" type="button" data-go="library">Przejdź do biblioteki →</button></div>
+    </div>
+  </main>
+
+  <nav class="xp-mobile-tabs" aria-label="Główne sekcje">
+    <button type="button" data-go="home" data-nav="home"><span class="xp-tab-icon">⌂</span><span>Start</span></button>
+    <button type="button" data-go="library" data-nav="library"><span class="xp-tab-icon">▦</span><span>Biblioteka</span></button>
+    <button type="button" data-go="words" data-nav="words"><span class="xp-tab-icon">♡</span><span>Słówka</span></button>
+  </nav>
+</div>
+<div id="storyDetail" class="story-detail-backdrop" hidden>
+  <div class="story-detail" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <button type="button" id="detailClose" class="story-detail-close" aria-label="Zamknij">✕</button>
+    <div id="detailCover" class="story-detail-cover"></div>
+    <div class="story-detail-content"><span id="detailLevel" class="xp-eyebrow">BAJKA LUDOWA</span><h2 id="detailTitle">Репка</h2><p id="detailTitlePl">Rzepka</p><div class="detail-stats"><span id="detailTime">2 min</span><span id="detailWords">44 słowa</span><span>audio + tłumaczenie</span></div><p id="detailDesc">Poznaj opowieść z Bartim.</p><button type="button" id="detailStart" class="xp-button xp-button-primary">Czytaj z Bartim <span aria-hidden="true">→</span></button></div>
+  </div>
+</div>
+
+<div class="app-shell" id="appShell" hidden>
   <aside class="side-nav" id="libraryNav" aria-label="Biblioteka bajek">
     <div class="logo-area">
       <span class="brand-symbol" aria-hidden="true">b<span>•</span></span>
@@ -41,6 +129,7 @@
   <div class="mobile-nav-overlay" id="libraryOverlay" hidden></div>
   <main class="main-area" id="main">
     <header class="app-top">
+      <button id="readerReturn" aria-label="Powrót do biblioteki" type="button" class="reader-back-button" title="Wróć do biblioteki">← Biblioteka</button>
       <button class="mobile-library-btn" id="openLibrary" type="button" aria-label="Otwórz bibliotekę"><span aria-hidden="true">☰</span></button>
       <div class="section-brand"><span class="overline">BARTI READING CLUB</span><span class="section-separator">/</span><span class="section-label">OPOWIEŚCI</span></div>
       <div class="top-actions">
@@ -62,7 +151,7 @@
       </div>
       <div class="head-barti-mobile" role="img" aria-label="Barti czyta z tobą"><img src="./assets/barti.webp" alt="" loading="eager"><span aria-hidden="true">✦</span></div>
     </div>
-    <section class="reading-surface" aria-label="Tekst bajki">
+    <section class="reading-surface" aria-label="Tekst bajki"><div class="reader-art-banner" id="readerArtBanner" role="img" aria-label="Ilustracja bajki"></div>
       <div class="reader-toolbar">
         <div class="reader-toolbar-left"><span class="chapter-label">ROZDZIAŁ 01</span><span class="chapter-divider"></span><span id="currentParagraph">Akapit 1 / 7</span></div>
         <div class="reader-toolbar-right"><span>RU → PL</span><span class="touch-hint">Dotknij słowa, aby przetłumaczyć</span></div>
@@ -116,5 +205,6 @@
 <audio id="narration" preload="metadata"></audio>
 <audio id="ambientTrack" src="./assets/audio/ambient.mp3" loop preload="none"></audio>
 <script type="module" src="./app.js"></script>
+<script type="module" src="./experience.js"></script>
 </body>
 </html>
