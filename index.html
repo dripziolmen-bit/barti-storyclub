@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fdfaf8">
+  <meta name="description" content="Barti czyta rosyjskie bajki. Słuchaj, zatrzymuj, dotykaj słów i zapamiętuj rosyjski po swojemu.">
+  <title>Barti · Opowieści po rosyjsku</title>
+  <link rel="icon" type="image/png" href="./assets/icon-192.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="side-nav" aria-label="Biblioteka">
+      <div class="logo-area"><div class="logo-flower" aria-hidden="true">✳</div><div class="logo-text"><b>barti<span>.</span></b><small>STORY CLUB</small></div></div>
+      <div class="side-title">TWOJA BIBLIOTEKA <span>01 / 03</span></div>
+      <div id="storyList" class="story-list" aria-label="Wybierz bajkę"></div>
+      <div class="side-bottom">
+        <div class="side-quote"><span>✦</span><p>Trochę rosyjskiego.<br>Dużo wyobraźni.</p></div>
+        <button class="side-link" id="openVocab" type="button"><span>♡</span> Moje słówka <b id="savedCount">0</b></button>
+        <button class="side-link" id="openQuiz" type="button"><span>✧</span> Mini-quiz <b>4 PYT.</b></button>
+        <div class="side-foot">Małe historie, wielkie słowa.<br>Wersja demonstracyjna · 0.2</div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="app-top">
+        <div><span class="eyebrow">CZYTAMY PO ROSYJSKU</span><div class="app-name">Witaj w świecie Bartiego <span class="star" aria-hidden="true">✳</span></div></div>
+        <span class="label-pill"><span class="status-dot"></span> <span id="statusText">Wybierz bajkę i naciśnij play</span></span>
+      </header>
+
+      <section class="reader-header">
+        <div class="reader-meta"><span class="category-tag" id="storyLevel">A1 · POCZĄTKUJĄCY</span> <span id="storyTag">BAJKA LUDOWA</span></div>
+        <h1 id="storyTitle" lang="ru">Репка</h1>
+        <p class="story-subtitle"><span id="storyTitlePl">Rzepka</span><span class="dot-separator">·</span><span id="storyDuration">2 min czytania</span><span class="dot-separator">·</span> <span>Tekst rosyjski</span></p>
+      </section>
+
+      <section class="story-paper" aria-label="Tekst bajki">
+        <div class="story-paper-head"><span>TEKST DO CZYTANIA</span><span class="instructions">Dotknij dowolnego słowa, żeby zobaczyć tłumaczenie <span aria-hidden="true">↗</span></span></div>
+        <article id="reader" class="reader" lang="ru" aria-label="Czytany tekst"></article>
+        <div class="story-paper-bottom"><div>✳</div> <span id="currentParagraph">Akapit 1 / 7</span><span id="storySource"></span></div>
+      </section>
+
+      <div class="reading-tip"><span class="reading-tip-mark">i</span> Podświetlanie orientacyjnie podąża za nagraniem. Kliknięcie słowa nie zatrzymuje odtwarzania.</div>
+    </main>
+
+    <aside class="mascot-area" aria-label="Barti i tłumaczenia">
+      <div class="mascot-card">
+        <div class="mascot-top"><span>POZNAJ BARTIEGO</span><span class="mascot-badge">✦ TWÓJ BAJKOWY KUMPEL</span></div>
+        <div class="mascot-stage" id="mascotStage" data-mode="idle">
+          <span class="ambient-circle one"></span><span class="ambient-circle two"></span>
+          <div class="speech-cloud" id="speechCloud" aria-live="polite"><span class="voice-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="bartiMessage">Cześć! Poczytamy?</span></div>
+          <img src="./assets/barti.webp" alt="Barti, różowy puszysty stworek z tabletem" id="bartiImage" class="barti-image" draggable="false">
+          <div class="sparkle sp1">✦</div><div class="sparkle sp2">✧</div><div class="sparkle sp3">✧</div>
+        </div>
+        <div class="mascot-caption"><div class="round-icon">✧</div><div><strong>Barti czyta razem z Tobą</strong><p>Wciśnij odtwarzanie. Podświetlimy słowa w rytmie opowieści.</p></div></div>
+      </div>
+
+      <div class="dictionary-card" id="dictionaryCard">
+        <div class="dict-header"><span>SŁOWNICZEK</span><button id="closeDict" aria-label="Wyczyść tłumaczenie" class="text-icon" type="button">↗</button></div>
+        <div id="wordPlaceholder" class="word-placeholder"><div class="hint-icon">Аа</div><strong>Jedno kliknięcie, nowe słówko.</strong><p>Dotknij wyrazu w tekście, by od razu zobaczyć jego polskie znaczenie.</p></div>
+        <div id="wordDetails" class="word-details" hidden><small id="wordLabel">ROSYJSKI</small><div class="word-ru" id="wordRu">—</div><div class="dict-rule"></div><small>PO POLSKU</small><div class="word-pl" id="wordPl">—</div><button type="button" id="saveWord" class="save-word">♡ Zapisz słówko</button></div>
+      </div>
+      <div class="soft-note">Ćwicz bez pośpiechu. Tu nie ma złych odpowiedzi. <span>♡</span></div>
+    </aside>
+  </div>
+
+  <div class="player-wrap">
+    <div class="player">
+      <div class="player-left"><div class="playing-cover" aria-hidden="true">♫</div><div><strong id="playerStory">Репка</strong><small id="playerState">Odtwarzacz gotowy</small></div></div>
+      <div class="transport">
+        <div class="transport-buttons">
+          <button id="previousBtn" type="button" title="Poprzedni akapit" aria-label="Poprzedni akapit" class="icon-btn">⏮</button>
+          <button id="playBtn" type="button" aria-label="Odtwórz" title="Odtwórz lub wstrzymaj" class="play-button"><span id="playSymbol">▶</span></button>
+          <button id="nextBtn" type="button" title="Następny akapit" aria-label="Następny akapit" class="icon-btn">⏭</button>
+        </div>
+        <div class="scrub"><span id="timeCurrent">0:00</span><input id="progress" aria-label="Przewiń nagranie" type="range" min="0" max="1000" value="0"><span id="timeTotal">0:00</span></div>
+      </div>
+      <div class="player-right"><label for="speed" class="speed-label">TEMPO</label><select id="speed" aria-label="Prędkość czytania"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option></select><button type="button" id="musicBtn" class="music-button" aria-pressed="false" title="Delikatna muzyka w tle">♫ <span>Muzyka</span></button></div>
+    </div>
+  </div>
+
+  <div id="vocabModal" class="modal-cover" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="vocabTitle"><div class="modal-head"><h2 id="vocabTitle">Twoje słówka <span>♡</span></h2><button id="closeVocab" aria-label="Zamknij" type="button">✕</button></div><p>Zapamiętane słowa zostają w tej przeglądarce.</p><div id="vocabContent"></div></div></div>
+  <div id="quizModal" class="modal-cover" hidden><div class="modal quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quizTitle"><div class="modal-head"><h2 id="quizTitle">Mały quiz ✨</h2><button id="closeQuiz" aria-label="Zamknij quiz" type="button">✕</button></div><p id="quizProgress">Pytanie 1 / 4</p><div class="quiz-word" id="quizWord" lang="ru"></div><div id="quizAnswers" class="quiz-answers"></div><p id="quizFeedback" class="quiz-feedback" aria-live="polite"></p><button id="quizNext" class="quiz-next" type="button" hidden>Dalej →</button></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <audio id="narration" preload="metadata"></audio>
+  <audio id="ambientTrack" src="./assets/audio/ambient.mp3" loop preload="none"></audio>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
