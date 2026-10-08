@@ -150,3 +150,10 @@ body[data-theme="dark"] .word:hover{background:#663d50;color:#fff}
 :root{--light:#696760}
 body[data-theme='dark']{--light:#c3bab8}
 body[data-theme="dark"] .speaking-indicator{color:#e9cfd7}
+
+/* Motion communicates interaction, never competes with reading. */
+@media(max-width:680px){.dictionary-card.word-picked{animation:sheetEnter .2s cubic-bezier(.2,.8,.25,1) both}}
+.modal-cover:not([hidden]) .modal{animation:dialogEnter .18s ease-out both}
+@keyframes sheetEnter{from{transform:translateY(12px);opacity:.6}to{transform:translateY(0);opacity:1}}
+@keyframes dialogEnter{from{transform:translateY(9px);opacity:.7}to{transform:translateY(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){.dictionary-card.word-picked,.modal-cover:not([hidden]) .modal{animation:none!important}}

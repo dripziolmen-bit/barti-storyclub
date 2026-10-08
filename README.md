@@ -43,3 +43,7 @@ Adres publiczny: https://dripziolmen-bit.github.io/barti-storyclub/
 
 ## Wzorowanie i użycie kodu
 Na VPS w research/barti-app-references pobrano archiwa kodu źródłowego do analizy interakcji: Lute, LingKuma, Lector i Fluent Reader. Kod funkcjonalny Barti Story Club został napisany oddzielnie; nie przeniesiono bezpośrednio modułów pod licencją copyleft do projektu. Wszelkie przyszłe zapożyczenia wymagają zgodności z licencją autora.
+
+
+## UX 2026 — wydanie 0.5.0
+Nowy układ mobile-first: czytanie na pierwszym planie, wysuwana biblioteka, kontekstowe tłumaczenie, responsywny odtwarzacz, zapamiętywane ustawienia wielkości tekstu, tryb ciemny i skupienia, drobne animacje zgodne z ustawieniem ograniczenia ruchu, poprawione kontrolki dotykowe. Szczegóły badań wzorców i repozytoriów: `UX_RESEARCH_2026.md`. Testy Playwright na 6 szerokościach, axe/WCAG i Lighthouse wykonane na VPS. To nadal PWA, nie opublikowany natywny pakiet w Apple App Store.
