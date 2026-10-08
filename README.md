@@ -27,3 +27,19 @@ Native build iOS/Android, osobne testy na fizycznych urządzeniach, weryfikacja 
 
 ### Głos narracji
 Piper Russian Denis (medium), model/zbiór danych: https://huggingface.co/rhasspy/piper-voices/tree/main/ru/ru_RU/denis/medium, MODEL_CARD: CC0 dataset. Synteza lokalna na własnym VPS, model nie jest dystrybuowany w repo. Podane znaczniki czasowe powstają z alignments modelu przy generowaniu.
+
+## Publiczne demo i instalacja PWA
+Adres publiczny: https://dripziolmen-bit.github.io/barti-storyclub/
+- Android / Chrome: w aplikacji przycisk „Zainstaluj” lub opcja „Zainstaluj aplikację” w menu przeglądarki.
+- iPhone / Safari: przycisk Udostępnij → Do ekranu początkowego.
+- Na komputerze działa w przeglądarce. Zainstalowanie PWA nie jest równoznaczne z publikacją w Apple App Store.
+
+## Testy jakości z 2026-10-08
+- Playwright: ekran mobilny 390 × 844, tablet 820 × 1180 i komputer 1440 × 900.
+- Odtwarzanie, pauza, stan animacji, zmiana bajki, polskie tłumaczenia, zapisywanie słów, quiz oraz brak poziomego przewijania.
+- Audio offline tworzone przez Piper Denis; znaczniki pozycji wszystkich 238 słów w 19 akapitach.
+- Test publicznej wersji PWA obejmuje odtwarzanie MP3 i dostępność danych po odłączeniu sieci.
+- Zasady prywatności: privacy.html.
+
+## Wzorowanie i użycie kodu
+Na VPS w research/barti-app-references pobrano archiwa kodu źródłowego do analizy interakcji: Lute, LingKuma, Lector i Fluent Reader. Kod funkcjonalny Barti Story Club został napisany oddzielnie; nie przeniesiono bezpośrednio modułów pod licencją copyleft do projektu. Wszelkie przyszłe zapożyczenia wymagają zgodności z licencją autora.

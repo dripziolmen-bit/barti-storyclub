@@ -199,9 +199,9 @@ function chooseWord(original,normalized,button){
   el.wordLabel.textContent=translation?'ROSYJSKI · SŁOWNIK OFFLINE':'ROSYJSKI · BRAK W SŁOWNIKU';
   const prev=el.reader.querySelector('.word.selected');prev?.classList.remove('selected');button.classList.add('selected');
   updateSaveButton();
-  if(window.innerWidth<=760)$('dictionaryCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+  $('dictionaryCard').classList.add('word-picked');
 }
-function clearDict(){s.activeWord=null;el.wordPlaceholder.hidden=false;el.wordDetails.hidden=true;el.reader.querySelector('.word.selected')?.classList.remove('selected');}
+function clearDict(){s.activeWord=null;el.wordPlaceholder.hidden=false;el.wordDetails.hidden=true;$('dictionaryCard').classList.remove('word-picked');el.reader.querySelector('.word.selected')?.classList.remove('selected');}
 function updateSaveButton(){if(!s.activeWord)return;el.saveWord.textContent=(s.vocab[s.activeWord.word]?'♥ W słowniczku':'♡ Zapisz słówko');}
 function toggleSavedWord(){
   if(!s.activeWord)return;
@@ -228,6 +228,20 @@ function openQuiz(){
   s.quizIndex=0;s.quizScore=0;el.quizModal.hidden=false;showQuiz();
 }
 function closeQuiz(){el.quizModal.hidden=true;}
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt',event=>{
+  event.preventDefault();
+  deferredInstallPrompt=event;
+});
+document.getElementById('installBtn')?.addEventListener('click',async()=>{
+  if(deferredInstallPrompt){
+    await deferredInstallPrompt.prompt();
+    deferredInstallPrompt=null;
+  }else{
+    notify('iPhone: Safari → Udostępnij → Do ekranu początkowego. Android: menu przeglądarki → Zainstaluj.');
+  }
+});
+
 function showQuiz(){
   const question=s.quiz[s.quizIndex];
   el.quizProgress.textContent=`Pytanie ${s.quizIndex+1} / ${s.quiz.length}`;
