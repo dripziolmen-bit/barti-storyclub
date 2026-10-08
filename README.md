@@ -50,3 +50,14 @@ Nowy układ mobile-first: czytanie na pierwszym planie, wysuwana biblioteka, kon
 
 ## Interfejs jednookienkowy (v0.6)
 Na telefonie nagłówek z Bartim, trzy przyciski wyboru bajek i skróty Moje słowa / Krótki quiz / Dodaj do telefonu są stale widoczne w górnej części aplikacji. Czytnik przewija jedynie tekst opowieści; odtwarzacz pozostaje na dole. Na desktopie boczna biblioteka, Barti i treść dzielą jeden ekran. Testy Playwright obejmują mały telefon 320×568 aż po 1440×900, weryfikują brak przewijania całego dokumentu i możliwość przełączenia bajki.
+
+## Barti Story Club 1.0 — aplikacja z ekranem startowym i biblioteką (2026-10-08)
+**Publicznie:** https://dripziolmen-bit.github.io/barti-storyclub/
+
+Nowa struktura: Start → Biblioteka → szczegóły bajki → Czytanie. Oddzielny ekran zapisanych słówek oraz quiz. Mobile ma trzy karty nawigacji; desktop — nawigację w nagłówku. Ekran czytania zachowuje rosyjskie MP3, śledzenie tekstu i lokalne polskie tłumaczenia.
+
+3 oryginalne ilustracje scen z rosyjskich bajek są częścią pakietu, a postać bazuje na najnowszym obrazku Bartiego dostarczonym przez użytkownika. Wersja ma wielostanową animację postaci 2D (mruganie, reakcje, czytanie, machanie, radość, pauza), powiązaną ze stanem odtwarzacza; nie jest to szkieletowa animacja 3D ani pełny automatyczny lip-sync fonemów.
+
+Do analizy pobrano 12 repozytoriów podobnych czytników, aplikacji audiobookowych i rozwiązań animacji, szczegóły w UX_RESEARCH_V1_APP.md; nie kopiowano cudzego kodu do produkcji bez analizy licencji.
+
+Testy: Playwright 4 ekrany (320x568, 390x844, 820x1180, 1440x900) PASS dla przepływu i quizu; audyt Axe WCAG dla trzech ekranów mobilnych PASS; offline service worker sprawdza zarówno sceny, animacje, CSS, teksty jak i MP3. Aplikacja pozostaje PWA webową — nie została opublikowana w natywnych sklepach.
