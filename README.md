@@ -47,3 +47,6 @@ Na VPS w research/barti-app-references pobrano archiwa kodu źródłowego do ana
 
 ## UX 2026 — wydanie 0.5.0
 Nowy układ mobile-first: czytanie na pierwszym planie, wysuwana biblioteka, kontekstowe tłumaczenie, responsywny odtwarzacz, zapamiętywane ustawienia wielkości tekstu, tryb ciemny i skupienia, drobne animacje zgodne z ustawieniem ograniczenia ruchu, poprawione kontrolki dotykowe. Szczegóły badań wzorców i repozytoriów: `UX_RESEARCH_2026.md`. Testy Playwright na 6 szerokościach, axe/WCAG i Lighthouse wykonane na VPS. To nadal PWA, nie opublikowany natywny pakiet w Apple App Store.
+
+## Interfejs jednookienkowy (v0.6)
+Na telefonie nagłówek z Bartim, trzy przyciski wyboru bajek i skróty Moje słowa / Krótki quiz / Dodaj do telefonu są stale widoczne w górnej części aplikacji. Czytnik przewija jedynie tekst opowieści; odtwarzacz pozostaje na dole. Na desktopie boczna biblioteka, Barti i treść dzielą jeden ekran. Testy Playwright obejmują mały telefon 320×568 aż po 1440×900, weryfikują brak przewijania całego dokumentu i możliwość przełączenia bajki.
