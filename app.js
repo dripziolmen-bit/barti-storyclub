@@ -35,7 +35,8 @@ async function boot() {
     };
     [s.stories,s.durations,s.lexicon,s.wordTiming]=await Promise.all([fetchJSON('./data/stories.json'),fetchJSON('./data/audio.json'),fetchJSON('./data/lexicon.json'),fetchJSON('./data/word-timing.json')]);
     populateStories();
-    selectStory(s.stories[0].id);
+    const last=localStorage.getItem('barti.lastStory');
+    selectStory(s.stories.find(v=>v.id===last)?.id || s.stories[0].id);
     bind();
     updateSavedCount();
     if('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./sw.js').catch(()=>{});
@@ -47,9 +48,9 @@ async function boot() {
 }
 function populateStories() {
   el.storyList.replaceChildren();
-  for(const story of s.stories) {
+  for(const [storyIndex,story] of s.stories.entries()) {
     const btn=document.createElement('button'); btn.type='button'; btn.className='story-tile'; btn.dataset.storyId=story.id;
-    const emoji=document.createElement('span');emoji.className='story-emoji';emoji.textContent=story.emoji;
+    const emoji=document.createElement('span');emoji.className='story-emoji';emoji.textContent=String(storyIndex+1).padStart(2,'0');
     const label=document.createElement('span');const title=document.createElement('b');title.lang='ru';title.textContent=story.title;
     const small=document.createElement('small');small.textContent=`${story.level} · ${story.tag}`;
     label.append(title,small);btn.append(emoji,label);
@@ -60,12 +61,13 @@ function selectStory(id) {
   const story=s.stories.find(item=>item.id===id); if(!story)return;
   s.token++; el.narration.pause();s.playing=false;
   s.story=story;s.paragraph=0;s.currentWord=null;s.activeWord=null;s.wordButtons=[];
+  try{localStorage.setItem('barti.lastStory',story.id)}catch{}
   el.storyTitle.textContent=story.title;el.storyTitlePl.textContent=story.titlePl;
   el.storyLevel.textContent=`${story.level} · ${story.level==='A1'?'POCZĄTKUJĄCY':'POCZĄTKUJĄCY+'}`;
   el.storyTag.textContent=story.tag.toLocaleUpperCase('pl');el.storyDuration.textContent=`${Math.max(1,Math.round(total()/60))} min słuchania`;
   el.storySource.textContent='Opracowanie bajki ludowej';el.playerStory.textContent=story.title;
   document.querySelectorAll('.story-tile').forEach(btn=>{const active=btn.dataset.storyId===id;btn.classList.toggle('active',active);btn.setAttribute('aria-current',active?'true':'false');});
-  renderText();loadParagraph(0,false,0);clearDict();setMode('idle');
+  renderText();loadParagraph(0,false,0);clearDict();setMode('idle');closeLibrary();
   el.reader.scrollTop=0;
 }
 function renderText() {
@@ -118,6 +120,7 @@ function loadParagraph(index,auto=false,seek=0) {
   if(!s.story)return;
   index=Math.max(0,Math.min(index,s.story.paragraphs.length-1));
   s.paragraph=index;s.currentWord=null;s.token++;
+  try{localStorage.setItem('barti.lastParagraph',String(index))}catch{}
   const token=s.token;
   el.narration.pause();el.narration.src=storyPath(s.story,index);el.narration.playbackRate=Number(el.speed.value);
   el.narration.load();
@@ -164,6 +167,7 @@ function refresh(){
   if(!s.story)return;
   const length=total()||1;const pos=Math.min(storyElapsed(),length);
   el.progress.value=Math.round(pos/length*1000);
+  document.querySelector('.app-top')?.style.setProperty('--story-progress',Math.min(100,Math.max(0,100*pos/length))+'%');
   el.timeCurrent.textContent=fmt(pos);el.timeTotal.textContent=fmt(length);
   highlightCurrentWord();
 }
@@ -182,7 +186,13 @@ function highlightCurrentWord(){
   s.currentWord=index;
   const previous=el.reader.querySelector('.word.current');previous?.classList.remove('current');
   const active=el.reader.querySelector(`.word[data-p="${s.paragraph}"][data-w="${index}"]`);
-  if(active){active.classList.add('current');const area=el.reader.getBoundingClientRect(),rect=active.getBoundingClientRect();if(rect.top<area.top+25||rect.bottom>area.bottom-35)active.scrollIntoView({block:'center',behavior:'smooth'});}
+  if(active){
+    active.classList.add('current');
+    const rect=active.getBoundingClientRect();
+    const limitTop=window.innerWidth<701?110:85;
+    const limitBottom=window.innerHeight-(window.innerWidth<701?160:110);
+    if(s.playing && (rect.top<limitTop || rect.bottom>limitBottom)) active.scrollIntoView({block:'center',behavior:'smooth'});
+  }
 }
 function setMode(mode){
   el.mascotStage.dataset.mode=mode;
@@ -210,7 +220,7 @@ function toggleSavedWord(){
   saveVocab();updateSaveButton();notify(s.vocab[word]?'Dodano do Twoich słówek':'Usunięto ze słówek');
 }
 function openVocab(){
-  el.vocabModal.hidden=false;el.vocabContent.replaceChildren();const pairs=Object.entries(s.vocab);
+  closeLibrary(); el.vocabModal.hidden=false;el.vocabContent.replaceChildren();const pairs=Object.entries(s.vocab);
   if(!pairs.length){const p=document.createElement('p');p.textContent='Nie ma tu jeszcze słówek. Kliknij wyraz w bajce i zapisz go serduszkiem.';el.vocabContent.append(p);return;}
   for(const [word,translation] of pairs.sort((a,b)=>a[0].localeCompare(b[0],'ru'))){
     const line=document.createElement('div');line.className='vocab-row';const left=document.createElement('div');const title=document.createElement('b');title.textContent=word;const sub=document.createElement('span');sub.textContent=translation;left.append(title,sub);
@@ -219,6 +229,7 @@ function openVocab(){
 }
 function closeVocab(){el.vocabModal.hidden=true;}
 function openQuiz(){
+  closeLibrary();
   const distinct=Object.entries(s.lexicon).filter(([word,value])=>word.length>=3&&value.length>=3&&!value.includes('/'));
   const pool=distinct.sort(()=>Math.random()-.5);
   s.quiz=pool.slice(0,4).map(([word,correct])=>{
@@ -228,12 +239,62 @@ function openQuiz(){
   s.quizIndex=0;s.quizScore=0;el.quizModal.hidden=false;showQuiz();
 }
 function closeQuiz(){el.quizModal.hidden=true;}
+// Reader-first interaction design: all preferences are stored only in this browser.
+const readSetting=(key,fallback)=>{try{return localStorage.getItem('barti.'+key)??fallback}catch{return fallback}};
+const persistSetting=(key,value)=>{try{localStorage.setItem('barti.'+key,String(value))}catch{}};
+const library=$('libraryNav'),libraryOverlay=$('libraryOverlay');
+function openLibrary(){library.classList.add('mobile-open');libraryOverlay.hidden=false;$('openLibrary')?.setAttribute('aria-expanded','true');}
+function closeLibrary(){library.classList.remove('mobile-open');libraryOverlay.hidden=true;$('openLibrary')?.setAttribute('aria-expanded','false');}
+function closeSettings(){$('readingSettings').hidden=true;$('readerSettings').setAttribute('aria-expanded','false');}
+function setReadingSize(size){
+ const n=Math.max(18,Math.min(31,Number(size)||23));
+ document.documentElement.style.setProperty('--reading-size',n+'px');
+ $('fontValue').textContent=n+' px';
+ persistSetting('fontSize',n);
+}
+function setDarkMode(on){
+ document.body.dataset.theme=on?'dark':'light';
+ $('themeToggle').setAttribute('aria-pressed',String(on));
+ $('themeToggle').textContent=on?'☼ Jasne tło':'☾ Ciemne tło';
+ persistSetting('darkMode',on);
+ document.querySelector('meta[name="theme-color"]')?.setAttribute('content',on?'#171718':'#f4f2ed');
+}
+function setFocus(on){
+ document.body.classList.toggle('focus-mode',on);
+ $('focusBtn').setAttribute('aria-pressed',String(on));
+ $('focusBtn').title=on?'Wyłącz tryb skupienia':'Włącz tryb skupienia';
+ persistSetting('focusMode',on);
+ if(on)closeLibrary();
+}
+$('openLibrary').addEventListener('click',openLibrary);
+$('closeLibrary').addEventListener('click',closeLibrary);
+libraryOverlay.addEventListener('click',closeLibrary);
+$('readerSettings').addEventListener('click',()=>{
+ const show=$('readingSettings').hidden;
+ $('readingSettings').hidden=!show;
+ $('readerSettings').setAttribute('aria-expanded',String(show));
+});
+$('fontSmaller').addEventListener('click',()=>setReadingSize(parseInt($('fontValue').textContent,10)-2));
+$('fontLarger').addEventListener('click',()=>setReadingSize(parseInt($('fontValue').textContent,10)+2));
+$('themeToggle').addEventListener('click',()=>setDarkMode(document.body.dataset.theme!=='dark'));
+$('focusBtn').addEventListener('click',()=>setFocus(!document.body.classList.contains('focus-mode')));
+document.addEventListener('pointerdown',event=>{
+ if(!$('readingSettings').hidden&&!$('readingSettings').contains(event.target)&&!$('readerSettings').contains(event.target))closeSettings();
+});
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'){closeSettings();closeLibrary();if(s.activeWord)clearDict();}
+});
+setReadingSize(readSetting('fontSize','23'));
+setDarkMode(readSetting('darkMode','false')==='true');
+setFocus(readSetting('focusMode','false')==='true');
+
 let deferredInstallPrompt = null;
 window.addEventListener('beforeinstallprompt',event=>{
   event.preventDefault();
   deferredInstallPrompt=event;
 });
 document.getElementById('installBtn')?.addEventListener('click',async()=>{
+  closeLibrary();
   if(deferredInstallPrompt){
     await deferredInstallPrompt.prompt();
     deferredInstallPrompt=null;
@@ -241,6 +302,7 @@ document.getElementById('installBtn')?.addEventListener('click',async()=>{
     notify('iPhone: Safari → Udostępnij → Do ekranu początkowego. Android: menu przeglądarki → Zainstaluj.');
   }
 });
+
 
 function showQuiz(){
   const question=s.quiz[s.quizIndex];
