@@ -4,9 +4,9 @@ Wersja demonstracyjna PWA (instalowalna jako aplikacja web na Android/iOS), zbud
 
 ## Funkcje
 - 3 rosyjskie opowieści ludowe, nowe własne skrócone opracowania językowe
-- 19 plików MP3 z nagranym czytaniem w języku rosyjskim (lokalne nagrania demonstracyjne), sterowanie start/pauza/wznowienie/stop, przewijanie i zmiana tempa
+- 19 plików MP3 wygenerowanych lokalnie na VPS przez Piper Denis, z modelu trenowanego na zbiorze danych CC0, sterowanie start/pauza/wznowienie/stop, przewijanie i zmiana tempa
 - animacja Bartiego zsynchronizowana ze stanem odtwarzacza, delikatna opcjonalna ścieżka ambientowa
-- przybliżone podświetlanie słów na osi czasu audio. To NIE jest precyzyjny forced alignment.
+- podświetlanie słów na podstawie znaczników fonemowych wygenerowanych przez ten sam model Piper co pliki audio (bez zewnętrznego forced alignera).
 - natychmiastowe klikane tłumaczenia offline, zapis słówek w localStorage
 - 4-pytaniowy mini-quiz, odtwarzanie mobilne i desktopowe
 - manifest PWA i service worker do częściowego trybu offline
@@ -24,3 +24,6 @@ Dla HTTPS potrzebny jest hosting publiczny z certyfikatem (np. GitHub Pages).
 
 ## Co NIE jest jeszcze gotowe do sklepu
 Native build iOS/Android, osobne testy na fizycznych urządzeniach, weryfikacja praw do audio i grafiki, automatyczne tłumaczenie poza 3 wbudowanymi opowieściami, synchronizacja słów z wyrównywaniem fonetycznym oraz pełna zgodność z regułami Apple App Store/Google Play.
+
+### Głos narracji
+Piper Russian Denis (medium), model/zbiór danych: https://huggingface.co/rhasspy/piper-voices/tree/main/ru/ru_RU/denis/medium, MODEL_CARD: CC0 dataset. Synteza lokalna na własnym VPS, model nie jest dystrybuowany w repo. Podane znaczniki czasowe powstają z alignments modelu przy generowaniu.

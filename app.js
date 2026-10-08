@@ -12,7 +12,7 @@ const el = {
   closeDict: $('closeDict'), openQuiz: $('openQuiz'), quizModal: $('quizModal'), closeQuiz: $('closeQuiz'), quizProgress: $('quizProgress'), quizWord: $('quizWord'), quizAnswers: $('quizAnswers'), quizFeedback: $('quizFeedback'), quizNext: $('quizNext'), toast: $('toast')
 };
 const s = {
-  stories: [], durations: {}, lexicon: {}, story: null, paragraph: 0, playing: false, currentWord: null,
+  stories: [], durations: {}, wordTiming: {}, lexicon: {}, story: null, paragraph: 0, playing: false, currentWord: null,
   activeWord: null, wordButtons: [], weights: [], token: 0, music: false, vocab: readVocab(), raf: 0, quiz: [], quizIndex: 0, quizScore: 0,
 };
 const storyPath = (story, i) => `./assets/audio/${story.id}-${i}.mp3`;
@@ -33,7 +33,7 @@ async function boot() {
     const fetchJSON = async path => {
       const r=await fetch(path,{cache:'no-cache'}); if(!r.ok) throw new Error(`HTTP ${r.status}: ${path}`); return await r.json();
     };
-    [s.stories,s.durations,s.lexicon]=await Promise.all([fetchJSON('./data/stories.json'),fetchJSON('./data/audio.json'),fetchJSON('./data/lexicon.json')]);
+    [s.stories,s.durations,s.lexicon,s.wordTiming]=await Promise.all([fetchJSON('./data/stories.json'),fetchJSON('./data/audio.json'),fetchJSON('./data/lexicon.json'),fetchJSON('./data/word-timing.json')]);
     populateStories();
     selectStory(s.stories[0].id);
     bind();
@@ -170,9 +170,14 @@ function refresh(){
 function highlightCurrentWord(){
   if(!s.story||!el.narration.duration)return;
   const time=Math.max(0,el.narration.currentTime);
-  const ratio=Math.max(0,Math.min(.9999,time/(durations()[s.paragraph]||1)));
+  const actual=s.wordTiming[s.story.id]?.[s.paragraph];
   let index=0;
-  for(let i=0;i<s.weights.length;i++) if(ratio>=s.weights[i])index=i;
+  if(Array.isArray(actual) && actual.length===s.weights.length){
+    for(let i=0;i<actual.length;i++) if(time>=actual[i]) index=i;
+  } else {
+    const ratio=Math.max(0,Math.min(.9999,time/(durations()[s.paragraph]||1)));
+    for(let i=0;i<s.weights.length;i++) if(ratio>=s.weights[i])index=i;
+  }
   if(index===s.currentWord)return;
   s.currentWord=index;
   const previous=el.reader.querySelector('.word.current');previous?.classList.remove('current');
