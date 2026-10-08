@@ -196,6 +196,8 @@ function highlightCurrentWord(){
 }
 function setMode(mode){
   el.mascotStage.dataset.mode=mode;
+  const mobileMascot=document.querySelector('.head-barti-mobile');
+  if(mobileMascot) mobileMascot.dataset.mode=mode;
   const labels={idle:['Cześć! Poczytamy?','Gotowy do czytania','Odtwarzacz gotowy'],talking:['Barti właśnie opowiada…','Barti czyta','Odtwarzanie bajki'],paused:['Czekam na Ciebie ♡','Pauza','Odtwarzanie wstrzymane'],finished:['Brawo! Jeszcze jedna?','Bajka skończona','Koniec nagrania']};
   const [message,status,player]=labels[mode]||labels.idle;
   el.bartiMessage.textContent=message;el.statusText.textContent=status;el.playerState.textContent=player;
