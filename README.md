@@ -70,3 +70,10 @@ Testy: Playwright 4 ekrany (320x568, 390x844, 820x1180, 1440x900) PASS dla przep
 - W aplikacji dwie warstwy obrazów zapewniają płynne przejścia 360 ms między stanami; nieaktywna animacja jest zwalniana po przejściu. Ustawienie systemowe `prefers-reduced-motion` wyłącza animację i pokazuje Bartiego statycznie.
 - Animacja mówienia uruchamia się wraz z odtwarzaniem i zatrzymuje przy pauzie; **nie jest to** jeszcze rig 3D ani dokładny lip-sync fonemowy. Dla pełnego niezależnego ruchu oczu, ust i rąk potrzebny jest model wielowarstwowy Rive/Live2D.
 - Interfejs Start → Biblioteka → Czytnik i istniejące MP3, tłumaczenia oraz quiz pozostają bez zmian.
+
+## Wydanie 1.2.1 — czytnik na jednym ekranie (2026-10-09)
+- Na komputerze całe menu, czytnik, Barti, słownik i odtwarzacz mieszczą się w oknie; tylko tekst samej bajki przewija się niezależnie.
+- Usunięto widoczne pouczenia o przewijaniu, klikaniu słów, naciskaniu play i zbędne hasło pod czytnikiem. Zachowano autorstwo/opis źródła bajki oraz etykiety funkcjonalne.
+- Uporządkowano wysokości elementów przy 720/768/900/1080px, zwalniając miejsce tekstowi bez zmiany mobilnej nawigacji.
+- PWA cache v17.
+- Lokalnie sprawdzono geometrię 1024x768, 1280x720, 1366x768, 1440x900 i 1920x1080: document/sidebar/right/main scroll = 0, reader scroll > 0; testy głównych funkcji 4/4 na mobile/tablet/desktop PASS.

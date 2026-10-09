@@ -127,7 +127,7 @@
       <button class="side-link" id="openVocab" type="button"><span class="side-link-icon" aria-hidden="true">♡</span><span>Moje słowa</span><b id="savedCount">0</b></button>
       <button class="side-link" id="openQuiz" type="button"><span class="side-link-icon" aria-hidden="true">✳</span><span>Krótki quiz</span><b>4</b></button>
       <button class="side-link" id="installBtn" type="button"><span class="side-link-icon" aria-hidden="true">⇩</span><span>Dodaj do telefonu</span></button>
-      <div class="side-foot"><span>Małe historie. Wielkie odkrycia.</span><a href="./privacy.html">Prywatność</a></div>
+      <div class="side-foot"><a href="./privacy.html">Prywatność</a></div>
     </div>
   </aside>
   <div class="mobile-nav-overlay" id="libraryOverlay" hidden></div>
@@ -143,7 +143,7 @@
       </div>
     </header>
     <div id="readingSettings" class="reading-settings" hidden>
-      <div><strong>Wygodniej czytać</strong><span>Ustawienia zapamiętamy na tym urządzeniu.</span></div>
+      <div><strong>Wygodniej czytać</strong></div>
       <div class="type-controls"><button id="fontSmaller" aria-label="Zmniejsz tekst" type="button">A−</button><span id="fontValue">22 px</span><button id="fontLarger" aria-label="Powiększ tekst" type="button">A+</button></div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">☾ Ciemne tło</button>
     </div>
@@ -158,12 +158,11 @@
     <section class="reading-surface" aria-label="Tekst bajki"><div class="reader-art-banner" id="readerArtBanner" role="img" aria-label="Ilustracja bajki"></div>
       <div class="reader-toolbar">
         <div class="reader-toolbar-left"><span class="chapter-label">ROZDZIAŁ 01</span><span class="chapter-divider"></span><span id="currentParagraph">Akapit 1 / 7</span></div>
-        <div class="reader-toolbar-right"><span>RU → PL</span><span class="touch-hint">Dotknij słowa, aby przetłumaczyć</span></div>
+        <div class="reader-toolbar-right"><span>RU → PL</span></div>
       </div>
       <article id="reader" class="reader" lang="ru" aria-label="Interaktywny tekst rosyjski"></article>
-      <div class="reading-footer"><span class="line-decoration" aria-hidden="true"></span><span id="storySource">Opracowanie bajki ludowej</span><span>Przesuń w dół, aby czytać dalej</span></div>
+      <div class="reading-footer"><span class="line-decoration" aria-hidden="true"></span><span id="storySource">Opracowanie bajki ludowej</span></div>
     </section>
-    <div class="below-reader"><span class="micro-marker" aria-hidden="true">✳</span><span>Słuchaj i czytaj w swoim tempie. Możesz dotknąć każdego rosyjskiego słowa.</span></div>
   </main>
   <aside class="mascot-area" aria-label="Barti i polski słownik">
     <div class="mascot-card">
@@ -172,11 +171,11 @@
         <img src="./assets/barti.webp" alt="Barti, różowy stworek czytający bajkę z tabletu" id="bartiImage" class="barti-image" draggable="false">
         <span class="mascot-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
       </div>
-      <div class="mascot-card-bottom"><span class="mascot-caption-title">Barti opowiada</span><span>Naciśnij play i daj się zabrać do bajki.</span></div>
+      <div class="mascot-card-bottom"><span class="mascot-caption-title">Barti opowiada</span></div>
     </div>
     <div class="dictionary-card" id="dictionaryCard">
       <div class="dict-header"><span>MAŁY SŁOWNIK</span><button id="closeDict" aria-label="Zamknij tłumaczenie" class="text-icon" type="button">✕</button></div>
-      <div id="wordPlaceholder" class="word-placeholder"><span class="empty-word-icon" aria-hidden="true">аб</span><strong>Zatrzymaj się na słowie.</strong><p>Dotknij wyrazu w tekście. Znaczenie pojawi się tutaj od razu, bez internetu.</p></div>
+      <div id="wordPlaceholder" class="word-placeholder"><span class="empty-word-icon" aria-hidden="true">аб</span><strong>RU → PL</strong></div>
       <div id="wordDetails" class="word-details" hidden>
         <span id="wordLabel">ROSYJSKI</span>
         <div class="word-ru" id="wordRu">—</div>

@@ -320,3 +320,74 @@ body[data-page="achievements"],body[data-page="more"]{height:auto!important;min-
   .barti-puppet .puppet-film .motion-layer,
   .barti-mini-puppet .puppet-film .motion-layer {transition:none!important}
 }
+
+/* Reader desktop fit: all application chrome is visible in a single viewport.
+   The narrative column is the only scrolling area. No unused coaching copy. */
+@media (min-width:681px) {
+  body[data-page="reader"] { height:100dvh; overflow:hidden!important; }
+  body[data-page="reader"] .app-shell {
+    height:100dvh; max-height:100dvh; min-height:0;
+    overflow:hidden; align-items:stretch;
+    padding-bottom:var(--chrome-bottom);
+  }
+  body[data-page="reader"] .side-nav {
+    height:calc(100dvh - var(--chrome-bottom));
+    overflow:hidden; min-height:0; gap:16px;
+    padding-top:clamp(12px,1.8dvh,24px); padding-bottom:10px;
+  }
+  body[data-page="reader"] .logo-area { margin-bottom:6px; }
+  body[data-page="reader"] .nav-heading { padding:7px 11px 10px; }
+  body[data-page="reader"] .story-list { gap:3px; }
+  body[data-page="reader"] .story-tile { min-height:52px; padding:8px 10px; }
+  body[data-page="reader"] .nav-divider { margin-bottom:11px; }
+  body[data-page="reader"] .side-bottom>.side-title { margin-bottom:6px; }
+  body[data-page="reader"] .side-link { min-height:38px; padding:6px 10px; }
+  body[data-page="reader"] .side-foot { padding:8px 10px 0; margin-top:7px; }
+  body[data-page="reader"] .main-area {
+    overflow:hidden; min-height:0;
+    height:calc(100dvh - var(--chrome-bottom));
+    padding-bottom:10px;
+  }
+  body[data-page="reader"] .reading-head { padding:10px 0 12px; }
+  body[data-page="reader"] .reading-head h1 { margin:5px 0 3px; }
+  body[data-page="reader"] .reading-surface { min-height:0; flex:1 1 auto; overflow:hidden; }
+  body[data-page="reader"] .reader {
+    flex:1 1 auto; min-height:0; max-height:none;
+    overflow-y:auto; overflow-x:hidden;
+    overscroll-behavior:contain;
+  }
+  body[data-page="reader"] .reading-footer { padding:6px 18px; min-height:25px; }
+  body[data-page="reader"] .mascot-area {
+    height:calc(100dvh - var(--chrome-bottom));
+    min-height:0; overflow:hidden;
+    padding:12px 13px 8px; gap:10px;
+  }
+  body[data-page="reader"] .mascot-card { flex:0 0 auto; padding:11px; }
+  body[data-page="reader"] .mascot-card-top { gap:5px; }
+  body[data-page="reader"] .mascot-card-bottom { padding-top:7px; }
+  body[data-page="reader"] .dictionary-card { flex:0 1 auto; min-height:0; padding:13px; }
+  body[data-page="reader"] .word-placeholder { padding:9px 0 3px; }
+  body[data-page="reader"] .empty-word-icon { margin-bottom:7px; }
+  body[data-page="reader"] .player-wrap { bottom:0; }
+}
+@media (min-width:681px) and (max-height:820px) {
+  body[data-page="reader"] .reader-art-banner {
+    height:clamp(70px,11dvh,92px);
+    min-height:clamp(70px,11dvh,92px);
+    flex:0 0 clamp(70px,11dvh,92px);
+  }
+  body[data-page="reader"] .reading-head { padding:7px 0 9px; }
+  body[data-page="reader"] .reading-head h1 { font-size:clamp(35px,3.4vw,49px); }
+  body[data-page="reader"] .mascot-stage { height:clamp(110px,20dvh,170px); min-height:110px; }
+  body[data-page="reader"] .mascot-card-bottom { padding-top:5px; }
+  body[data-page="reader"] .side-nav { gap:12px; }
+  body[data-page="reader"] .story-tile { min-height:48px; }
+}
+@media (min-width:681px) and (max-height:640px) {
+  body[data-page="reader"] .mascot-card-bottom { display:none; }
+  body[data-page="reader"] .mascot-stage { height:100px; min-height:100px; }
+  body[data-page="reader"] .reader-art-banner {
+    height:65px; min-height:65px; flex:0 0 65px;
+  }
+  body[data-page="reader"] .side-foot { display:none; }
+}
