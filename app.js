@@ -50,6 +50,8 @@ async function boot() {
 }
 function populateStories() {
   el.storyList.replaceChildren();
+  const sidebarCount=document.querySelector('#libraryNav .side-title span:last-child');
+  if(sidebarCount)sidebarCount.textContent=String(s.stories.length).padStart(2,'0');
   for(const [storyIndex,story] of s.stories.entries()) {
     const btn=document.createElement('button'); btn.type='button'; btn.className='story-tile'; btn.dataset.storyId=story.id;
     const emoji=document.createElement('span');emoji.className='story-emoji';emoji.textContent=String(storyIndex+1).padStart(2,'0');

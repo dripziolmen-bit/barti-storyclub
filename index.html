@@ -17,8 +17,9 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./experience.css">
 <link rel="stylesheet" href="./fairytale.css">
-<link rel="stylesheet" href="./v2.css?v=21">
-<link rel="stylesheet" href="./menu-v20.css?v=21">
+<link rel="stylesheet" href="./v2.css?v=22">
+<link rel="stylesheet" href="./menu-v20.css?v=22">
+<link rel="stylesheet" href="./menu-v22.css?v=22">
 </head>
 <body data-page="home">
 <div id="experienceShell" class="experience">
@@ -36,7 +37,7 @@
         <div class="menu-welcome-copy">
           <div class="menu-eyebrow">BARTI STORY CLUB</div>
           <h1 id="v2-welcome-title">Cześć, odkrywco<span>.</span></h1>
-          <p>Wybierz, co chcesz dzisiaj odkryć.</p>
+          <p>Otwórz magiczną bibliotekę. Bajki po rosyjsku czekają na Ciebie.</p>
           <button id="heroExplore" type="button" class="menu-start-button" data-go="library">Otwórz bibliotekę <span aria-hidden="true">↗</span></button>
         </div>
         <div class="menu-welcome-character" id="v2HeroStage">
@@ -47,10 +48,10 @@
       <section class="menu-destinations" aria-label="Menu główne">
         <h2>Menu główne</h2>
         <div class="menu-destination-grid">
-          <button type="button" class="menu-destination menu-destination-primary" data-go="library"><span class="menu-destination-icon" aria-hidden="true">▤</span><span class="menu-destination-copy"><strong>Biblioteka</strong><small>Wybierz bajkę i czytaj</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
-          <button type="button" class="menu-destination" data-go="words"><span class="menu-destination-icon" aria-hidden="true">♡</span><span class="menu-destination-copy"><strong>Moje słowa</strong><small>Twoja kolekcja słów</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
-          <button type="button" class="menu-destination" data-go="achievements"><span class="menu-destination-icon" aria-hidden="true">✦</span><span class="menu-destination-copy"><strong>Osiągnięcia</strong><small>Postępy w nauce</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
-          <button type="button" class="menu-destination" data-go="more"><span class="menu-destination-icon" aria-hidden="true">⚙</span><span class="menu-destination-copy"><strong>Ustawienia</strong><small>Dostosuj czytanie</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="menu-destination menu-destination-primary" data-go="library"><span class="menu-destination-icon" aria-hidden="true"><img src="./assets/ui/library.svg" alt="" loading="eager"></span><span class="menu-destination-copy"><strong>Biblioteka</strong><small>Wybierz bajkę i czytaj</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="menu-destination" data-go="words"><span class="menu-destination-icon" aria-hidden="true"><img src="./assets/ui/words.svg" alt="" loading="eager"></span><span class="menu-destination-copy"><strong>Moje słowa</strong><small>Twoja kolekcja słów</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="menu-destination" data-go="achievements"><span class="menu-destination-icon" aria-hidden="true"><img src="./assets/ui/achievements.svg" alt="" loading="eager"></span><span class="menu-destination-copy"><strong>Osiągnięcia</strong><small>Postępy w nauce</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="menu-destination" data-go="more"><span class="menu-destination-icon" aria-hidden="true"><img src="./assets/ui/more.svg" alt="" loading="eager"></span><span class="menu-destination-copy"><strong>Ustawienia</strong><small>Dostosuj czytanie</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
         </div>
       </section>
       <div class="menu-legacy-data" hidden>
@@ -65,7 +66,7 @@
     <div class="menu-library-head-copy">
       <span class="menu-eyebrow">TWOJE OPOWIEŚCI</span>
       <h1>Biblioteka</h1>
-      <p>Wybierz bajkę, której chcesz posłuchać.</p>
+      <p>18 opowieści. Posłuchaj, czytaj i poznawaj rosyjskie słowa.</p>
     </div>
     <img class="menu-library-barti" src="./assets/character/idle.webp" alt="Barti — bohater klubu bajek" loading="eager" decoding="async">
   </div>
@@ -73,7 +74,7 @@
     <div class="library-filters" role="group" aria-label="Filtruj bajki"><button type="button" data-filter="all" aria-pressed="true">▦ Wszystkie</button><button type="button" data-filter="A1" aria-pressed="false">A1</button><button type="button" data-filter="A2" aria-pressed="false">A2</button><button type="button" data-filter="favorites" aria-pressed="false">♡ Ulubione</button></div>
     <label class="xp-search"><span aria-hidden="true">⌕</span><input id="storySearch" type="search" placeholder="Szukaj bajki..." autocomplete="off" aria-label="Szukaj bajki"></label>
   </div>
-  <div class="v2-library-count"><span id="libraryCount">3 opowieści</span></div>
+  <div class="v2-library-count"><span id="libraryCount">18 bajek</span></div>
   <div class="library-grid" id="libraryGrid"></div>
   <div class="library-empty" id="libraryEmpty" hidden>W tej kategorii nie ma jeszcze bajek. Wybierz „Wszystkie”.</div>
  </div>
@@ -83,7 +84,7 @@
       <div class="xp-pagehead"><span class="xp-eyebrow">TWOJA MAŁA KOLEKCJA</span><h1>Moje słowa<span class="xp-pink-dot">.</span></h1><p>Wszystko, co zapisałeś podczas czytania, w jednym miejscu.</p></div>
       <div class="words-banner"><div><span class="xp-eyebrow">DO ZAPAMIĘTANIA</span><strong id="xpWordsCount">0</strong><span>rosyjskich słów</span></div><button type="button" class="xp-button xp-button-primary" id="wordsQuizBtn">Sprawdź się ✳</button></div>
       <div id="xpWordsList" class="xp-words-list"></div>
-      <div id="xpWordsEmpty" class="xp-words-empty" hidden><span aria-hidden="true">♡</span><strong>Tu będą Twoje odkrycia.</strong><p>Otwórz bajkę, kliknij rosyjskie słowo i zapisz jego tłumaczenie.</p><button class="xp-button xp-button-primary" type="button" data-go="library">Przejdź do biblioteki →</button></div>
+      <div id="xpWordsEmpty" class="xp-words-empty" hidden><span aria-hidden="true">♡</span><strong>Tu będą Twoje odkrycia.</strong><p>Otwórz bajkę, kliknij rosyjskie słowo i zapisz jego tłumaczenie.</p></div>
     </div>
   </main>
 
@@ -99,7 +100,7 @@
  <div class="v2-more-row"><span>✳</span><div><strong>Quiz</strong><small>Sprawdź znajomość słów</small></div><button id="moreQuiz" type="button" class="v2-settings-toggle">Zacznij</button></div>
  <div class="v2-more-row"><span>⇩</span><div><strong>Zainstaluj aplikację</strong><small>Dodaj Bartiego do ekranu głównego</small></div><button id="moreInstall" type="button" class="v2-settings-toggle">Jak?</button></div>
  </div>
- <p class="v2-credit">Barti Story Club · Wersja webowa PWA · <a href="./privacy.html">Prywatność</a></p></div>
+ <p class="v2-credit">Barti Story Club · Wersja webowa PWA · <a href="./privacy.html">Prywatność</a> · Grafiki części ikon: <a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener noreferrer">Twemoji</a> (CC BY 4.0)</p></div>
 </main>
 </div>
 <div id="storyDetail" class="story-detail-backdrop" hidden>
@@ -118,7 +119,7 @@
       <button type="button" class="mobile-menu-close" id="closeLibrary" aria-label="Zamknij bibliotekę">✕</button>
     </div>
     <div class="nav-section">
-      <div class="side-title"><span>WYBIERZ BAJKĘ</span><span>03</span></div>
+      <div class="side-title"><span>WYBIERZ BAJKĘ</span><span>18</span></div>
       <div class="nav-heading">Bajki na dziś<span class="tiny-circle" aria-hidden="true"></span></div>
       <div class="story-list" id="storyList" aria-label="Wybierz bajkę"></div>
     </div>

@@ -2,6 +2,21 @@
 const xp=(id)=>document.getElementById(id);
 const storyArtwork={repka:'./assets/visuals/covers/repka.webp',ryaba:'./assets/visuals/covers/ryaba.webp',kolobok:'./assets/visuals/covers/kolobok.webp'};
 const descriptions={
+  teremok:'Małe zwierzęta szukają schronienia i razem budują wymarzony domek w lesie.',
+  masha:'Masza trafia do domu niedźwiedzia. Czy dzięki sprytowi wróci do rodziny?',
+  'lisa-zhuravl':'Lisica i żuraw odkrywają, czym naprawdę jest dobra gościnność.',
+  'zaika-lisa-petuh':'Zając traci domek. Z pomocą odważnego koguta odzyskuje swoje miejsce.',
+  'volk-kozl':'Siedem koźląt uczy się ostrożności, kiedy pod drzwiami pojawia się wilk.',
+  'gusi-lebedi':'Siostra rusza przez magiczny las, by odnaleźć porwanego braciszka.',
+  snegurochka:'Śniegowa dziewczynka poznaje uroki zimy i tajemnicę wiosny.',
+  morozko:'Dobre serce dziewczyny zostaje nagrodzone podczas spotkania z Mrozem.',
+  shchuka:'Jemiela znajduje mówiącą szczupaczkę, która spełnia życzenia.',
+  carevna:'Książę Iwan odkrywa sekret zaczarowanej żabki i pięknej Wasylisy.',
+  'ivan-volk':'Szary Wilk prowadzi Iwana przez las w poszukiwaniu magicznego ptaka.',
+  havroshechka:'Dziewczynka i dobra krowa pokazują, jak wielką siłę ma życzliwość.',
+  'lisa-rak':'Sprytny rak wyzywa szybką lisicę na niezwykły wyścig.',
+  'tri-medvedya':'Dziewczynka znajduje dom trzech niedźwiedzi. Czy uszanuje cudzą własność?',
+  'kot-petuh-lisa':'Kot ratuje koguta z opresji i przypomina, czym jest prawdziwa przyjaźń.',
   repka:'Dziadek sadzi rzepkę, która rośnie tak wielka, że do pomocy potrzeba całej rodziny. Odkryj, jak wielką moc ma współpraca.',
   ryaba:'Kurka Riaba znosi niezwykłe złote jajko. Krótka, ciepła opowieść, idealna na pierwsze rosyjskie słowa.',
   kolobok:'Mały, sprytny kołobok wyrusza w podróż leśną ścieżką. Po drodze spotyka wiele zwierząt.'
@@ -19,13 +34,13 @@ function createEl(tag,attrs={},children=[]){
  return node;
 }
 function storyDuration(story){return Math.max(1,Math.round(((window.BartiBridge?.durations?.()[story.id]||[]).reduce((a,b)=>a+b,0))/60))+' min'}
-function imageFor(story){return storyArtwork[story.id]||'./assets/barti.webp'}
+function imageFor(story){return storyArtwork[story.id]||'./assets/visuals/covers/'+story.id+'.svg'}
 function readFavorites(){try{const v=JSON.parse(localStorage.getItem('barti.favorites')||'[]');return Array.isArray(v)?v:[]}catch{return []}}
 function toggleFavorite(id){const set=new Set(xpState.favorites);set.has(id)?set.delete(id):set.add(id);xpState.favorites=[...set];try{localStorage.setItem('barti.favorites',JSON.stringify(xpState.favorites))}catch{}renderCards();}
 function buildCard(story,compact=false){
  const card=createEl('article',{class:compact?'home-story-card':'library-card'});
  card.dataset.storyId=story.id;
- const cover=createEl('img',{src:imageFor(story),alt:'Ilustracja bajki '+story.titlePl,loading:'eager',decoding:'async'});
+ const cover=createEl('img',{src:imageFor(story),alt:'Ilustracja bajki '+story.titlePl,loading:'lazy',decoding:'async'});
  const art=createEl('div',{class:compact?'v2-home-cover':'library-card-cover'},[cover,createEl('span',{class:'library-card-level',text:story.level})]);
  const title=createEl('h3',{text:story.title});
  const desc=createEl('p',{text:descriptions[story.id]||story.titlePl});
@@ -45,7 +60,7 @@ function buildCard(story,compact=false){
 }
 function renderCards(){
  if(!xpState.ready)return;
- xp('homeStoryCards').replaceChildren(...xpState.stories.map(story=>buildCard(story,true)));
+ xp('homeStoryCards').replaceChildren(...xpState.stories.slice(0,3).map(story=>buildCard(story,true)));
  const items=xpState.stories.filter(story=>{
   const query=xpState.query.trim().toLocaleLowerCase('pl');
   const match=!query||[story.title,story.titlePl,story.tag].some(x=>x.toLocaleLowerCase('pl').includes(query));
@@ -53,7 +68,9 @@ function renderCards(){
  });
  xp('libraryGrid').replaceChildren(...items.map(story=>buildCard(story)));
  xp('libraryEmpty').hidden=items.length>0;
- xp('libraryCount').textContent=items.length===1?'1 opowieść':items.length+' opowieści';
+ xp('libraryCount').textContent=items.length===xpState.stories.length
+  ? items.length+' bajek'
+  : items.length+' z '+xpState.stories.length+' bajek';
 }
 function detailStory(){
  const story=xpState.stories.find(x=>x.id===xpState.selected);

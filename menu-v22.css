@@ -1,0 +1,226 @@
+/* Barti Story Club 1.4: illustrated 18-story experience
+ * Real interactive cards, still one Menu Start and Back navigation.
+ * Original rendered landscapes + CC BY 4.0 Twemoji motifs.
+ */
+:root{--barti-ink:#342635;--barti-accent:#c34580;--barti-glass:#fff;--barti-line:#ece6ed;}
+body:not([data-page=reader]),
+body:not([data-page=reader]) .experience{
+  background:#f8f9fb!important;
+}
+body:not([data-page=reader]) .experience-topbar{
+  background:#fff!important;
+  border-bottom:1px solid #f0e9ef!important;
+}
+.menu-welcome{
+  background:
+   radial-gradient(ellipse at 68% 78%,#f0bfd9dd,transparent 48%),
+   radial-gradient(circle at 26% 15%,#fff 5%,#fff8f9 54%,transparent 85%),
+   linear-gradient(139deg,#fff,#ffeaf6 100%)!important;
+  border:1px solid #f4e4ec;
+  box-shadow:0 16px 55px #a96a921c;
+}
+.menu-welcome:after{
+  content:"✦";
+  font-family:Georgia,serif;
+  position:absolute;top:25%;right:10%;
+  font-size:clamp(23px,4.2vw,58px);line-height:1;
+  color:#ffcf79;opacity:.82;
+  text-shadow:0 0 29px #ffce9ac0;
+  animation:bartiStarPulse 4.2s ease-in-out infinite;
+  pointer-events:none;
+}
+.menu-welcome:before{
+  background:radial-gradient(circle at 55% 55%,#fffafce9 0%,#ffc3e3c2 42%,transparent 77%)!important;
+  width:86%;height:72%;right:-5%;bottom:-13%;
+}
+.menu-welcome-copy{z-index:6;}
+.menu-welcome h1{color:#312535;font-weight:890;letter-spacing:-2.1px;}
+.menu-welcome-copy>p{color:#6d6070;max-width:24ch;}
+.menu-start-button{
+  border:1px solid #d75799;
+  background:linear-gradient(130deg,#e16a9f,#bb3176)!important;
+  box-shadow:0 15px 30px #bf4c8952,inset 0 1px #ffffff75!important;
+  transition:transform .16s,box-shadow .16s;
+}
+.menu-start-button:hover{transform:translateY(-2px);box-shadow:0 20px 37px #bf4c8961!important;}
+.menu-welcome-character{overflow:visible!important;}
+.menu-welcome-character:before{
+  content:"";
+  position:absolute;bottom:3%;left:17%;
+  width:66%;height:13%;border-radius:50%;
+  background:#b9559380;filter:blur(25px);
+}
+.menu-welcome-character .barti-puppet{
+  filter:drop-shadow(0 22px 21px #83205231);
+  z-index:3;
+  animation:bartiHeroFloat 5.2s ease-in-out infinite;
+}
+.menu-welcome-character .puppet-film:after{
+ content:"";position:absolute;inset:0;z-index:7;
+ background-image:url('./assets/character/reader-book.svg');
+ background-position:center;background-size:contain;background-repeat:no-repeat;
+ pointer-events:none;
+}
+.menu-destinations h2{font-weight:840;}
+.menu-destination{
+  isolation:isolate;
+  border:1px solid #eee8ee;
+  box-shadow:0 6px 18px #53435d0a;
+  overflow:hidden;
+}
+.menu-destination:after{
+  content:"";position:absolute;right:-15%;top:-22%;
+  height:clamp(88px,13vw,160px);width:clamp(88px,13vw,160px);
+  background:radial-gradient(circle,#fff 15%,transparent 73%);
+  opacity:.78;z-index:-1;pointer-events:none;
+}
+.menu-destination:nth-child(1){
+  background:linear-gradient(132deg,#fff7fa 0%,#ffe3f0 100%)!important;
+  border-color:#efcee2;
+}
+.menu-destination:nth-child(2){
+  background:linear-gradient(130deg,#fff,#f2f6fb)!important;
+  border-color:#e0e8ee;
+}
+.menu-destination:nth-child(3){
+  background:linear-gradient(132deg,#fffaf0,#fff0d9)!important;
+  border-color:#f2e2ce;
+}
+.menu-destination:nth-child(4){
+  background:linear-gradient(132deg,#fff,#f3edfb)!important;
+  border-color:#e5dcf1;
+}
+.menu-destination-icon{
+  display:grid;place-items:center;
+  background:transparent!important;
+  height:clamp(67px,8.5vw,122px)!important;
+  width:clamp(67px,8.5vw,122px)!important;
+  border-radius:20px;
+  flex:0 1 auto;
+}
+.menu-destination-icon img{
+  width:100%;height:100%;display:block;
+  object-fit:contain;pointer-events:none;
+  filter:drop-shadow(0 8px 7px #6040600f);
+  transition:transform .21s cubic-bezier(.2,1.4,.4,1);
+}
+.menu-destination:hover .menu-destination-icon img{transform:rotate(-7deg) scale(1.08);}
+.menu-destination-copy strong{color:#382b39;font-weight:850;}
+.menu-destination-copy small{color:#766976;}
+.menu-destination-arrow{color:#a24578;}
+.menu-destination:hover{transform:translateY(-4px);box-shadow:0 18px 33px #5d3f5a16;}
+/* In the library, artwork is the interface rather than an ornamental rectangle */
+body[data-page=library] .v2-library-hero.menu-library-head{
+  background:
+   radial-gradient(ellipse at 79% 40%,#f7dce7 0%,transparent 38%),
+   linear-gradient(135deg,#fff 0%,#fff8fc 100%)!important;
+  border:1px solid #f2e7ef!important;
+}
+body[data-page=library] .v2-library-hero.menu-library-head:after{
+  content:"✧";position:absolute;right:19%;top:13%;
+  font-family:Georgia,serif;font-size:40px;color:#f1bb66;
+  opacity:.65;pointer-events:none;
+}
+body[data-page=library] .menu-library-barti{
+  filter:drop-shadow(0 14px 15px #933f753b);
+}
+body[data-page=library] .menu-library-head h1{font-weight:850;}
+body[data-page=library] .v2-library-controls .library-filters{
+  border-radius:16px;background:#fff!important;
+  box-shadow:0 4px 14px #6246580b;
+}
+body[data-page=library] .v2-library-controls .library-filters button[aria-pressed=true]{
+ background:#cd5189!important;
+ box-shadow:0 5px 13px #bf3e7546!important;
+}
+body[data-page=library] .v2-library-controls .xp-search{
+ border-radius:16px;background:#fff!important;box-shadow:0 4px 14px #6246580b;
+}
+body[data-page=library] .v2-library-count{color:#977181;}
+body[data-page=library] .v2-library-count #libraryCount{font-size:13px;}
+/* Dense yet readable virtual-shelf treatment, scroll only within shelf. */
+@media(min-width:1001px){
+ body[data-page=library] .v2-library .library-grid,
+ body[data-page=library] #libraryGrid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-auto-rows:minmax(275px,auto)!important;
+  align-content:start!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+  row-gap:14px!important;column-gap:14px!important;
+  padding:2px 7px 15px 2px;
+ }
+ body[data-page=library] .v2-library .library-card{
+  height:300px!important;
+  max-height:none!important;
+  min-height:300px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  border:1px solid #f0e7ed!important;
+  border-radius:24px!important;
+  box-shadow:0 7px 22px #3c2a3b15!important;
+ }
+ body[data-page=library] .v2-library .library-card-cover{
+  flex:1 1 auto!important;
+  height:auto!important;max-height:none!important;min-height:150px!important;
+  overflow:hidden;
+  border-radius:21px 21px 0 0;
+ }
+ body[data-page=library] .v2-library .library-card-cover img{width:100%;height:100%;object-fit:cover;transition:transform .38s;}
+ body[data-page=library] .v2-library .library-card:hover .library-card-cover img{transform:scale(1.06);}
+ body[data-page=library] .v2-library .library-card-body{flex:0 0 auto!important;gap:3px;min-height:0!important;padding:10px 14px!important;}
+ body[data-page=library] .v2-library .library-card h3{font-size:clamp(17px,1.45vw,22px);line-height:1.15;}
+ body[data-page=library] .v2-library .library-card p{display:none!important;}
+ body[data-page=library] .v2-library .library-card .v2-story-meta{margin:0;}
+ body[data-page=library] .v2-library .library-card .v2-story-open{min-height:37px;font-size:12px;}
+}
+@media(min-width:701px) and (max-width:1000px){
+ body[data-page=library] #libraryGrid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:minmax(260px,auto);
+  align-content:start;
+  overflow-y:auto;
+ }
+ body[data-page=library] .v2-library .library-card{
+  min-height:310px!important;height:310px!important;
+  flex-direction:column!important;
+ }
+ body[data-page=library] .v2-library .library-card-cover{
+  height:auto!important;min-height:170px!important;flex:1 1 auto!important;
+ }
+ body[data-page=library] .v2-library .library-card-body{flex:0 0 auto!important;padding:9px 10px!important;}
+ body[data-page=library] .v2-library .library-card p{display:none!important;}
+}
+@media(max-width:700px){
+ .menu-welcome{min-height:425px!important;}
+ .menu-welcome-character{height:220px!important;}
+ .menu-welcome-character .barti-puppet{width:238px!important;max-width:238px!important;}
+ .menu-welcome:after{font-size:26px;}
+ .menu-destination-icon{
+  width:68px!important;height:68px!important;
+  margin:-5px 0 0 -6px;
+ }
+ .menu-destination-copy strong{font-size:16px;}
+ .menu-destination{min-height:154px!important;}
+ body[data-page=library] .menu-library-head{
+  min-height:131px!important;height:131px!important;flex-basis:131px!important;
+ }
+ body[data-page=library] .menu-library-barti{height:112px!important;width:110px!important;flex-basis:110px!important;}
+ body[data-page=library] .v2-library .library-card-cover img{object-fit:cover;}
+ body[data-page=library] .v2-library .library-card{border-radius:18px!important;}
+ body[data-page=library] .v2-library .library-card-body p{-webkit-line-clamp:2;}
+}
+@media(max-width:355px){
+ .menu-welcome{min-height:390px!important;}
+ .menu-welcome-character{height:185px!important;}
+ .menu-welcome-character .barti-puppet{width:211px!important;}
+ .menu-destination{min-height:145px!important;}
+ .menu-destination-icon{width:57px!important;height:57px!important;}
+}
+@keyframes bartiStarPulse{0%,100%{transform:scale(.82) rotate(-13deg);opacity:.63;}50%{transform:scale(1.14) rotate(13deg);opacity:1;}}
+@keyframes bartiHeroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){
+ .menu-welcome:after,.menu-welcome-character .barti-puppet{animation:none!important;}
+ .menu-destination-icon img,.v2-library .library-card-cover img{transition:none!important;}
+}
