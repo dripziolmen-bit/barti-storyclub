@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="./menu-v20.css?v=24">
 <link rel="stylesheet" href="./menu-v22.css?v=24">
 <link rel="stylesheet" href="./library-v24.css?v=24">
+<link rel="stylesheet" href="./studio-v25.css?v=25">
 </head>
 <body data-page="home">
 <div id="experienceShell" class="experience">
@@ -36,18 +37,20 @@
     <div class="menu-home-layout">
       <section class="menu-welcome" aria-labelledby="v2-welcome-title">
         <div class="menu-welcome-copy">
+          <div class="menu-hero-kicker"><span class="menu-kicker-dot"></span> TWOJA BAJKOWA PRZYGODA</div>
           <div class="menu-eyebrow">BARTI STORY CLUB</div>
           <h1 id="v2-welcome-title">Cześć, odkrywco<span>.</span></h1>
           <p>Otwórz magiczną bibliotekę. Bajki po rosyjsku czekają na Ciebie.</p>
           <button id="heroExplore" type="button" class="menu-start-button" data-go="library">Otwórz bibliotekę <span aria-hidden="true">↗</span></button>
         </div>
         <div class="menu-welcome-character" id="v2HeroStage">
+          <div class="menu-story-world" aria-hidden="true"><img class="world-cover world-cover-a" src="./assets/visuals/covers/kolobok.webp" alt=""><img class="world-cover world-cover-b" src="./assets/visuals/covers/ryaba.webp" alt=""><span class="world-spark world-spark-a">✦</span><span class="world-spark world-spark-b">✳</span></div>
           <div id="homeBarti" class="barti-puppet hero-puppet" data-mode="idle" role="img" aria-label="Barti, różowy bohater aplikacji"><div class="puppet-film"></div></div>
         </div>
         <span id="heroSpeech" hidden>Cześć!</span>
       </section>
       <section class="menu-destinations" aria-label="Menu główne">
-        <h2>Menu główne</h2>
+        <div class="menu-section-heading"><div><span class="menu-section-kicker">ODKRYWAJ I UCZ SIĘ</span><h2>Twój mały świat</h2></div><span class="menu-section-subtitle">Wybierz, dokąd dziś ruszamy</span></div>
         <div class="menu-destination-grid">
           <button type="button" class="menu-destination menu-destination-primary" data-go="library"><span class="menu-destination-icon" aria-hidden="true"><img src="./assets/ui/library.svg" alt="" loading="eager"></span><span class="menu-destination-copy"><strong>Biblioteka</strong><small>Wybierz bajkę i czytaj</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
           <button type="button" class="menu-destination" data-go="words"><span class="menu-destination-icon" aria-hidden="true"><img src="./assets/ui/words.svg" alt="" loading="eager"></span><span class="menu-destination-copy"><strong>Moje słowa</strong><small>Twoja kolekcja słów</small></span><span class="menu-destination-arrow" aria-hidden="true">↗</span></button>
@@ -65,7 +68,7 @@
  <div class="v2-library-layout">
   <div class="library-headline">
     <div class="library-heading-main">
-      <h1>Biblioteka</h1>
+      <div class="library-title-block"><span class="library-overline">BIBLIOTEKA OPOWIEŚCI <span aria-hidden="true">✦</span></span><h1>Wybierz swoją bajkę<span class="xp-pink-dot">.</span></h1><p>Czytaj, słuchaj i odkrywaj rosyjskie słowa.</p></div>
       <span id="libraryCount" class="library-count-in-heading">18 bajek</span>
     </div>
     <div class="library-heading-controls">
@@ -82,6 +85,7 @@
     <label class="xp-search"><span aria-hidden="true">⌕</span><input id="storySearch" type="search" placeholder="Tytuł bajki..." autocomplete="off" aria-label="Szukaj bajki"></label>
     <button type="button" id="librarySearchClose" class="library-search-close" aria-label="Zamknij wyszukiwanie">✕</button>
   </div>
+  <div class="library-shelf-label"><span>WSZYSTKIE OPOWIEŚCI</span><span aria-hidden="true">✳</span></div>
   <div class="library-grid" id="libraryGrid"></div>
   <div class="library-empty" id="libraryEmpty" hidden>W tej kategorii nie ma jeszcze bajek. Wybierz „Wszystkie”.</div>
  </div>
