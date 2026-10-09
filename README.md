@@ -77,3 +77,12 @@ Testy: Playwright 4 ekrany (320x568, 390x844, 820x1180, 1440x900) PASS dla przep
 - Uporządkowano wysokości elementów przy 720/768/900/1080px, zwalniając miejsce tekstowi bez zmiany mobilnej nawigacji.
 - PWA cache v17.
 - Lokalnie sprawdzono geometrię 1024x768, 1280x720, 1366x768, 1440x900 i 1920x1080: document/sidebar/right/main scroll = 0, reader scroll > 0; testy głównych funkcji 4/4 na mobile/tablet/desktop PASS.
+
+## v1.2.2 — Reader without cropped illustrations or scrollbars (2026-10-09)
+- Story art is now presented uncropped as a complete miniature next to the title. Removed the previously cropped full-width illustration strip.
+- Reader no longer displays redundant chapter bar, source footer, idle dictionary placeholder, status, coach copy and duplicates.
+- Only the story article scrolls; document, left menu and right Barti column do not scroll.
+- Reader Barti has a visible open storybook overlay, instead of a phone prop, on top of the existing five smooth character motion clips. Original pose reference and interactive screen mechanics retained.
+- Responsive rendering includes desktop 1280x720, 1366x768, 1440x900, 1856x828, 1920x1080, intermediate tablet and mobile 320x568, 390x844.
+- PWA cache v18, with versioned v2.css to invalidate potentially stale client styles.
+- Preserve this single-scroll-area reader contract and do not restore explanatory hint strips.

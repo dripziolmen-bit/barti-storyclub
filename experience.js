@@ -125,7 +125,7 @@ function renderWords(){
  });
  xp('xpWordsList').replaceChildren(...list);
 }
-function applyReaderArt(){const id=window.BartiBridge?.getCurrentId?.()||'repka';const image=storyArtwork[id]||storyArtwork.repka;const banner=xp('readerArtBanner');if(banner)banner.style.backgroundImage=`linear-gradient(0deg,rgba(35,18,30,.34),transparent 68%),url('${image}')`; }
+function applyReaderArt(){const id=window.BartiBridge?.getCurrentId?.()||'repka';const image=storyArtwork[id]||storyArtwork.repka;const banner=xp('readerArtBanner');if(banner)banner.style.backgroundImage=`url('${image}')`; }
 function activateReader(id){
  const story=xpState.stories.find(s=>s.id===id);if(!story)return;
  navigate('reader',story.id); applyReaderArt();

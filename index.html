@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./experience.css">
 <link rel="stylesheet" href="./fairytale.css">
-<link rel="stylesheet" href="./v2.css">
+<link rel="stylesheet" href="./v2.css?v=18">
 </head>
 <body data-page="home">
 <div id="experienceShell" class="experience">
@@ -123,7 +123,7 @@
     </div>
     <div class="side-bottom">
       <div class="nav-divider"></div>
-      <span class="side-title">TWOJA NAUKA</span>
+      <span class="side-title">NARZĘDZIA</span>
       <button class="side-link" id="openVocab" type="button"><span class="side-link-icon" aria-hidden="true">♡</span><span>Moje słowa</span><b id="savedCount">0</b></button>
       <button class="side-link" id="openQuiz" type="button"><span class="side-link-icon" aria-hidden="true">✳</span><span>Krótki quiz</span><b>4</b></button>
       <button class="side-link" id="installBtn" type="button"><span class="side-link-icon" aria-hidden="true">⇩</span><span>Dodaj do telefonu</span></button>
@@ -137,7 +137,7 @@
       <button class="mobile-library-btn" id="openLibrary" type="button" aria-label="Otwórz bibliotekę"><span aria-hidden="true">☰</span></button>
       <div class="section-brand"><span class="overline">BARTI READING CLUB</span><span class="section-separator">/</span><span class="section-label">OPOWIEŚCI</span></div>
       <div class="top-actions">
-        <span class="availability"><span class="availability-dot"></span><span id="statusText">Gotowy do czytania</span></span>
+        <span class="availability" hidden><span class="availability-dot"></span><span id="statusText">Gotowy do czytania</span></span>
         <button type="button" id="focusBtn" class="top-button focus-button" aria-pressed="false" title="Tryb skupienia">◫ <span>Skupienie</span></button>
         <button type="button" id="readerSettings" class="top-button settings-button" aria-expanded="false" aria-controls="readingSettings" title="Ustawienia czytania">Aa</button>
       </div>
@@ -148,14 +148,14 @@
       <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">☾ Ciemne tło</button>
     </div>
     <div class="reading-head">
-      <div class="reading-head-copy">
+      <div class="reader-cover-thumb" id="readerArtBanner" role="img" aria-label="Ilustracja bajki"></div><div class="reading-head-copy">
         <span class="lesson-tag"><span class="lesson-tag-dot"></span> <span id="storyLevel">A1 · POCZĄTKUJĄCY</span><span class="divider-dot">·</span><span id="storyTag">BAJKA LUDOWA</span></span>
         <h1 id="storyTitle" lang="ru">Репка</h1>
         <div class="story-subtitle"><span id="storyTitlePl">Rzepka</span><span class="dot-separator">/</span><span id="storyDuration">1 min słuchania</span></div>
       </div>
       <div class="head-barti-mobile" role="img" aria-label="Barti czyta z tobą"><img src="./assets/barti.webp" alt="" loading="eager"><span aria-hidden="true">✦</span></div>
     </div>
-    <section class="reading-surface" aria-label="Tekst bajki"><div class="reader-art-banner" id="readerArtBanner" role="img" aria-label="Ilustracja bajki"></div>
+    <section class="reading-surface" aria-label="Tekst bajki">
       <div class="reader-toolbar">
         <div class="reader-toolbar-left"><span class="chapter-label">ROZDZIAŁ 01</span><span class="chapter-divider"></span><span id="currentParagraph">Akapit 1 / 7</span></div>
         <div class="reader-toolbar-right"><span>RU → PL</span></div>
@@ -171,11 +171,11 @@
         <img src="./assets/barti.webp" alt="Barti, różowy stworek czytający bajkę z tabletu" id="bartiImage" class="barti-image" draggable="false">
         <span class="mascot-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
       </div>
-      <div class="mascot-card-bottom"><span class="mascot-caption-title">Barti opowiada</span></div>
+
     </div>
     <div class="dictionary-card" id="dictionaryCard">
       <div class="dict-header"><span>MAŁY SŁOWNIK</span><button id="closeDict" aria-label="Zamknij tłumaczenie" class="text-icon" type="button">✕</button></div>
-      <div id="wordPlaceholder" class="word-placeholder"><span class="empty-word-icon" aria-hidden="true">аб</span><strong>RU → PL</strong></div>
+      <div id="wordPlaceholder" class="word-placeholder" aria-hidden="true"></div>
       <div id="wordDetails" class="word-details" hidden>
         <span id="wordLabel">ROSYJSKI</span>
         <div class="word-ru" id="wordRu">—</div>

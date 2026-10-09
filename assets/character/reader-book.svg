@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs>
+ <linearGradient id="cl" x2="1" y2="1"><stop stop-color="#9e2846"/><stop offset="1" stop-color="#43151f"/></linearGradient>
+ <linearGradient id="cr" x2="1" y2="1"><stop stop-color="#7d1f37"/><stop offset="1" stop-color="#32121d"/></linearGradient>
+ <linearGradient id="pl" x2=".3" y2="1"><stop stop-color="#fff9e5"/><stop offset="1" stop-color="#ecd0a5"/></linearGradient>
+ <linearGradient id="pr" x2=".6" y2="1"><stop stop-color="#fffde7"/><stop offset="1" stop-color="#ecd3ad"/></linearGradient>
+</defs>
+<path d="M210 280 Q265 267 326 302 Q392 263 461 272 L472 403 Q398 381 331 417 Q270 383 209 403Z" fill="#441622" stroke="#38151d" stroke-width="10" stroke-linejoin="round"/>
+<path d="M222 276 Q275 268 327 301 L330 403 Q278 374 215 393Z" fill="url(#cl)" stroke="#cfaa6d" stroke-width="4"/>
+<path d="M327 301 Q384 269 456 277 L465 394 Q389 375 331 405Z" fill="url(#cr)" stroke="#cfaa6d" stroke-width="4"/>
+<path d="M227 275 Q274 270 326 298 L330 386 Q276 356 225 377Z" fill="url(#pl)" stroke="#ad8655" stroke-width="2"/>
+<path d="M329 299 Q384 271 448 277 L457 374 Q389 362 333 390Z" fill="url(#pr)" stroke="#ad8655" stroke-width="2"/>
+<path d="M327 299 L332 391" stroke="#c9a56b" stroke-width="5" stroke-linecap="round"/>
+<g fill="none" stroke="#ba956e" stroke-width="2" opacity=".64" stroke-linecap="round">
+<path d="M241 293 Q281 298 316 312"/><path d="M239 307 Q280 312 316 328"/><path d="M239 325 Q281 331 317 343"/><path d="M239 342 Q275 344 316 358"/>
+<path d="M345 316 Q388 291 440 294"/><path d="M345 330 Q388 305 441 308"/><path d="M344 345 Q388 321 442 323"/><path d="M344 359 Q388 340 443 338"/>
+</g>
+<path d="M424 355 L427 345 L430 355 L441 359 L430 362 L427 372 L424 362 L413 359Z" fill="#b9843c" opacity=".55"/>
+</svg>
