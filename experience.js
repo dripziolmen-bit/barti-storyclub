@@ -145,9 +145,37 @@ function insertPuppet(){
    parent.append(puppet);
  }
 }
+/* Sprite-frame character animation; mouth/arm expressions follow actual audio time. */
+let v2PoseMode='idle',v2PoseStart=Date.now(),v2LastFrame='',v2PoseTimer=null;
+const v2PoseImages=['idle','blink','talk','explain','wave','celebrate'];
+function v2PoseFrame(){
+ if(document.hidden)return;
+ const ms=Date.now()-v2PoseStart,audio=xp('narration');
+ let name='idle';
+ if(v2PoseMode==='talking'){
+   const beat=Math.floor((audio?.currentTime||0)*8)%6;
+   name=['talk','explain','talk','explain','talk','blink'][beat];
+ }else if(v2PoseMode==='excited'||v2PoseMode==='finished'){
+   name=Math.floor(ms/420)%2?'wave':'celebrate';
+ }else if(v2PoseMode==='paused')name='idle';
+ else {
+   const beat=ms%6600;
+   name=beat<2800?'idle':beat<3100?'blink':beat<4600?'idle':beat<5400?'wave':'idle';
+ }
+ if(name===v2LastFrame)return;
+ v2LastFrame=name;
+ const value="url('./assets/character/"+name+".webp')";
+ document.querySelectorAll('.barti-puppet .puppet-film, .barti-mini-puppet .puppet-film').forEach(el=>el.style.setProperty('background-image',value,'important'));
+}
+function startV2PoseAnimation(){
+ for(const name of v2PoseImages){const img=new Image();img.src='./assets/character/'+name+'.webp'}
+ if(v2PoseTimer)return;
+ v2PoseTimer=setInterval(v2PoseFrame,110);
+ v2PoseFrame();
+}
 function onMode(mode){
+ v2PoseMode=mode;v2PoseStart=Date.now();v2LastFrame='';v2PoseFrame();
  xp('homeBarti').dataset.mode=mode; if(xp('libraryBarti')) xp('libraryBarti').dataset.mode=mode;
- xp('libraryBarti').dataset.mode=mode;
  document.querySelectorAll('.barti-mini-puppet').forEach(p=>p.dataset.mode=mode);
  const captions={idle:'Cześć! Gotowy na nową bajkową przygodę?',talking:'Słuchaj i odkrywaj rosyjskie słowa!',paused:'Poczekam na Ciebie!',finished:'Brawo! Kolejna bajka za Tobą!',excited:'Hurra! Wybierzmy coś nowego!'};
  xp('heroSpeech').textContent=captions[mode]||captions.idle;
@@ -200,7 +228,7 @@ function initExperience(){
  if(started||!window.BartiBridge?.ready)return;
  started=true;
  xpState.stories=window.BartiBridge.getStories();xpState.ready=true;
- renderCards();renderWords();insertPuppet();bindExperience(); applyReaderArt();
+ renderCards();renderWords();insertPuppet();bindExperience();startV2PoseAnimation();applyReaderArt();
  restoreHash();
  window.BartiExperience={onMode,onVocab:()=>{renderWords();renderHomeStats();},onStory:()=>{renderCards();applyReaderArt();renderHomeStats();},onFinished:()=>{renderHomeStats();renderAchievements();}};
  onMode('idle');

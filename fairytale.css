@@ -51,7 +51,7 @@ body[data-page="home"],body[data-page="library"],body[data-page="words"]{
 .hero-art-area{z-index:2}
 .barti-puppet{filter:drop-shadow(0 20px 26px #a72f7343);width:100%;max-width:500px}
 .puppet-film,.barti-mini-puppet .puppet-film{
-  background-image:url('./assets/visuals/sprites/idle.webp');
+  background-image:url('./assets/character/idle.webp');
   background-position:center;
   background-size:contain;
   background-repeat:no-repeat;
@@ -64,20 +64,20 @@ body[data-page="home"],body[data-page="library"],body[data-page="words"]{
 .barti-puppet[data-mode="excited"] .puppet-film,.barti-mini-puppet[data-mode="finished"] .puppet-film{animation:xp-barti-celebrate 1.5s steps(1,end) infinite}
 .barti-puppet[data-mode="excited"]{animation:xp-character-bounce .7s ease-in-out infinite alternate}
 @keyframes xp-barti-poses{
-  0%,13%,26%,49%,100%{background-image:url('./assets/visuals/sprites/idle.webp')}
-  15%,18%{background-image:url('./assets/visuals/sprites/blink.webp')}
-  53%,64%{background-image:url('./assets/visuals/sprites/wave.webp')}
-  70%,84%{background-image:url('./assets/visuals/sprites/idle.webp')}
-  86%,89%{background-image:url('./assets/visuals/sprites/blink.webp')}
+  0%,13%,26%,49%,100%{background-image:url('./assets/character/idle.webp')}
+  15%,18%{background-image:url('./assets/character/blink.webp')}
+  53%,64%{background-image:url('./assets/character/wave.webp')}
+  70%,84%{background-image:url('./assets/character/idle.webp')}
+  86%,89%{background-image:url('./assets/character/blink.webp')}
 }
 @keyframes xp-barti-talking{
-  0%,42%,100%{background-image:url('./assets/visuals/sprites/talk.webp')}
-  43%,84%{background-image:url('./assets/visuals/sprites/explain.webp')}
-  85%,96%{background-image:url('./assets/visuals/sprites/talk.webp')}
+  0%,42%,100%{background-image:url('./assets/character/talk.webp')}
+  43%,84%{background-image:url('./assets/character/explain.webp')}
+  85%,96%{background-image:url('./assets/character/talk.webp')}
 }
 @keyframes xp-barti-celebrate{
-  0%,33%,100%{background-image:url('./assets/visuals/sprites/wave.webp')}
-  34%,78%{background-image:url('./assets/visuals/sprites/celebrate.webp')}
+  0%,33%,100%{background-image:url('./assets/character/wave.webp')}
+  34%,78%{background-image:url('./assets/character/celebrate.webp')}
 }
 @keyframes xp-character-bounce{from{transform:translateY(10%) rotate(-2deg)}to{transform:translateY(1%) rotate(3deg)}}
 .hero-caption{background:#fff9ffed;border:1px solid #ffcee5;border-radius:23px;color:#9b1b65;box-shadow:0 12px 25px #e1719844;font-size:12px}
@@ -185,7 +185,7 @@ body[data-page="reader"] .mascot-card{background:#fddfeb}
   .xp-headnote img{width:58px}
 }
 @media(prefers-reduced-motion:reduce){
- .puppet-film,.barti-mini-puppet .puppet-film{animation:none!important;background-image:url('./assets/visuals/sprites/idle.webp')!important}
+ .puppet-film,.barti-mini-puppet .puppet-film{animation:none!important;background-image:url('./assets/character/idle.webp')!important}
  .barti-puppet[data-mode="excited"]{animation:none}
 }
 

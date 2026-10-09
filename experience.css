@@ -44,7 +44,7 @@ body:not([data-page="reader"]) .modal-cover{z-index:300}
 .hero-art-area{position:relative;min-height:410px;display:flex;align-items:end;justify-content:center}
 .hero-halo{position:absolute;width:min(80%,470px);height:min(78%,360px);bottom:4%;border-radius:50%;background:radial-gradient(ellipse,#b63a746b,#ff78a31a 44%,transparent 68%);filter:blur(7px)}
 .barti-puppet{position:relative;aspect-ratio:1/1;width:100%;max-width:590px;flex-shrink:0;pointer-events:none;filter:drop-shadow(0 28px 22px #0c091447);transform:translateY(10%);isolation:isolate}
-.puppet-film{position:absolute;inset:0;background-image:url('./assets/art/barti-motion.webp');background-repeat:no-repeat;background-size:1600% 100%;background-position:0% 0%;animation:xp-sprite-idle 3.5s steps(15) infinite alternate;will-change:background-position}
+.puppet-film{position:absolute;inset:0;background-image:url('./assets/character/idle.webp');background-repeat:no-repeat;background-size:1600% 100%;background-position:0% 0%;animation:xp-sprite-idle 3.5s steps(15) infinite alternate;will-change:background-position}
 .barti-puppet[data-mode="talking"] .puppet-film,.barti-puppet[data-mode="reading"] .puppet-film{animation-duration:1.15s}
 .barti-puppet[data-mode="excited"] .puppet-film{animation-duration:.7s;filter:saturate(1.14)}
 .barti-puppet[data-mode="paused"] .puppet-film{animation-play-state:paused}
