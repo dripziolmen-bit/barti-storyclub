@@ -103,3 +103,6 @@ Testy: Playwright 4 ekrany (320x568, 390x844, 820x1180, 1440x900) PASS dla przep
 - Na komputerze główne ekrany nadal mieszczą się w viewport. Na telefonie zawartość menu może się przewijać, ale przycisk „Wstecz” pozostaje w stałym nagłówku.
 - Narracja, polski słownik słów, quiz, ulubione, rosyjskie bajki i animowany Barti zachowane.
 - Cache PWA v20, osobny arkusz menu-v20.css; 8/8 testów kompletnego przepływu Start → inne ekrany → Wstecz / Czytnik, 8/8 testów wszystkich sekcji + osobna regresja Czytnika 8/8. Publiczną QA wykonać ponownie po publikacji.
+
+### Mobile follow-up: scroll reset
+After choosing an area from the menu, the newly opened page is reset to the top (including the narrow 320px viewport); the fixed Back button remains visible. PWA cache bumped to v21 for fresh navigation code.

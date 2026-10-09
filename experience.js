@@ -106,6 +106,10 @@ function navigate(page='home',storyId=null,replace=false){
  if(page==='more')renderMore();
  if(page==='library')renderCards();
  window.scrollTo(0,0);
+ if(page!=='reader')requestAnimationFrame(()=>{
+   window.scrollTo({top:0,left:0,behavior:'instant'});
+   document.scrollingElement.scrollTop=0;
+ });
  const suffix=page==='reader'?'/read/'+encodeURIComponent(storyId||window.BartiBridge?.getCurrentId?.()||'repka'):'/'+page;
  const hash='#'+suffix;
  if(location.hash!==hash){(replace?history.replaceState:history.pushState).call(history,{page},'',hash);}
@@ -235,6 +239,7 @@ function renderAchievements(){
 function renderMore(){xp('moreFontValue').textContent=getComputedStyle(document.documentElement).getPropertyValue('--reading-size').trim()||'23px'}
 function bindExperience(){
  document.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>{
+  button.blur();
   const root=button.dataset.go==='home';
   navigate(button.dataset.go,null,root&&xpState.page!=='home');
  }));
