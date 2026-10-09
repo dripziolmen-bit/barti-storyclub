@@ -1,0 +1,288 @@
+/* v1.3 — Native-like hierarchy: one root menu, button navigation, white surfaces.
+   No global tabs, no cross-section links outside the home menu. */
+html:has(body:not([data-page="reader"])) {background:#f8f9fb!important;}
+body:not([data-page="reader"]),
+body:not([data-page="reader"])>.experience {
+ background:#f8f9fb!important;
+ color:#29212d!important;
+}
+body:not([data-page="reader"]) .experience-topbar {
+ width:100%;max-width:none!important;
+ height:clamp(59px,9dvh,72px)!important;
+ flex-basis:clamp(59px,9dvh,72px)!important;
+ padding:0 clamp(18px,4vw,52px)!important;
+ justify-content:space-between;
+ background:#fff!important;
+ border-bottom:1px solid #f0edf0;
+ box-shadow:none!important;
+}
+body:not([data-page="reader"]) .xp-brandmark{
+ background:#d45390!important;box-shadow:none!important;color:#fff;
+}
+body:not([data-page="reader"]) .xp-brandname small{color:#928792!important;}
+body:not([data-page="reader"]) .xp-desktop-nav,
+body:not([data-page="reader"]) .xp-top-action,
+body:not([data-page="reader"]) .xp-mobile-tabs{display:none!important;}
+.app-back{
+ display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:43px;padding:9px 17px;border-radius:14px;
+ background:#fff!important;border:1px solid #e7e1e6;
+ font-size:14px;font-weight:750;color:#59394e;
+ box-shadow:none;cursor:pointer;
+}
+.app-back>span{font-size:22px;line-height:1;}
+.app-back:hover{background:#fff5fa!important;border-color:#e9c9d8;}
+.app-back[hidden]{display:none!important;}
+body:not([data-page="reader"]) .xp-screen:not([hidden]){background:#f8f9fb;}
+/* Start — clear interactive menu grid, no stories visible outside the library */
+body[data-page="home"] .menu-home{min-height:0;height:100%;}
+.menu-home-layout{
+ display:grid;
+ grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+ gap:clamp(16px,2.1vw,30px);
+ width:min(1330px,100%);
+ height:100%;
+ padding:clamp(15px,2.2dvh,28px) clamp(16px,3vw,40px) clamp(15px,2.2dvh,28px);
+ margin:auto;min-height:0;
+}
+.menu-welcome{
+ position:relative;isolation:isolate;
+ overflow:hidden;border-radius:30px;
+ background:radial-gradient(circle at 77% 42%,#fff1f7 0 20%,transparent 53%),linear-gradient(145deg,#fff,#fff8fc);
+ border:1px solid #efe5eb;
+ display:flex;flex-direction:column;justify-content:space-between;
+ min-height:0;
+}
+.menu-welcome::before{
+ content:'';position:absolute;border-radius:50%;
+ background:radial-gradient(circle,#ffedf6,transparent 75%);
+ width:83%;height:78%;right:-10%;bottom:1%;z-index:-1;
+}
+.menu-welcome-copy{
+ position:relative;z-index:4;
+ padding:clamp(26px,4dvh,48px) clamp(20px,3.6vw,47px) 0;
+}
+.menu-eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#ad5881;}
+.menu-welcome h1{
+ font-family:'DM Sans',system-ui,sans-serif;
+ font-size:clamp(37px,4.4vw,62px);font-weight:850;letter-spacing:-2.8px;
+ line-height:1.05;margin:17px 0 9px;max-width:8.5ch;
+ color:#36253a;
+}
+.menu-welcome h1 span{color:#ce4484;}
+.menu-welcome-copy>p{color:#756875;font-size:clamp(13px,1.2vw,17px);line-height:1.45;margin:0 0 18px;}
+.menu-start-button{
+ display:inline-flex;align-items:center;justify-content:space-between;gap:20px;
+ background:#cc4b8d;color:#fff;border:0;
+ min-height:55px;border-radius:16px;
+ padding:12px 19px;font-weight:800;font-size:14px;
+ box-shadow:0 9px 23px #c94e8233;cursor:pointer;
+}
+.menu-start-button span{font-size:23px;font-weight:400;}
+.menu-start-button:hover{background:#b73a79;}
+.menu-welcome-character{
+ position:relative;min-height:0;height:min(50%,350px);width:100%;
+ flex:0 1 auto;display:flex;align-items:end;justify-content:center;
+ z-index:2;overflow:hidden;
+}
+.menu-welcome-character .barti-puppet {
+ position:relative;width:min(72%,335px)!important;max-width:335px!important;
+ aspect-ratio:1!important;
+ height:auto!important;flex:0 1 auto;
+ transform:none!important;margin:0 auto;
+}
+.menu-welcome-character .puppet-film{inset:0;}
+.menu-destinations{
+ display:flex;flex-direction:column;
+ min-width:0;min-height:0;
+ padding:clamp(12px,1.8dvh,20px) 0;
+}
+.menu-destinations h2{
+ margin:0 0 clamp(12px,2dvh,20px);
+ font-size:clamp(23px,2.2vw,31px);letter-spacing:-.8px;
+ color:#2b2530;font-weight:850;
+}
+.menu-destination-grid{
+ min-height:0;flex:1;
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));
+ gap:clamp(12px,1.3vw,18px);
+}
+.menu-destination{
+ display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;
+ position:relative;min-width:0;min-height:0;
+ text-align:left;padding:clamp(17px,2.1vw,26px);
+ background:#fff;border:1px solid #e9e7eb;border-radius:24px;
+ color:#2d2630;cursor:pointer;
+ box-shadow:0 6px 22px #29223b07;
+ transition:transform .16s ease,border-color .16s,box-shadow .16s;
+}
+.menu-destination:hover{
+ transform:translateY(-3px);
+ border-color:#e6b9cd;
+ box-shadow:0 14px 29px #3d244315;
+}
+.menu-destination:focus-visible,.menu-start-button:focus-visible,.app-back:focus-visible{outline:3px solid #b7457a;outline-offset:3px;}
+.menu-destination-primary{background:#fff5f9;border-color:#f0cadc;}
+.menu-destination-icon{
+ width:clamp(46px,5vw,64px);height:clamp(46px,5vw,64px);
+ flex:0 0 auto;
+ background:#f9eaf1;color:#aa326c;
+ display:grid;place-items:center;
+ border-radius:17px;font-size:clamp(24px,2.3vw,33px);
+ line-height:1;
+}
+.menu-destination-primary .menu-destination-icon{background:#f7d9e8;color:#a92f71;}
+.menu-destination-copy{display:grid;gap:6px;align-self:stretch;padding-right:16px;}
+.menu-destination-copy strong{font-size:clamp(18px,1.65vw,25px);letter-spacing:-.6px;line-height:1.15;font-weight:800;}
+.menu-destination-copy small{font-size:clamp(11px,1vw,14px);font-weight:500;color:#8b7b88;}
+.menu-destination-arrow{
+ position:absolute;right:19px;bottom:19px;
+ color:#9c4974;font-size:22px;font-weight:600;line-height:1;
+}
+.menu-legacy-data{display:none!important;}
+/* Library: quiet white header, entire Barti visible, illustrated book selection. */
+body[data-page="library"] .v2-library-layout{background:transparent;}
+body[data-page="library"] .v2-library-hero.menu-library-head {
+ position:relative!important;
+ display:flex;align-items:center;justify-content:space-between;
+ min-height:0!important;
+ height:clamp(122px,20dvh,180px)!important;
+ flex:0 0 clamp(122px,20dvh,180px)!important;
+ padding:clamp(13px,2.1dvh,23px) clamp(17px,3vw,32px)!important;
+ margin:0 0 7px!important;
+ border:1px solid #ebe7eb!important;
+ border-radius:24px!important;
+ background:#fff!important;
+ box-shadow:none!important;isolation:isolate;
+ overflow:hidden!important;
+}
+body[data-page="library"] .v2-library-hero.menu-library-head::before{display:none!important;}
+.menu-library-head-copy{position:relative;z-index:2;}
+body[data-page="library"] .menu-library-head h1{
+ font-size:clamp(29px,3vw,44px);line-height:1.1;
+ letter-spacing:-1.5px;font-weight:850;color:#372339;margin:7px 0!important;
+}
+.menu-library-head p{font-size:13px;color:#827582;margin:0;line-height:1.4;}
+.menu-library-barti{
+ position:relative;z-index:2;
+ width:clamp(115px,15vw,170px)!important;
+ height:100%!important;max-height:100%!important;
+ flex:0 0 clamp(115px,15vw,170px);
+ object-fit:contain!important;object-position:center!important;
+ display:block;
+}
+body[data-page="library"] .v2-library-controls .library-filters{
+ background:#fff;border:1px solid #e7e3e8;box-shadow:none;
+}
+body[data-page="library"] .v2-library-controls .library-filters button{
+ color:#7c6b79;
+}
+body[data-page="library"] .v2-library-controls .library-filters button[aria-pressed=true]{
+ color:#fff;background:#c64f8c;box-shadow:none;
+}
+body[data-page="library"] .v2-library-controls .xp-search{
+ background:#fff;border-color:#e7e2e8;
+}
+body[data-page="library"] .v2-library .library-card{
+ border:1px solid #ebe6eb!important;
+ box-shadow:0 5px 19px #30253509!important;
+ background:#fff!important;
+}
+body[data-page="library"] .v2-library .library-card:hover{border-color:#e6b9ce!important;}
+body[data-page="library"] .v2-library .library-card .v2-story-open{
+ background:#bd4e83;box-shadow:none;
+}
+body[data-page="library"] .v2-library-count span:last-child{display:none;}
+body:not([data-page="reader"]) .v2-profile-wrap,
+body:not([data-page="reader"]) .xp-inner{background:transparent;}
+/* Subscreens have no section tabs, one back button in the app top bar. */
+body:not([data-page="reader"]) #wordsScreen,
+body:not([data-page="reader"]) #achievementsScreen,
+body:not([data-page="reader"]) #moreScreen{padding-bottom:20px;}
+/* Short desktop window: keep all four menu buttons accessible. */
+@media (min-width:701px) and (max-height:675px){
+ .menu-home-layout{padding-top:8px;padding-bottom:8px;gap:12px;}
+ .menu-welcome-copy{padding-top:22px;}
+ .menu-welcome h1{font-size:clamp(26px,3.2vw,42px);margin:9px 0 5px;}
+ .menu-welcome-copy>p{margin-bottom:8px;font-size:12px;}
+ .menu-start-button{min-height:42px;padding:8px 13px;font-size:12px;}
+ .menu-welcome-character{height:min(47%,225px);}
+ .menu-destinations{padding:4px 0;}
+ .menu-destinations h2{font-size:22px;margin-bottom:8px;}
+ .menu-destination{padding:12px;border-radius:17px;}
+ .menu-destination-icon{width:38px;height:38px;border-radius:12px;font-size:20px;}
+ .menu-destination-copy strong{font-size:17px;}
+ .menu-destination-copy small{font-size:11px;}
+ .menu-destination-arrow{font-size:17px;right:12px;bottom:12px;}
+}
+/* Phones: familiar app screens with one action at a time; no bottom section tabs. */
+@media (max-width:700px){
+ body:not([data-page="reader"]) .experience-topbar{
+  height:59px!important;flex-basis:59px!important;padding:0 15px!important;
+ }
+ body:not([data-page="reader"]) #homeScreen,
+ body:not([data-page="reader"]) #libraryScreen{overflow:auto;}
+ .menu-home-layout{
+  display:flex;flex-direction:column;
+  height:auto;min-height:0;
+  gap:17px;
+  padding:12px 13px 24px;
+ }
+ .menu-welcome{
+  min-height:405px;flex:0 0 auto;
+  border-radius:22px;
+ }
+ .menu-welcome-copy{padding:24px 20px 0;}
+ .menu-welcome h1{font-size:clamp(33px,8.6vw,45px);letter-spacing:-1.6px;margin:12px 0 8px;}
+ .menu-welcome-copy>p{font-size:13px;}
+ .menu-start-button{min-height:48px;padding:10px 14px;font-size:13px;}
+ .menu-welcome-character{height:205px;overflow:hidden;}
+ .menu-welcome-character .barti-puppet{width:218px!important;max-width:218px!important;}
+ .menu-destinations{padding:0;display:block;}
+ .menu-destinations h2{margin:2px 0 12px;font-size:22px;}
+ .menu-destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(142px,auto));gap:10px;}
+ .menu-destination{padding:14px;border-radius:18px;min-height:142px;}
+ .menu-destination-icon{width:37px;height:37px;font-size:20px;border-radius:12px;}
+ .menu-destination-copy{gap:3px;}
+ .menu-destination-copy strong{font-size:16px;}
+ .menu-destination-copy small{font-size:10px;}
+ .menu-destination-arrow{right:11px;bottom:10px;font-size:16px;}
+ body[data-page="library"] .v2-library-layout{padding:12px 12px 25px!important;}
+ body[data-page="library"] .v2-library-hero.menu-library-head {
+  flex:0 0 114px!important;height:114px!important;min-height:114px!important;
+  padding:10px 15px!important;border-radius:18px!important;
+ }
+ body[data-page="library"] .menu-library-head h1{font-size:28px;margin:5px 0!important;}
+ .menu-library-head p{font-size:10px;max-width:230px;}
+ .menu-library-barti{flex:0 0 95px!important;width:95px!important;height:98px!important;}
+ body:not([data-page="reader"]) .v2-library .library-card{background:white;}
+ body:not([data-page="reader"]) #wordsScreen .xp-inner{padding-bottom:24px;}
+}
+@media (max-width:355px){
+ .menu-welcome{min-height:370px;}
+ .menu-welcome-character{height:174px;}
+ .menu-welcome-character .barti-puppet{width:190px!important;}
+ .menu-destination{min-height:132px;padding:11px;}
+ .menu-destination-copy strong{font-size:14px;}
+ .menu-destination-copy small{font-size:9px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .menu-destination{transition:none;}
+ .menu-destination:hover{transform:none;}
+}
+@media (max-width:700px){
+ body:not([data-page="reader"]) .experience-topbar{
+  position:sticky!important;top:0!important;z-index:130!important;
+  box-shadow:0 2px 12px #42314409!important;
+ }
+}
+/* Fixed mobile app bar: body scrolling must never carry the Back control off-screen. */
+@media(max-width:700px){
+ body:not([data-page="reader"])>.experience{
+  padding-top:59px!important;
+ }
+ body:not([data-page="reader"]) .experience-topbar{
+  position:fixed!important;top:0!important;left:0!important;right:0!important;
+  width:100%!important;z-index:150!important;
+ }
+}

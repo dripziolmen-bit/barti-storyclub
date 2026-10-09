@@ -95,3 +95,11 @@ Testy: Playwright 4 ekrany (320x568, 390x844, 820x1180, 1440x900) PASS dla przep
 - Zadbano o wysokość 600/720/768/828/900/1080 px oraz małe okna emulujące powiększenie przeglądarki 125–150%.
 - Cache PWA v19 oraz wersjonowany arkusz v2.css?v=19.
 - Testy lokalne: 11/11 scenariuszy Home→Biblioteka, scroll kołem, filtrowanie, wyszukiwanie i wybór bajki PASS; 4/4 regresja głównych ekranów PASS; 8/8 regresja Czytnika PASS.
+
+## Barti v1.3.0 — pełna nawigacja przyciskami
+- Ekran Start jest jedynym menu głównym. Cztery duże przyciski: Biblioteka, Moje słowa, Osiągnięcia, Ustawienia. Nie ma górnych zakładek ani dolnego paska sekcji. Nie ma bezpośredniego wyboru bajki ze Startu.
+- Każda podstrona ma pojedynczy przycisk „Wstecz” powracający do Startu. Z Czytnika wracasz do Biblioteki, a stamtąd do Startu. Własna historia URL #/home, #/library itd. nadal pozwala otwierać odnośniki.
+- Interfejs na jasnym, bliskim bieli tle, z kartami o ograniczonej liczbie ozdobników. Biblioteka ma pełną, nieuciętą miniaturę Bartiego w nagłówku i własne karty bajek.
+- Na komputerze główne ekrany nadal mieszczą się w viewport. Na telefonie zawartość menu może się przewijać, ale przycisk „Wstecz” pozostaje w stałym nagłówku.
+- Narracja, polski słownik słów, quiz, ulubione, rosyjskie bajki i animowany Barti zachowane.
+- Cache PWA v20, osobny arkusz menu-v20.css; 8/8 testów kompletnego przepływu Start → inne ekrany → Wstecz / Czytnik, 8/8 testów wszystkich sekcji + osobna regresja Czytnika 8/8. Publiczną QA wykonać ponownie po publikacji.

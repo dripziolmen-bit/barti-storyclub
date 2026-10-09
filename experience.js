@@ -87,6 +87,8 @@ function navigate(page='home',storyId=null,replace=false){
  if(page==='reader'&&storyId) window.BartiBridge?.openStory(storyId);
  xpState.page=page;
  document.body.dataset.page=page;
+ const back=xp('appBack');
+ if(back){back.hidden=page==='home'||page==='reader';back.setAttribute('aria-label','Wróć do menu głównego');}
   if(page!=='reader') document.querySelector('meta[name="theme-color"]')?.setAttribute('content','#ffeff7');
  xp('experienceShell').hidden=page==='reader';
  xp('appShell').hidden=page!=='reader';
@@ -232,11 +234,15 @@ function renderAchievements(){
 }
 function renderMore(){xp('moreFontValue').textContent=getComputedStyle(document.documentElement).getPropertyValue('--reading-size').trim()||'23px'}
 function bindExperience(){
- document.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>navigate(button.dataset.go)));
+ document.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>{
+  const root=button.dataset.go==='home';
+  navigate(button.dataset.go,null,root&&xpState.page!=='home');
+ }));
+ document.querySelectorAll('[data-back]').forEach(button=>button.addEventListener('click',()=>navigate('home',null,true)));
  xp('heroContinue').addEventListener('click',()=>{activateReader(localStorage.getItem('barti.lastStory')||'repka');window.BartiBridge?.resumeLast?.()});
  xp('homeBarti').parentElement.addEventListener('click',()=>{onMode('excited');setTimeout(()=>onMode('idle'),1800);});
  xp('storySearch').addEventListener('input',event=>{xpState.query=event.target.value;renderCards();});
- xp('librarySearchToggle').addEventListener('click',()=>{xp('storySearch').focus({preventScroll:true});xp('storySearch').scrollIntoView({block:'center',behavior:'smooth'});});
+
  xp('moreFontMinus').addEventListener('click',()=>{xp('fontSmaller').click();renderMore();});
  xp('moreFontPlus').addEventListener('click',()=>{xp('fontLarger').click();renderMore();});
  xp('moreTheme').addEventListener('click',()=>xp('themeToggle').click());
