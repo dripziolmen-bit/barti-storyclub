@@ -86,3 +86,12 @@ Testy: Playwright 4 ekrany (320x568, 390x844, 820x1180, 1440x900) PASS dla przep
 - Responsive rendering includes desktop 1280x720, 1366x768, 1440x900, 1856x828, 1920x1080, intermediate tablet and mobile 320x568, 390x844.
 - PWA cache v18, with versioned v2.css to invalidate potentially stale client styles.
 - Preserve this single-scroll-area reader contract and do not restore explanatory hint strips.
+
+## Barti 1.2.3 — desktop bez przewijania Startu i Biblioteki
+- Dotyczy desktopowego układu Start, Biblioteka, Moje słowa, Osiągnięcia oraz Więcej. Strona ma wysokość okna; menu nawigacyjne jest stale widoczne.
+- **Start**: duży Barti i wejście do biblioteki po lewej, skróty i trzy interaktywne karty polecanych bajek po prawej. Całość mieści się bez zewnętrznego przewijania.
+- **Biblioteka**: zredukowany baner, widoczne filtry, wyszukiwanie i trzy karty; przy niższej wysokości okna wewnętrzne przewijanie dotyczy wyłącznie listy bajek.
+- Inne karty z większą liczbą treści używają niezależnego obszaru przewijania, nie całej strony; telefon zachowuje dotychczasowe przewijanie.
+- Zadbano o wysokość 600/720/768/828/900/1080 px oraz małe okna emulujące powiększenie przeglądarki 125–150%.
+- Cache PWA v19 oraz wersjonowany arkusz v2.css?v=19.
+- Testy lokalne: 11/11 scenariuszy Home→Biblioteka, scroll kołem, filtrowanie, wyszukiwanie i wybór bajki PASS; 4/4 regresja głównych ekranów PASS; 8/8 regresja Czytnika PASS.

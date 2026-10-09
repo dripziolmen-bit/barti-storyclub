@@ -541,3 +541,341 @@ body[data-page="reader"] .head-barti-mobile .barti-mini-puppet .puppet-film::aft
  body[data-page="reader"] .side-nav {overflow-y:clip!important;}
  body[data-page="reader"] .mascot-area {overflow-y:clip!important;}
 }
+/* Desktop application viewport contract.
+   Home and Library are self-contained views; content never scrolls the browser window.
+   More books, saved words and settings use their own content panes when needed. */
+@media (min-width:701px) {
+  html:has(body[data-page="home"]),
+  html:has(body[data-page="library"]),
+  html:has(body[data-page="words"]),
+  html:has(body[data-page="achievements"]),
+  html:has(body[data-page="more"]) {
+    height:100dvh!important;
+    max-height:100dvh!important;
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+  }
+  body[data-page="home"],body[data-page="library"],
+  body[data-page="words"],body[data-page="achievements"],body[data-page="more"] {
+    height:100dvh!important;max-height:100dvh!important;
+    min-height:0!important;overflow:hidden!important;
+    overscroll-behavior:none!important;
+  }
+  body:not([data-page="reader"]) > .experience {
+    display:flex!important;flex-direction:column;
+    height:100dvh!important;min-height:0!important;
+    max-height:100dvh!important;overflow:hidden!important;
+  }
+  body:not([data-page="reader"]) .experience-topbar {
+    height:clamp(58px,9dvh,76px)!important;
+    flex:0 0 clamp(58px,9dvh,76px)!important;
+    min-height:0;
+  }
+  body:not([data-page="reader"]) .xp-screen {
+    flex:1 1 auto;min-height:0;max-height:100%;
+    overflow:hidden;
+  }
+  body:not([data-page="reader"]) #wordsScreen,
+  body:not([data-page="reader"]) #achievementsScreen,
+  body:not([data-page="reader"]) #moreScreen {
+    overflow-y:auto;overscroll-behavior:contain;
+  }
+  .v2-home-layout,.v2-library-layout {
+    width:100%;max-width:1330px;
+    height:100%;min-height:0;overflow:hidden;
+    padding:10px clamp(14px,2.4vw,30px) 14px!important;
+  }
+  .v2-home-signature {display:none!important;}
+  /* The library hero, controls and all three book covers fit within typical laptop heights. */
+  .v2-library-layout{
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .v2-library-hero {
+    flex:0 0 clamp(105px,17dvh,166px)!important;
+    height:clamp(105px,17dvh,166px)!important;
+    min-height:0!important;
+    margin:0!important;
+    overflow:hidden;
+  }
+  .v2-library-header{top:10px!important;}
+  .v2-library-character{inset:8px 17% -32px!important;}
+  .v2-library-puppet{width:clamp(145px,16vw,208px)!important;}
+  .v2-library-speech{top:54px;right:22px;max-width:185px;}
+  .v2-library-controls {
+    flex:0 0 auto;
+    min-height:45px;
+    flex-wrap:nowrap;
+    gap:12px;
+    margin:0!important;
+  }
+  .v2-library-controls .library-filters{min-height:45px!important;padding:4px;flex:1 1 58%;max-width:none;}
+  .v2-library-controls .library-filters button{padding:7px 9px;}
+  .v2-library-controls .xp-search {max-width:none;flex:1 1 35%;min-height:45px;}
+  .v2-library-count {flex:0 0 auto;margin:0!important;padding:2px 4px;font-size:11px;}
+  .v2-library .library-grid {
+    flex:1 1 auto;min-height:0;
+    overflow-y:auto;overflow-x:hidden;
+    overscroll-behavior:contain;
+    scrollbar-gutter:stable;
+    align-items:stretch;
+    gap:12px;
+    padding:0 4px 5px 0;
+  }
+  .v2-library .library-card {
+    display:flex;flex-direction:column;
+    min-height:0;max-height:100%;
+    height:100%;overflow:hidden;
+  }
+  .v2-library .library-card-cover {
+    flex:0 0 clamp(100px,19dvh,155px);
+    min-height:0;height:clamp(100px,19dvh,155px)!important;
+    max-height:clamp(100px,19dvh,155px);
+    aspect-ratio:auto!important;
+    overflow:hidden;
+  }
+  .v2-library .library-card-cover img{height:100%;width:100%;object-fit:cover;}
+  .v2-library .library-card-body{
+    min-height:0;flex:1;
+    padding:9px 12px;gap:4px;
+    overflow:hidden;
+  }
+  .v2-library .library-card h3 {font-size:clamp(16px,1.75vw,22px);line-height:1.2;}
+  .v2-library .library-card p{
+    margin:1px 0 2px;
+    line-height:1.3;
+    -webkit-line-clamp:2;
+    font-size:11px;
+  }
+  .v2-library .library-card .v2-story-meta{margin:0;}
+  .v2-library .library-card .v2-story-meta span:nth-child(n+3){display:none;}
+  .v2-library .library-card .v2-story-open{min-height:32px;font-size:11px;margin-top:auto;}
+  .v2-library .library-empty{flex:1;min-height:0;overflow:auto;}
+}
+/* Spacious screens: hero on the left, compact library and quick actions on the right. */
+@media (min-width:1001px){
+  .v2-home-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.13fr) minmax(350px,.87fr);
+    grid-template-rows:clamp(157px,26dvh,190px) minmax(0,1fr);
+    gap:12px 16px;
+  }
+  .v2-home-layout .v2-welcome-scene {
+    grid-column:1;grid-row:1/3;
+    width:100%;height:100%!important;min-height:0!important;
+    overflow:hidden;
+  }
+  .v2-home-layout .v2-quick-actions {
+    grid-column:2;grid-row:1;
+    display:grid;grid-template-columns:1fr;grid-template-rows:repeat(3,minmax(0,1fr));
+    gap:6px;margin:0;min-height:0;
+  }
+  .v2-home-layout .v2-action-pill{
+    min-height:0;max-height:none;height:100%;
+    gap:12px;padding:5px 12px;border-radius:15px;
+  }
+  .v2-home-layout .v2-action-symbol{
+    width:32px;height:32px;min-width:32px;
+    font-size:16px;
+  }
+  .v2-home-layout .v2-action-pill strong{font-size:13px;}
+  .v2-home-layout .v2-action-pill small{font-size:10px;margin-top:1px;}
+  .v2-home-layout .v2-recommended{
+    grid-column:2;grid-row:2;
+    margin:0;min-height:0;
+    display:flex;flex-direction:column;
+    overflow:hidden;
+  }
+  .v2-home-layout .v2-section-head {
+    flex:0 0 auto;margin:0 0 7px;min-height:30px;
+  }
+  .v2-home-layout .v2-section-head h2{
+    font-size:clamp(18px,1.45vw,23px);
+    line-height:1.18;
+  }
+  .v2-home-layout .v2-section-head button{font-size:11px;padding:5px;}
+  .v2-home-layout .home-stories{
+    flex:1 1 auto;min-height:0;
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:repeat(3,minmax(0,1fr));
+    gap:7px;overflow:hidden;
+  }
+  .v2-home-layout .home-story-card{
+    min-height:0;height:100%;
+    display:grid;grid-template-columns:clamp(83px,9.2vw,121px) minmax(0,1fr);
+    gap:0;
+    border-radius:15px;
+  }
+  .v2-home-layout .v2-home-cover{height:100%;min-height:0;overflow:hidden;}
+  .v2-home-layout .v2-home-cover img{
+    width:100%;height:100%!important;object-fit:cover;
+  }
+  .v2-home-layout .v2-home-story-body {
+    min-height:0;overflow:hidden;padding:5px 10px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .v2-home-layout .v2-home-story-body h3{font-size:clamp(15px,1.2vw,19px);}
+  .v2-home-layout .v2-home-story-body small{font-size:10px;}
+  .v2-home-layout .v2-story-meta{display:none;}
+  .v2-home-layout .v2-story-open{
+    min-height:27px;height:27px;
+    margin-top:4px;font-size:11px;
+  }
+  .v2-home-layout .v2-favorite{width:27px;height:27px;top:5px;right:5px;font-size:19px;}
+  .v2-home-layout .v2-hero-mascot {
+    top:10%!important;right:-3%!important;
+    width:55%!important;height:83%!important;
+  }
+  .v2-home-layout .v2-hero-title {
+    top:26%!important;left:6%!important;
+    max-width:48%!important;
+  }
+  .v2-home-layout .v2-brand-word{font-size:clamp(46px,4.8vw,72px);}
+  .v2-home-layout .v2-hero-title h1{font-size:clamp(34px,3.4vw,51px);}
+  .v2-home-layout .v2-hero-title p{font-size:clamp(11px,1.1vw,15px);line-height:1.4;}
+  .v2-home-layout .v2-home-ctas{
+    left:6%!important;bottom:5%!important;width:53%!important;
+  }
+  .v2-home-layout .v2-big{min-height:clamp(45px,7dvh,66px);font-size:clamp(14px,1.7vw,19px);padding:9px 15px;}
+  .v2-home-layout .v2-book-icon{font-size:24px;}
+  .v2-home-layout .v2-speech{max-width:135px;top:24%!important;right:2%!important;font-size:11px;padding:9px;}
+  .v2-home-layout .v2-hud-pill{padding:7px 9px;min-width:0;font-size:11px;}
+  .v2-home-layout .v2-hud-pill>span{font-size:20px;}
+  .v2-home-layout .v2-hud-pill small{font-size:9px;}
+  .v2-home-layout .v2-top-hud{top:14px;left:15px;right:15px;}
+}
+/* Small desktop and tablet widths: hero over compact recommended row, no document scroll. */
+@media (min-width:701px) and (max-width:1000px){
+  .v2-home-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:minmax(0,1fr) 59px clamp(155px,26dvh,220px);
+    gap:9px;
+  }
+  .v2-home-layout .v2-welcome-scene{
+    grid-row:1;height:100%!important;min-height:0!important;
+    width:100%;overflow:hidden;
+  }
+  .v2-home-layout .v2-hero-mascot{top:5%!important;right:2%!important;height:90%!important;}
+  .v2-home-layout .v2-hero-title{top:19%!important;}
+  .v2-home-layout .v2-home-ctas{bottom:7%!important;}
+  .v2-home-layout .v2-quick-actions{
+    grid-row:2;display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    margin:0;gap:7px;min-height:0;
+  }
+  .v2-home-layout .v2-action-pill{min-height:0;height:100%;padding:5px 9px;gap:8px;border-radius:15px;}
+  .v2-home-layout .v2-action-symbol{min-width:31px;width:31px;height:31px;font-size:15px;}
+  .v2-home-layout .v2-action-pill strong{font-size:12px;}
+  .v2-home-layout .v2-action-pill small{font-size:9px;}
+  .v2-home-layout .v2-recommended{
+    grid-row:3;min-height:0;margin:0;
+    display:flex;flex-direction:column;
+  }
+  .v2-home-layout .v2-section-head{margin:0 0 6px;flex:0 0 30px;}
+  .v2-home-layout .v2-section-head h2{font-size:19px;}
+  .v2-home-layout .home-stories{flex:1;min-height:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .v2-home-layout .home-story-card{max-height:100%;min-height:0;display:grid;grid-template-columns:42% minmax(0,1fr);}
+  .v2-home-layout .v2-home-cover{height:100%;min-height:0;}
+  .v2-home-layout .v2-home-cover img{height:100%;object-fit:cover;}
+  .v2-home-layout .v2-home-story-body{min-height:0;padding:7px;display:flex;flex-direction:column;justify-content:center;}
+  .v2-home-layout .v2-home-story-body h3{font-size:14px;}
+  .v2-home-layout .v2-home-story-body small{font-size:9px;}
+  .v2-home-layout .v2-story-meta{display:none;}
+  .v2-home-layout .v2-story-open{min-height:27px;margin-top:7px;font-size:10px;}
+  .v2-home-layout .v2-favorite{width:24px;height:24px;top:4px;right:4px;font-size:18px;}
+  .v2-library .library-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .v2-library .library-card{height:auto;min-height:clamp(210px,41dvh,360px);}
+}
+@media (min-width:701px) and (max-height:650px){
+  .v2-home-layout,.v2-library-layout{padding-top:5px!important;padding-bottom:7px!important;}
+  .v2-library-hero{flex-basis:95px!important;height:95px!important;}
+  .v2-library-speech{top:33px;font-size:10px;max-width:130px;padding:7px;}
+  .v2-library-character{top:-5px!important;}
+  .v2-library .library-card-cover{flex-basis:95px;height:95px!important;max-height:95px;}
+  .v2-library .library-card-body p{-webkit-line-clamp:1;}
+  .v2-library .library-card h3{font-size:17px;}
+  .v2-library .library-card-body{padding:6px 9px;}
+}
+/* Card composition refinement: image fills unused card space instead of blank filler. */
+@media (min-width:1001px) {
+  .v2-library .library-card-cover {
+    flex:1 1 auto!important;
+    height:auto!important;max-height:none!important;min-height:90px!important;
+    aspect-ratio:auto!important;
+  }
+  .v2-library .library-card-body {
+    flex:0 0 auto!important;
+    min-height:0!important;
+    padding:10px 12px!important;
+  }
+  .v2-library .library-card-body p {
+    -webkit-line-clamp:2;
+    margin:3px 0;
+  }
+  .v2-library .library-card-body .v2-story-meta {margin:2px 0;}
+  .v2-library .v2-library-character {
+    left:16%!important;right:auto!important;top:0!important;bottom:-48px!important;
+    width:clamp(165px,19vw,230px)!important;
+  }
+  .v2-library .v2-library-puppet{
+    width:100%!important;max-width:100%!important;
+  }
+}
+@media (min-width:701px) and (max-height:700px) {
+  .v2-library .library-card-body p{-webkit-line-clamp:1;}
+  .v2-library .library-card-body .v2-story-meta span:nth-child(n+2){display:none!important}
+  .v2-library .library-card-body{padding:7px 10px!important;}
+}
+/* Desktop zoom and short-window guard: the viewport remains the boundary. */
+@media (min-width:701px) and (max-height:560px) {
+  body:not([data-page="reader"]) .experience-topbar{
+    height:52px!important;flex-basis:52px!important;
+  }
+  .v2-home-layout,.v2-library-layout{
+    padding-top:4px!important;padding-bottom:5px!important;
+  }
+  .v2-home-layout .v2-hud-pill small,
+  .v2-home-layout .v2-hud-streak{display:none!important;}
+  .v2-home-layout .v2-speech{display:none!important}
+  .v2-home-layout .v2-hero-title{top:18%!important}
+  .v2-home-layout .v2-hero-mascot{height:84%!important;top:8%!important}
+  .v2-home-layout .v2-big{min-height:40px!important;font-size:13px!important}
+  .v2-home-layout .v2-section-head{min-height:23px;flex-basis:23px;}
+  .v2-home-layout .v2-action-pill{padding:2px 6px!important}
+  .v2-library .v2-library-speech{display:none!important}
+}
+/* Browser zoom at 150%+: compact hero without colliding title, level badge and CTA. */
+@media (min-width:701px) and (max-width:1000px) and (max-height:560px){
+  .v2-home-layout .v2-top-hud {display:none!important;}
+  .v2-home-layout .v2-hero-title {
+    top:18%!important;left:6%!important;
+    width:49%!important;max-width:49%!important;
+  }
+  .v2-home-layout .v2-brand-word{font-size:clamp(30px,4vw,39px)!important;line-height:1!important;letter-spacing:-1px;}
+  .v2-home-layout .v2-hero-title h1{
+    font-size:clamp(20px,3vw,28px)!important;
+    line-height:1.05!important;letter-spacing:-.7px!important;
+  }
+  .v2-home-layout .v2-hero-title p{
+    font-size:10px!important;line-height:1.2!important;
+    margin-top:4px!important;
+  }
+  .v2-home-layout .v2-home-ctas{
+    left:6%!important;width:45%!important;bottom:6%!important;
+  }
+  .v2-home-layout .v2-big{
+    min-height:37px!important;font-size:12px!important;
+    padding:5px 8px!important;gap:7px!important;
+  }
+  .v2-home-layout .v2-book-icon{font-size:17px!important}
+  .v2-home-layout .v2-arrow{font-size:18px!important}
+  .v2-home-layout .v2-hero-mascot{
+    right:0!important;top:0!important;
+    height:100%!important;width:47%!important;
+  }
+  .v2-home-layout .v2-hero-mascot .barti-puppet {
+    max-height:100%!important;max-width:100%!important;
+    width:auto!important;height:100%!important;
+  }
+}
