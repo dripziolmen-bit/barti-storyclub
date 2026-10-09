@@ -61,3 +61,12 @@ Nowa struktura: Start → Biblioteka → szczegóły bajki → Czytanie. Oddziel
 Do analizy pobrano 12 repozytoriów podobnych czytników, aplikacji audiobookowych i rozwiązań animacji, szczegóły w UX_RESEARCH_V1_APP.md; nie kopiowano cudzego kodu do produkcji bez analizy licencji.
 
 Testy: Playwright 4 ekrany (320x568, 390x844, 820x1180, 1440x900) PASS dla przepływu i quizu; audyt Axe WCAG dla trzech ekranów mobilnych PASS; offline service worker sprawdza zarówno sceny, animacje, CSS, teksty jak i MP3. Aplikacja pozostaje PWA webową — nie została opublikowana w natywnych sklepach.
+
+
+## Animacja Bartiego 1.2.0 (2026-10-09)
+- Zachowano przesłany projekt graficzny Bartiego i sześć istniejących póz bez dodanego ogona.
+- Pięć zapętlonych, przezroczystych animacji WebP (rest, reading, explain, wave, celebrate) wygenerowano lokalnie z użyciem dwukierunkowego przepływu optycznego OpenCV i morfowania w przestrzeni RGBA; **20 kl./s**, łącznie 264 klatki, 7,3 MB.
+- Narzędzie źródłowe na VPS: `/home/ubuntu/bartek-workspace/tools/barti-motion/render_smooth.py`. Nic nie wymaga płatnego modelu wideo. Zależności do renderowania są w izolowanym środowisku VPS.
+- W aplikacji dwie warstwy obrazów zapewniają płynne przejścia 360 ms między stanami; nieaktywna animacja jest zwalniana po przejściu. Ustawienie systemowe `prefers-reduced-motion` wyłącza animację i pokazuje Bartiego statycznie.
+- Animacja mówienia uruchamia się wraz z odtwarzaniem i zatrzymuje przy pauzie; **nie jest to** jeszcze rig 3D ani dokładny lip-sync fonemowy. Dla pełnego niezależnego ruchu oczu, ust i rąk potrzebny jest model wielowarstwowy Rive/Live2D.
+- Interfejs Start → Biblioteka → Czytnik i istniejące MP3, tłumaczenia oraz quiz pozostają bez zmian.

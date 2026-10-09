@@ -291,3 +291,32 @@ body[data-page="achievements"],body[data-page="more"]{height:auto!important;min-
 .v2-home-story-body .v2-story-meta span:first-child,
 .v2-library .library-card .v2-story-meta span:first-child {color:#701643!important;background:#f7dce9!important;}
 .v2-more-row>span {color:#741744!important;background:#f7dbe9!important;}
+
+/* Barti Motion Engine v2: continuous 20fps flow-interpolated transparent WebP cycles.
+   Two native browser-rendered layers crossfade between speaking, idle and gestures.
+   Original layout untouched; no UI changes, no extra tail. */
+.barti-puppet .puppet-film.motion-host,
+.barti-mini-puppet .puppet-film.motion-host {
+  background:none!important;
+  background-image:none!important;
+  animation:none!important;
+  overflow:visible;
+}
+.barti-puppet .puppet-film .motion-layer,
+.barti-mini-puppet .puppet-film .motion-layer {
+  display:block;
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-color:transparent;
+  background-position:center;
+  background-size:contain;
+  background-repeat:no-repeat;
+  opacity:0;
+  transition:opacity 360ms cubic-bezier(.16,1,.3,1);
+  will-change:opacity;
+}
+@media (prefers-reduced-motion:reduce){
+  .barti-puppet .puppet-film .motion-layer,
+  .barti-mini-puppet .puppet-film .motion-layer {transition:none!important}
+}

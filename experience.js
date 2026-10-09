@@ -145,39 +145,74 @@ function insertPuppet(){
    parent.append(puppet);
  }
 }
-/* Sprite-frame character animation; mouth/arm expressions follow actual audio time. */
-let v2PoseMode='idle',v2PoseStart=Date.now(),v2LastFrame='',v2PoseTimer=null;
-const v2PoseImages=['idle','blink','talk','explain','wave','celebrate'];
-function v2PoseFrame(){
- if(document.hidden)return;
- const ms=Date.now()-v2PoseStart,audio=xp('narration');
- let name='idle';
- if(v2PoseMode==='talking'){
-   const beat=Math.floor((audio?.currentTime||0)*8)%6;
-   name=['talk','explain','talk','explain','talk','blink'][beat];
- }else if(v2PoseMode==='excited'||v2PoseMode==='finished'){
-   name=Math.floor(ms/420)%2?'wave':'celebrate';
- }else if(v2PoseMode==='paused')name='idle';
- else {
-   const beat=ms%6600;
-   name=beat<2800?'idle':beat<3100?'blink':beat<4600?'idle':beat<5400?'wave':'idle';
+/* Flow-interpolated animated WebP character loops. Crossfade state changes; fallback to static on reduced motion. */
+const motionClips={idle:'rest',paused:'rest',talking:'reading',reading:'reading',explain:'explain',excited:'wave',finished:'celebrate'};
+let v2PoseMode='idle';
+const motionFiles=['rest','reading','wave','celebrate','explain'];
+function ensureMotionLayers(){
+ for(const film of document.querySelectorAll('.barti-puppet .puppet-film,.barti-mini-puppet .puppet-film')){
+  if(film.querySelector('.motion-layer'))continue;
+  film.classList.add('motion-host');
+  for(let j=0;j<2;j++){
+   const layer=document.createElement('span');
+   layer.className='motion-layer';
+   layer.setAttribute('aria-hidden','true');
+   film.appendChild(layer);
+  }
+  film.dataset.activeLayer='0';
  }
- if(name===v2LastFrame)return;
- v2LastFrame=name;
- const value="url('./assets/character/"+name+".webp')";
- document.querySelectorAll('.barti-puppet .puppet-film, .barti-mini-puppet .puppet-film').forEach(el=>el.style.setProperty('background-image',value,'important'));
 }
 function startV2PoseAnimation(){
- for(const name of v2PoseImages){const img=new Image();img.src='./assets/character/'+name+'.webp'}
- if(v2PoseTimer)return;
- v2PoseTimer=setInterval(v2PoseFrame,110);
- v2PoseFrame();
+ ensureMotionLayers();
+ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  // preload only the essential speech and idle loops; action gestures are fetched on first use
+  for(const clip of ['rest','reading']){
+   const picture=new Image();
+   picture.src='./assets/character/motion/'+clip+'.webp';
+  }
+ }
+ updateMotion('idle',true);
+}
+function updateMotion(mode,initial=false){
+ ensureMotionLayers();
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const clip=motionClips[mode]||'rest';
+ const url=reduced?"url('./assets/character/idle.webp')":"url('./assets/character/motion/"+clip+".webp')";
+ for(const film of document.querySelectorAll('.motion-host')){
+  if(film.dataset.motionClip===clip&&!initial)continue;
+  const layers=Array.from(film.querySelectorAll('.motion-layer'));
+  const current=Number(film.dataset.activeLayer||'0');
+  const next=initial?current:1-current;
+  const previous=layers[current];
+  const incoming=layers[next];
+  incoming.style.backgroundImage=url;
+  if(initial){
+   incoming.style.opacity='1';
+   layers[1-next].style.opacity='0';
+  }else{
+   // Unlike discrete 6-frame swapping, both continuous loops overlap during transitions.
+   incoming.style.opacity='0';
+   void incoming.offsetWidth;
+   incoming.style.opacity='1';
+   previous.style.opacity='0';
+   // Release old animated WebP frames after the crossfade to limit phone GPU/memory use.
+   setTimeout(()=>{
+    if(film.dataset.activeLayer===String(next)&&previous.style.opacity==='0'){
+     previous.style.backgroundImage='none';
+    }
+   },460);
+  }
+  film.dataset.activeLayer=String(next);
+  film.dataset.motionClip=clip;
+ }
 }
 function onMode(mode){
- v2PoseMode=mode;v2PoseStart=Date.now();v2LastFrame='';v2PoseFrame();
- xp('homeBarti').dataset.mode=mode; if(xp('libraryBarti')) xp('libraryBarti').dataset.mode=mode;
+ v2PoseMode=mode;
+ updateMotion(mode);
+ xp('homeBarti').dataset.mode=mode;
+ if(xp('libraryBarti'))xp('libraryBarti').dataset.mode=mode;
  document.querySelectorAll('.barti-mini-puppet').forEach(p=>p.dataset.mode=mode);
- const captions={idle:'Cześć! Gotowy na nową bajkową przygodę?',talking:'Słuchaj i odkrywaj rosyjskie słowa!',paused:'Poczekam na Ciebie!',finished:'Brawo! Kolejna bajka za Tobą!',excited:'Hurra! Wybierzmy coś nowego!'};
+ const captions={idle:'Cześć! Gotowy na nową bajkową przygodę?',talking:'Słuchaj i odkrywaj rosyjskie słowa!',paused:'Poczekam na Ciebie!',finished:'Brawo! Kolejna bajka za Tobą!',excited:'Hurra! Wybierzmy coś nowego!',explain:'Zobacz, jak to działa!'};
  xp('heroSpeech').textContent=captions[mode]||captions.idle;
 }
 function studyDays(){try{return JSON.parse(localStorage.getItem('barti.studyDays')||'[]')}catch{return []}}
