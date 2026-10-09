@@ -117,6 +117,9 @@ After choosing an area from the menu, the newly opened page is reset to the top 
 - Słownik RU → PL został rozszerzony o wyrazy występujące w **każdej z 18 bajek**. Tłumaczenia: ręcznie sprawdzone podstawowe hasła + maszynowe propozycje z MyMemory (https://mymemory.translated.net/), wygenerowane na etapie budowania. Aplikacja w czasie czytania nie odpytuje sieci o słowa, tłumaczenia działają offline. Jak każde automatyczne tłumaczenia pojedynczych wyrazów, niektóre hasła wymagają kontekstowego doprecyzowania.
 - Obecne pięć animowanych pętli Bartiego w WebP (spoczynek, czytanie, objaśnianie, gest, radość) zostało zachowanych i wykorzystanych na nowym ekranie Start. Nie zmieniono interaktywnego modelu czytnika ani pięciu istniejących ekranów aplikacji.
 - Utrzymana hierarchia: **Start → cztery przyciski → Biblioteka i sekcje → Wstecz**, bez górnych zakładek. Bielsze tła i bogatsze ilustracje nie powodują przewijania całego widoku desktopowego.
-- PWA cache v22 obejmuje wszystkie 18 okładek i 109 lokalnych segmentów dźwiękowych. Tryb offline i przeglądarka mobilna testowane Playwright.
+- PWA cache v23 najpierw instaluje niezbędny kod, podstawowe grafiki i pierwsze nagrania. Ustawienia → „Pobierz bibliotekę offline” pobierają na żądanie wszystkie 18 okładek i 109 segmentów audio, pokazując postęp. Dzięki temu PWA nie pobiera dużych plików bez zgody przy otwarciu linku.
 
 Inspiracja motywami folkloru: https://ru.wikisource.org/wiki/Народные_русские_сказки_(Афанасьев) . Publiczne czytania rosyjskiego folkloru można znaleźć w LibriVox (np. https://librivox.org/russian-fairy-tales-1-by-alexander-nikolayevich-afanasyev/ ), lecz bez zgodności tekstu i audio nie zostały użyte do podświetlania słowo-po-słowie. Przed wykorzystaniem cudzych nagrań w produkcie komercyjnym trzeba sprawdzić prawa obowiązujące lokalnie.
+
+### Wydanie v1.4.1 — niezawodny tryb offline
+Wcześniejsze pobieranie całego archiwum dźwiękowego podczas instalacji potrafiło przerwać rejestrację service workera na GitHub Pages. Naprawiono to w v23 przez mały precache i osobny przycisk pobierania biblioteki. Pliki odtwarzane online są automatycznie cache’owane.

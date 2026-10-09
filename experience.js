@@ -270,6 +270,26 @@ function bindExperience(){
  xp('moreTheme').addEventListener('click',()=>xp('themeToggle').click());
  xp('moreQuiz').addEventListener('click',()=>window.BartiBridge?.quiz?.());
  xp('moreInstall').addEventListener('click',()=>xp('installBtn')?.click());
+ xp('downloadOffline').addEventListener('click',async()=>{
+   const status=xp('offlineDownloadStatus');
+   try{
+     if(!('serviceWorker' in navigator))throw new Error('Ta przeglądarka nie obsługuje trybu offline.');
+     const reg=await navigator.serviceWorker.ready;
+     const worker=navigator.serviceWorker.controller||reg.active;
+     if(!worker)throw new Error('Odśwież aplikację i spróbuj ponownie.');
+     xp('downloadOffline').disabled=true;
+     status.textContent='Przygotowuję pobieranie biblioteki…';
+     worker.postMessage({type:'CACHE_ALL'});
+   }catch(e){status.textContent=e.message||'Nie udało się rozpocząć pobierania.';xp('downloadOffline').disabled=false;}
+ });
+ if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',event=>{
+   if(event.data?.type!=='CACHE_PROGRESS')return;
+   const {done,total,failed,complete}=event.data;
+   xp('offlineDownloadStatus').textContent=complete
+     ? failed?'Pobrano '+(done-failed)+' z '+total+'. Niektóre pliki pominięto — spróbuj ponownie.':'Wszystkie bajki są dostępne offline.'
+     :'Pobieranie biblioteki: '+done+' / '+total+' plików';
+   if(complete)xp('downloadOffline').disabled=false;
+ });
  document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
   xpState.filter=button.dataset.filter;
   document.querySelectorAll('[data-filter]').forEach(e=>e.setAttribute('aria-pressed',String(e===button)));
