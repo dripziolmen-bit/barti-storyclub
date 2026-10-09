@@ -141,7 +141,11 @@ function loadParagraph(index,auto=false,seek=0) {
   if(el.narration.readyState>=1)afterMeta();else el.narration.addEventListener('loadedmetadata',afterMeta,{once:true});
 }
 async function attemptPlay(){
-  try {await el.narration.play();}
+  try {
+    await el.narration.play();
+    const today=new Date();const key=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+    try{const days=new Set(JSON.parse(localStorage.getItem('barti.studyDays')||'[]'));days.add(key);localStorage.setItem('barti.studyDays',JSON.stringify([...days].slice(-400)))}catch{}
+  }
   catch(error){if(error.name!=='AbortError'){setMode('paused');notify('Dotknij ▶, aby zezwolić na odtwarzanie dźwięku.');}}
 }
 function togglePlayback(){
@@ -164,7 +168,11 @@ function seekStory(sec){
   if(index!==s.paragraph)loadParagraph(index,wasPlaying,t);
   else{el.narration.currentTime=t;refresh();}
 }
-function finishStory(){s.playing=false;setMode('finished');el.narration.pause();el.progress.value=1000;el.timeCurrent.textContent=fmt(total());notify('Brawo! Bajka przeczytana.');}
+function finishStory(){
+ s.playing=false;setMode('finished');el.narration.pause();el.progress.value=1000;el.timeCurrent.textContent=fmt(total());
+ try{const done=new Set(JSON.parse(localStorage.getItem('barti.completedStories')||'[]'));done.add(s.story.id);localStorage.setItem('barti.completedStories',JSON.stringify([...done]));}catch{}
+ window.BartiExperience?.onFinished?.();notify('Brawo! Bajka przeczytana.');
+}
 function refresh(){
   if(!s.story)return;
   const length=total()||1;const pos=Math.min(storyElapsed(),length);
@@ -172,6 +180,10 @@ function refresh(){
   document.querySelector('.app-top')?.style.setProperty('--story-progress',Math.min(100,Math.max(0,100*pos/length))+'%');
   el.timeCurrent.textContent=fmt(pos);el.timeTotal.textContent=fmt(length);
   highlightCurrentWord();
+  if(s.playing&&Date.now()-(s.lastSavedAt||0)>2000){
+    s.lastSavedAt=Date.now();
+    try{const progress=JSON.parse(localStorage.getItem('barti.storyProgress')||'{}');progress[s.story.id]={seconds:Math.round(pos),total:Math.round(length)};localStorage.setItem('barti.storyProgress',JSON.stringify(progress));localStorage.setItem('barti.lastPlayback',JSON.stringify({id:s.story.id,paragraph:s.paragraph,time:el.narration.currentTime}));}catch{}
+  }
 }
 function highlightCurrentWord(){
   if(!s.story||!el.narration.duration)return;
@@ -351,6 +363,8 @@ window.BartiBridge={
  getVocab:()=>({...s.vocab}),
  getCurrentId:()=>s.story?.id||'repka',
  openStory:selectStory,
+ resumeLast:()=>{try{const last=JSON.parse(localStorage.getItem('barti.lastPlayback')||'null');if(last&&last.id===s.story.id&&Number.isFinite(last.paragraph))loadParagraph(last.paragraph,false,Number(last.time)||0)}catch{}},
+ getProgress:()=>{try{return JSON.parse(localStorage.getItem('barti.storyProgress')||'{}')}catch{return {}}},
  pause:()=>{el.narration.pause();s.playing=false;},
  removeWord:(word)=>{if(Object.prototype.hasOwnProperty.call(s.vocab,word)){delete s.vocab[word];saveVocab();}},
  quiz:openQuiz
