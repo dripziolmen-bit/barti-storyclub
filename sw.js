@@ -1,10 +1,10 @@
 /* Barti Story Club offline v23 — fast reliable installation + explicit full-library download. */
-const CACHE='barti-storyclub-v23';
+const CACHE='barti-storyclub-v24';
 const STORY_COUNTS={"repka":7,"ryaba":5,"kolobok":7,"teremok":6,"masha":6,"lisa-zhuravl":6,"zaika-lisa-petuh":6,"volk-kozl":6,"gusi-lebedi":6,"snegurochka":6,"morozko":6,"shchuka":6,"carevna":6,"ivan-volk":6,"havroshechka":6,"lisa-rak":6,"tri-medvedya":6,"kot-petuh-lisa":6};
 const STORY_COVERS=Object.keys(STORY_COUNTS).map(id=>['repka','ryaba','kolobok'].includes(id)?'./assets/visuals/covers/'+id+'.webp':'./assets/visuals/covers/'+id+'.svg');
 const AUDIO=Object.entries(STORY_COUNTS).flatMap(([id,n])=>Array.from({length:n},(_,i)=>'./assets/audio/'+id+'-'+i+'.mp3')).concat('./assets/audio/ambient.mp3');
 const ESSENTIAL=['./','./index.html','./app.js','./experience.js','./data/stories.json','./data/audio.json','./data/lexicon.json'];
-const SHELL=['./styles.css','./experience.css','./fairytale.css','./v2.css?v=23','./menu-v20.css?v=23','./menu-v22.css?v=23','./data/word-timing.json','./manifest.webmanifest','./assets/character/idle.webp','./assets/character/reader-book.svg','./assets/visuals/covers/repka.webp','./assets/audio/repka-0.mp3','./assets/audio/teremok-0.mp3','./assets/ui/library.svg','./assets/ui/words.svg','./assets/ui/achievements.svg','./assets/ui/more.svg'];
+const SHELL=['./styles.css','./experience.css','./fairytale.css','./v2.css?v=24','./menu-v20.css?v=24','./menu-v22.css?v=24','./library-v24.css?v=24','./data/word-timing.json','./manifest.webmanifest','./assets/character/idle.webp','./assets/character/reader-book.svg','./assets/visuals/covers/repka.webp','./assets/audio/repka-0.mp3','./assets/audio/teremok-0.mp3','./assets/ui/library.svg','./assets/ui/words.svg','./assets/ui/achievements.svg','./assets/ui/more.svg'];
 const ANIMATION=['./assets/character/motion/rest.webp','./assets/character/motion/reading.webp','./assets/character/motion/explain.webp','./assets/character/motion/wave.webp','./assets/character/motion/celebrate.webp'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{
  const cache=await caches.open(CACHE);

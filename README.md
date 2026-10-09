@@ -123,3 +123,12 @@ Inspiracja motywami folkloru: https://ru.wikisource.org/wiki/Народные_р
 
 ### Wydanie v1.4.1 — niezawodny tryb offline
 Wcześniejsze pobieranie całego archiwum dźwiękowego podczas instalacji potrafiło przerwać rejestrację service workera na GitHub Pages. Naprawiono to w v23 przez mały precache i osobny przycisk pobierania biblioteki. Pliki odtwarzane online są automatycznie cache’owane.
+
+## Compact Library v1.4.0
+- The Library heading and story count now sit at the top; oversized Barti hero and persistent wide search bar are removed. Four filter buttons and a small optional search control fit on the same row.
+- Tapping the magnifying glass opens the search field temporarily. Clear/close resets the full 18-story collection.
+- The cards take over the freed space and form a 3-column desktop shelf, with only the shelf scrollable; the mobile layout remains a single scrollable column.
+- The first three detailed illustrated covers and 15 extra simplified vector covers remain part of the release; there is **still an art-style quality mismatch** between them, which needs a future illustration pass. We did not replace actual covers with a fake screenshot.
+- All 18 Russian tale texts, all 109 segment MP3s, and the 853-entry offline RU-PL lexicon remain in place. New audio segments were locally synthesized with Piper, not downloaded recordings of human narrators.
+- Browser QA: 7 viewport flows checked; six visible covers decoded successfully on desktop/mobile; library → select → reader → word translation → back verified.
+- PWA cache v24; CSS URL query 24 to invalidate older cached layouts.

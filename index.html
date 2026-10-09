@@ -17,9 +17,10 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./experience.css">
 <link rel="stylesheet" href="./fairytale.css">
-<link rel="stylesheet" href="./v2.css?v=23">
-<link rel="stylesheet" href="./menu-v20.css?v=23">
-<link rel="stylesheet" href="./menu-v22.css?v=23">
+<link rel="stylesheet" href="./v2.css?v=24">
+<link rel="stylesheet" href="./menu-v20.css?v=24">
+<link rel="stylesheet" href="./menu-v22.css?v=24">
+<link rel="stylesheet" href="./library-v24.css?v=24">
 </head>
 <body data-page="home">
 <div id="experienceShell" class="experience">
@@ -62,19 +63,25 @@
   </main>
 <main id="libraryScreen" class="xp-screen v2-library" aria-label="Biblioteka" hidden>
  <div class="v2-library-layout">
-  <div class="v2-library-hero menu-library-head">
-    <div class="menu-library-head-copy">
-      <span class="menu-eyebrow">TWOJE OPOWIEŚCI</span>
+  <div class="library-headline">
+    <div class="library-heading-main">
       <h1>Biblioteka</h1>
-      <p>18 opowieści. Posłuchaj, czytaj i poznawaj rosyjskie słowa.</p>
+      <span id="libraryCount" class="library-count-in-heading">18 bajek</span>
     </div>
-    <img class="menu-library-barti" src="./assets/character/idle.webp" alt="Barti — bohater klubu bajek" loading="eager" decoding="async">
+    <div class="library-heading-controls">
+      <div class="library-filters" role="group" aria-label="Filtruj bajki">
+        <button type="button" data-filter="all" aria-pressed="true">Wszystkie</button>
+        <button type="button" data-filter="A1" aria-pressed="false">A1</button>
+        <button type="button" data-filter="A2" aria-pressed="false">A2</button>
+        <button type="button" data-filter="favorites" aria-pressed="false">♡ Ulubione</button>
+      </div>
+      <button type="button" id="librarySearchToggle" class="library-search-trigger" aria-label="Otwórz wyszukiwanie bajek" aria-expanded="false" aria-controls="librarySearchPanel"><span aria-hidden="true">⌕</span></button>
+    </div>
   </div>
-  <div class="v2-library-controls">
-    <div class="library-filters" role="group" aria-label="Filtruj bajki"><button type="button" data-filter="all" aria-pressed="true">▦ Wszystkie</button><button type="button" data-filter="A1" aria-pressed="false">A1</button><button type="button" data-filter="A2" aria-pressed="false">A2</button><button type="button" data-filter="favorites" aria-pressed="false">♡ Ulubione</button></div>
-    <label class="xp-search"><span aria-hidden="true">⌕</span><input id="storySearch" type="search" placeholder="Szukaj bajki..." autocomplete="off" aria-label="Szukaj bajki"></label>
+  <div id="librarySearchPanel" class="library-search-panel" hidden>
+    <label class="xp-search"><span aria-hidden="true">⌕</span><input id="storySearch" type="search" placeholder="Tytuł bajki..." autocomplete="off" aria-label="Szukaj bajki"></label>
+    <button type="button" id="librarySearchClose" class="library-search-close" aria-label="Zamknij wyszukiwanie">✕</button>
   </div>
-  <div class="v2-library-count"><span id="libraryCount">18 bajek</span></div>
   <div class="library-grid" id="libraryGrid"></div>
   <div class="library-empty" id="libraryEmpty" hidden>W tej kategorii nie ma jeszcze bajek. Wybierz „Wszystkie”.</div>
  </div>

@@ -40,7 +40,7 @@ function toggleFavorite(id){const set=new Set(xpState.favorites);set.has(id)?set
 function buildCard(story,compact=false){
  const card=createEl('article',{class:compact?'home-story-card':'library-card'});
  card.dataset.storyId=story.id;
- const cover=createEl('img',{src:imageFor(story),alt:'Ilustracja bajki '+story.titlePl,loading:'lazy',decoding:'async'});
+ const cover=createEl('img',{src:imageFor(story),alt:'Ilustracja bajki '+story.titlePl,loading:'eager',decoding:'async'});
  const art=createEl('div',{class:compact?'v2-home-cover':'library-card-cover'},[cover,createEl('span',{class:'library-card-level',text:story.level})]);
  const title=createEl('h3',{text:story.title});
  const desc=createEl('p',{text:descriptions[story.id]||story.titlePl});
@@ -264,6 +264,19 @@ function bindExperience(){
  xp('heroContinue').addEventListener('click',()=>{activateReader(localStorage.getItem('barti.lastStory')||'repka');window.BartiBridge?.resumeLast?.()});
  xp('homeBarti').parentElement.addEventListener('click',()=>{onMode('excited');setTimeout(()=>onMode('idle'),1800);});
  xp('storySearch').addEventListener('input',event=>{xpState.query=event.target.value;renderCards();});
+ xp('librarySearchToggle').addEventListener('click',()=>{
+  const panel=xp('librarySearchPanel'),opening=panel.hidden;
+  panel.hidden=!opening;
+  xp('librarySearchToggle').setAttribute('aria-expanded',opening?'true':'false');
+  if(opening)requestAnimationFrame(()=>xp('storySearch').focus({preventScroll:true}));
+  else {xp('storySearch').value='';xpState.query='';renderCards();}
+ });
+ xp('librarySearchClose').addEventListener('click',()=>{
+  xp('librarySearchPanel').hidden=true;
+  xp('librarySearchToggle').setAttribute('aria-expanded','false');
+  xp('storySearch').value='';xpState.query='';renderCards();
+  xp('librarySearchToggle').focus({preventScroll:true});
+ });
 
  xp('moreFontMinus').addEventListener('click',()=>{xp('fontSmaller').click();renderMore();});
  xp('moreFontPlus').addEventListener('click',()=>{xp('fontLarger').click();renderMore();});

@@ -1,0 +1,222 @@
+/* v24 — compact app-library layout. Story covers, not a decorative header, own the space.
+   Search is collapsed; filters stay directly beside the title on desktop. */
+body[data-page="library"] .v2-library-layout{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:10px!important;
+  padding:clamp(12px,2dvh,22px) clamp(14px,2.5vw,30px) clamp(10px,1.6dvh,18px)!important;
+  min-height:0!important;height:100%!important;
+  max-width:1460px!important;margin:auto;
+  background:#fafafa!important;
+  overflow:hidden!important;
+}
+body[data-page="library"] #libraryScreen{background:#fafafa!important;}
+body[data-page="library"] .library-headline{
+  flex:0 0 auto;min-height:57px;display:flex;
+  justify-content:space-between;align-items:center;gap:15px;
+  padding:0 2px 5px;
+}
+body[data-page="library"] .library-heading-main{
+  display:flex;align-items:baseline;gap:15px;min-width:0;flex:0 0 auto;
+}
+body[data-page="library"] .library-heading-main h1{
+  margin:0!important;
+  font-size:clamp(28px,3.25vw,46px);
+  letter-spacing:-1.65px;
+  line-height:1.05;
+  color:#32283a;font-weight:850;
+}
+body[data-page="library"] .library-count-in-heading{
+  display:inline-flex;white-space:nowrap;
+  color:#746a76;background:#f1edef;
+  border:1px solid #ebe6e9;
+  border-radius:50px;font-size:12px;
+  font-weight:720;padding:5px 10px;
+}
+body[data-page="library"] .library-heading-controls{
+  flex:0 1 auto;display:flex;align-items:center;
+  gap:10px;min-width:0;
+}
+body[data-page="library"] .library-filters{
+  background:#fff!important;
+  box-shadow:none!important;
+  border:1px solid #e7e2e6!important;
+  border-radius:16px!important;
+  display:flex!important;gap:3px!important;
+  padding:4px!important;
+  width:auto!important;max-width:none!important;
+  min-width:0!important;height:46px;
+  flex:0 1 auto!important;align-items:center!important;
+}
+body[data-page="library"] .library-filters button{
+  height:37px!important;min-height:37px!important;
+  padding:6px clamp(10px,1.15vw,17px)!important;
+  border-radius:11px!important;font-size:12px!important;
+  font-weight:770!important;white-space:nowrap!important;
+}
+body[data-page="library"] .library-filters button[aria-pressed="true"]{
+  background:#c75187!important;color:#fff!important;
+  box-shadow:none!important;
+}
+body[data-page="library"] .library-search-trigger{
+  display:grid!important;place-items:center;
+  height:46px;width:46px;min-width:46px;
+  border-radius:14px;border:1px solid #e7e2e6;
+  background:#fff;color:#9a386e;
+  font-size:29px;cursor:pointer;
+}
+body[data-page="library"] .library-search-trigger:hover{
+  background:#fff0f7;border-color:#dcbacf;
+}
+body[data-page="library"] .library-search-panel:not([hidden]){
+  flex:0 0 auto;display:flex;gap:8px;align-items:center;
+  height:50px;min-height:50px;width:100%;
+}
+body[data-page="library"] .library-search-panel[hidden]{display:none!important;}
+body[data-page="library"] .library-search-panel .xp-search{
+  flex:1 1 auto;width:auto;max-width:none!important;
+  height:48px;min-height:48px;margin:0!important;
+  background:#fff;border-radius:14px;
+  border:1px solid #e7e2e6;
+}
+body[data-page="library"] .library-search-close{
+  display:grid;place-items:center;width:46px;height:46px;
+  border-radius:13px;background:#fff;
+  border:1px solid #e7e2e6;
+  font-size:16px;color:#6c5f6e;cursor:pointer;
+}
+body[data-page="library"] #libraryGrid{
+  flex:1 1 auto;min-height:0!important;
+  overflow-y:auto!important;overflow-x:hidden!important;
+  align-content:start!important;
+  padding:1px 5px 16px 1px!important;
+  gap:clamp(10px,1.15vw,16px)!important;
+  scroll-behavior:smooth;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+body[data-page="library"] .v2-library .library-card,
+body[data-page="library"] #libraryGrid .library-card{
+  box-shadow:0 4px 15px #4732450f!important;
+  border:1px solid #eae5e9!important;
+  background:#fff!important;
+  border-radius:18px!important;
+  overflow:hidden;
+  transition:box-shadow .18s,border-color .18s,transform .18s!important;
+}
+body[data-page="library"] #libraryGrid .library-card:hover{
+  box-shadow:0 12px 25px #44324419!important;
+  border-color:#e8bdd1!important;
+  transform:translateY(-2px);
+}
+body[data-page="library"] #libraryGrid .library-card-cover{
+  border-radius:17px 17px 0 0!important;
+  overflow:hidden!important;
+  background:#f7f2f5;
+}
+body[data-page="library"] #libraryGrid .library-card-cover img{
+  width:100%;height:100%;
+  object-fit:cover!important;
+  object-position:center!important;
+  filter:saturate(.93) contrast(.99);
+}
+body[data-page="library"] #libraryGrid .library-card-body{
+  border-radius:0!important;
+  background:#fff!important;
+}
+body[data-page="library"] #libraryGrid .library-card-body h3{
+  line-height:1.1;letter-spacing:-.45px;color:#322b3a;
+}
+body[data-page="library"] #libraryGrid .v2-story-open{
+  background:#bd4d80!important;
+  box-shadow:none!important;
+  border-radius:11px!important;
+}
+body[data-page="library"] #libraryGrid .v2-story-open:hover{
+  background:#a33c6e!important;
+}
+@media(min-width:1001px){
+ body[data-page="library"] #libraryGrid{
+   grid-template-columns:repeat(3,minmax(0,1fr))!important;
+   grid-auto-rows:clamp(280px,46dvh,390px)!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card{
+   min-height:0!important;max-height:none!important;
+   height:100%!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card-cover{
+   flex:1 1 auto!important;min-height:140px!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card-body{
+   flex:0 0 auto!important;
+   padding:11px 13px!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card p{display:none!important;}
+}
+@media(min-width:701px) and (max-width:1000px){
+ body[data-page="library"] .library-headline{flex-wrap:wrap;min-height:105px;}
+ body[data-page="library"] .library-heading-controls{width:100%;justify-content:space-between;}
+ body[data-page="library"] #libraryGrid{
+   grid-template-columns:repeat(2,minmax(0,1fr))!important;
+   grid-auto-rows:clamp(260px,43dvh,355px)!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card{
+   min-height:0!important;height:100%!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card-cover{
+   min-height:120px!important;flex:1 1 auto!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card-body{
+   flex:0 0 auto!important;padding:9px 12px!important;
+ }
+}
+@media(max-width:700px){
+ body[data-page="library"] .v2-library-layout{
+   height:auto!important;min-height:0!important;
+   overflow:visible!important;
+   gap:10px!important;padding:13px 13px 28px!important;
+ }
+ body[data-page="library"] .library-headline{
+   flex-direction:column;align-items:stretch;
+   gap:11px;min-height:0;
+ }
+ body[data-page="library"] .library-heading-main{
+   align-items:center;justify-content:space-between;
+ }
+ body[data-page="library"] .library-heading-main h1{
+   font-size:clamp(28px,7vw,36px);
+ }
+ body[data-page="library"] .library-heading-controls{width:100%;}
+ body[data-page="library"] .library-filters{
+   flex:1 1 auto!important;height:44px;max-width:none!important;
+ }
+ body[data-page="library"] .library-filters button{
+   height:35px!important;min-height:35px!important;
+   padding:5px clamp(7px,2.2vw,12px)!important;font-size:11px!important;
+ }
+ body[data-page="library"] .library-search-trigger{
+   min-width:44px;width:44px;height:44px;flex:0 0 44px;
+ }
+ body[data-page="library"] #libraryGrid{
+   overflow:visible!important;scrollbar-gutter:auto!important;
+   height:auto!important;max-height:none!important;
+   display:grid;grid-template-columns:1fr!important;
+   grid-auto-rows:auto!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card{
+   height:auto!important;min-height:0!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card-cover{
+   height:clamp(155px,48vw,210px)!important;
+   min-height:155px!important;max-height:none!important;
+   flex:0 0 auto!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card-body{
+   padding:10px 13px!important;flex:0 0 auto!important;
+ }
+ body[data-page="library"] #libraryGrid .library-card-body p{display:none!important;}
+}
+@media(prefers-reduced-motion:reduce){
+ body[data-page="library"] #libraryGrid{scroll-behavior:auto!important;}
+ body[data-page="library"] #libraryGrid .library-card{transition:none!important;transform:none!important;}
+}
