@@ -1,0 +1,214 @@
+/* v28 — one clean library header, matching storybook covers, no redundant top bar.
+   The back action remains reachable inside the current screen. */
+body:not([data-page="reader"]) .experience-topbar{
+  display:none!important;
+}
+body:not([data-page="reader"]) .experience{
+  padding-top:0!important;
+}
+body[data-page="library"] .v2-library-layout{
+  padding-top:clamp(15px,2.4dvh,25px)!important;
+  gap:13px!important;
+}
+body[data-page="library"] .library-headline{
+  position:relative!important;
+  overflow:visible!important;
+  min-height:100px!important;
+  padding:12px 150px 10px 4px!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:16px!important;
+}
+body[data-page="library"] .library-headline::after{
+  display:none!important;
+  content:none!important;
+}
+body[data-page="library"] .library-heading-main{
+  display:flex!important;
+  align-items:center!important;
+  flex:1 1 auto!important;
+  min-width:0!important;
+  width:auto!important;
+  padding:0!important;
+  margin:0!important;
+}
+body[data-page="library"] .library-title-block{
+  display:flex!important;
+  align-items:center!important;
+  flex-direction:row!important;
+  gap:13px!important;
+}
+body[data-page="library"] .library-title-block h1{
+  margin:0!important;
+  font-size:clamp(27px,2.7vw,38px)!important;
+  letter-spacing:-1.2px!important;
+  white-space:normal!important;
+}
+body[data-page="library"] .library-heading-controls{
+  align-self:center!important;
+  margin:0!important;
+  width:auto!important;
+  flex:0 0 auto!important;
+  z-index:4!important;
+}
+body[data-page="library"] .library-count-in-heading,
+body[data-page="library"] .library-shelf-label,
+body[data-page="library"] #libraryGrid .v2-story-meta{
+  display:none!important;
+}
+body[data-page="library"] .barti-wan-sticker-library{
+  position:absolute!important;
+  top:50%!important;
+  right:2px!important;
+  width:132px!important;
+  height:132px!important;
+  transform:translateY(-50%)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  z-index:2!important;
+  -webkit-mask-image:radial-gradient(ellipse 66% 70% at 50% 52%,#000 55%,transparent 92%);
+  mask-image:radial-gradient(ellipse 66% 70% at 50% 52%,#000 55%,transparent 92%);
+}
+body[data-page="library"] .barti-wan-sticker-library video{
+  background:transparent!important;
+  mix-blend-mode:multiply;
+}
+body[data-page="library"] #libraryGrid .library-card-cover img{
+  object-fit:cover!important;
+  object-position:center 46%!important;
+  filter:none!important;
+}
+body[data-page="library"] #libraryGrid .library-card-body{
+  padding-top:10px!important;
+  padding-bottom:11px!important;
+}
+body[data-page="library"] #libraryGrid .library-card h3{
+  line-height:1.15!important;
+}
+body[data-page="library"] #libraryGrid .v2-story-open{margin-top:8px!important}
+body:not([data-page="reader"]) #appBack:not([hidden]){
+  display:grid!important;
+  flex:0 0 auto!important;
+  place-items:center!important;
+  margin:0!important;
+  width:39px!important;
+  height:39px!important;
+  min-width:39px!important;
+  min-height:39px!important;
+  padding:0!important;
+  border:1px solid #e9d8e1!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  box-shadow:0 3px 10px #76526b0c!important;
+  color:#a44476!important;
+  font-size:22px!important;
+  text-decoration:none!important;
+  cursor:pointer!important;
+  line-height:1!important;
+}
+body:not([data-page="reader"]) #appBack:hover{background:#fff0f7!important}
+body:not([data-page="reader"]) .xp-pagehead:has(#appBack),
+body:not([data-page="reader"]) .v2-profile-wrap:has(>#appBack){position:relative!important}
+body:not([data-page="reader"]) .xp-pagehead>#appBack,
+body:not([data-page="reader"]) .v2-profile-wrap>#appBack{
+  position:absolute!important;right:5px!important;top:12px!important;
+}
+@media(max-width:1100px){
+  body[data-page="library"] .library-headline{
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:center!important;
+    min-height:112px!important;
+    padding:5px 114px 5px 2px!important;
+    gap:8px!important;
+  }
+  body[data-page="library"] .library-heading-controls{
+    align-self:stretch!important;
+    width:100%!important;
+    margin:0!important;
+  }
+  body[data-page="library"] .barti-wan-sticker-library{width:108px!important;height:108px!important;right:0!important;}
+}
+@media(max-width:700px){
+  body[data-page="library"] .v2-library-layout{padding:13px 11px 25px!important}
+  body[data-page="library"] .library-headline{
+    min-height:109px!important;
+    height:auto!important;
+    padding:3px 88px 4px 0!important;
+    gap:10px!important;
+  }
+  body[data-page="library"] .library-heading-main{padding:0!important}
+  body[data-page="library"] .library-title-block{gap:7px!important}
+  body[data-page="library"] .library-title-block h1{font-size:clamp(23px,5.9vw,30px)!important;letter-spacing:-.9px!important}
+  body[data-page="library"] .barti-wan-sticker-library{width:91px!important;height:91px!important;right:-2px!important;top:49%!important}
+  body[data-page="library"] .library-filters button{font-size:10px!important;padding-inline:7px!important}
+  body[data-page="library"] .library-search-trigger{height:41px!important;width:41px!important;min-width:41px!important}
+  body:not([data-page="reader"]) #appBack:not([hidden]){
+    min-width:31px!important;width:31px!important;height:34px!important;min-height:34px!important;
+    border-radius:10px!important;font-size:19px!important;
+  }
+  body[data-page="home"] .menu-home-layout{padding-top:12px!important;}
+}
+/* Reduce motion: existing CSS/WebP fallbacks remain, decorative video need not run. */
+
+/* Reader: toolbar actions sit inside the story header, not in a redundant full-width strip. */
+body[data-page="reader"] .reading-head{
+  position:relative!important;
+  padding-top:43px!important;
+}
+body[data-page="reader"] .reader-inline-actions{
+  position:absolute;
+  top:3px;
+  right:0;
+  left:0;
+  height:37px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  z-index:7;
+}
+body[data-page="reader"] .reader-inline-actions #readerReturn{
+  margin-right:auto!important;
+  width:40px!important;
+  min-width:40px!important;
+  padding:0!important;
+  height:36px!important;
+  min-height:36px!important;
+  border:1px solid #eadde4!important;
+  background:#fff!important;
+  color:#943b6c!important;
+  border-radius:11px!important;
+  box-shadow:none!important;
+  font-size:23px!important;
+}
+body[data-page="reader"] .reader-inline-actions #readerReturn::before{content:none!important}
+body[data-page="reader"] .reader-inline-actions .top-button{
+  min-height:35px!important;
+  height:35px!important;
+  width:auto;
+  border-color:#e6dce4!important;
+  border-radius:10px!important;
+}
+body[data-page="reader"] .reader-inline-actions .mobile-library-btn{
+  min-height:35px!important;height:35px!important;border-radius:10px!important;
+}
+body[data-page="reader"] .reading-head-copy .lesson-tag{opacity:.74}
+@media(max-width:700px){
+  body[data-page="reader"] .reading-head{padding-top:55px!important}
+  body[data-page="reader"] .reader-inline-actions{
+    top:8px!important;left:15px!important;right:15px!important;
+    height:37px!important;
+  }
+  body[data-page="reader"] .reader-inline-actions .top-button{font-size:14px!important}
+}
+/* Redundant reader-wide tale count and repeated meta are intentionally removed. */
+body[data-page="reader"] .side-title span:last-child,
+body[data-page="reader"] .reading-head .divider-dot,
+body[data-page="reader"] .reading-head #storyDuration{display:none!important}

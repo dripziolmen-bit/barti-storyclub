@@ -34,7 +34,7 @@ function createEl(tag,attrs={},children=[]){
  return node;
 }
 function storyDuration(story){return Math.max(1,Math.round(((window.BartiBridge?.durations?.()[story.id]||[]).reduce((a,b)=>a+b,0))/60))+' min'}
-function imageFor(story){return storyArtwork[story.id]||'./assets/visuals/covers/'+story.id+'.svg'}
+function imageFor(story){return storyArtwork[story.id]||'./assets/visuals/covers/'+story.id+'.webp'}
 function readFavorites(){try{const v=JSON.parse(localStorage.getItem('barti.favorites')||'[]');return Array.isArray(v)?v:[]}catch{return []}}
 function toggleFavorite(id){const set=new Set(xpState.favorites);set.has(id)?set.delete(id):set.add(id);xpState.favorites=[...set];try{localStorage.setItem('barti.favorites',JSON.stringify(xpState.favorites))}catch{}renderCards();}
 function buildCard(story,compact=false){
@@ -105,7 +105,16 @@ function navigate(page='home',storyId=null,replace=false){
  xpState.page=page;
  document.body.dataset.page=page;
  const back=xp('appBack');
- if(back){back.hidden=page==='home'||page==='reader';back.setAttribute('aria-label','Wróć do menu głównego');}
+ if(back){
+   const host=page==='library'?document.querySelector('#libraryScreen .library-title-block'):
+     page==='words'?document.querySelector('#wordsScreen .xp-pagehead'):
+     ['more','achievements'].includes(page)?document.querySelector('#'+page+'Screen .v2-profile-wrap'):
+     document.querySelector('.experience-topbar');
+   if(host&&back.parentElement!==host)host.prepend(back);
+   back.hidden=page==='home'||page==='reader';
+   back.setAttribute('aria-label','Wróć do menu głównego');
+   back.textContent='←';
+ }
   if(page!=='reader') document.querySelector('meta[name="theme-color"]')?.setAttribute('content','#ffeff7');
  xp('experienceShell').hidden=page==='reader';
  xp('appShell').hidden=page!=='reader';
@@ -149,7 +158,7 @@ function renderWords(){
  });
  xp('xpWordsList').replaceChildren(...list);
 }
-function applyReaderArt(){const id=window.BartiBridge?.getCurrentId?.()||'repka';const image=storyArtwork[id]||storyArtwork.repka;const banner=xp('readerArtBanner');if(banner)banner.style.backgroundImage=`url('${image}')`; }
+function applyReaderArt(){const id=window.BartiBridge?.getCurrentId?.()||'repka';const image=imageFor({id});const banner=xp('readerArtBanner');if(banner)banner.style.backgroundImage=`url('${image}')`; }
 function activateReader(id){
  const story=xpState.stories.find(s=>s.id===id);if(!story)return;
  navigate('reader',story.id); applyReaderArt();

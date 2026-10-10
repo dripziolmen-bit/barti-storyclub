@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="./studio-v25.css?v=25">
 <link rel="stylesheet" href="./mobile-v26.css?v=26">
 <link rel="stylesheet" href="./barti-wan.css?v=27">
+<link rel="stylesheet" href="./library-clean-v28.css?v=28">
 </head>
 <body data-page="home">
 <div id="experienceShell" class="experience">
@@ -70,8 +71,8 @@
  <div class="v2-library-layout">
   <div class="library-headline">
     <div class="library-heading-main">
-      <div class="library-title-block"><span class="library-overline">BIBLIOTEKA OPOWIEŚCI <span aria-hidden="true">✦</span></span><h1>Wybierz swoją bajkę<span class="xp-pink-dot">.</span></h1><p>Czytaj, słuchaj i odkrywaj rosyjskie słowa.</p></div>
-      <span id="libraryCount" class="library-count-in-heading">18 bajek</span>
+      <div class="library-title-block"><h1>Wybierz swoją bajkę<span class="xp-pink-dot">.</span></h1></div>
+      <span id="libraryCount" hidden aria-hidden="true"></span>
     </div>
     <div class="library-heading-controls">
       <div class="library-filters" role="group" aria-label="Filtruj bajki">
@@ -87,7 +88,6 @@
     <label class="xp-search"><span aria-hidden="true">⌕</span><input id="storySearch" type="search" placeholder="Tytuł bajki..." autocomplete="off" aria-label="Szukaj bajki"></label>
     <button type="button" id="librarySearchClose" class="library-search-close" aria-label="Zamknij wyszukiwanie">✕</button>
   </div>
-  <div class="library-shelf-label"><span>WSZYSTKIE OPOWIEŚCI</span><span aria-hidden="true">✳</span></div>
   <div class="library-grid" id="libraryGrid"></div>
   <div class="library-empty" id="libraryEmpty" hidden>W tej kategorii nie ma jeszcze bajek. Wybierz „Wszystkie”.</div>
  </div>
@@ -149,22 +149,18 @@
   </aside>
   <div class="mobile-nav-overlay" id="libraryOverlay" hidden></div>
   <main class="main-area" id="main">
-    <header class="app-top">
-      <button id="readerReturn" aria-label="Powrót do biblioteki" type="button" class="reader-back-button" title="Wróć do biblioteki">← Biblioteka</button>
-      <button class="mobile-library-btn" id="openLibrary" type="button" aria-label="Otwórz bibliotekę"><span aria-hidden="true">☰</span></button>
-      <div class="section-brand"><span class="overline">BARTI READING CLUB</span><span class="section-separator">/</span><span class="section-label">OPOWIEŚCI</span></div>
-      <div class="top-actions">
-        <span class="availability" hidden><span class="availability-dot"></span><span id="statusText">Gotowy do czytania</span></span>
-        <button type="button" id="focusBtn" class="top-button focus-button" aria-pressed="false" title="Tryb skupienia">◫ <span>Skupienie</span></button>
-        <button type="button" id="readerSettings" class="top-button settings-button" aria-expanded="false" aria-controls="readingSettings" title="Ustawienia czytania">Aa</button>
-      </div>
-    </header>
+
     <div id="readingSettings" class="reading-settings" hidden>
       <div><strong>Wygodniej czytać</strong></div>
       <div class="type-controls"><button id="fontSmaller" aria-label="Zmniejsz tekst" type="button">A−</button><span id="fontValue">22 px</span><button id="fontLarger" aria-label="Powiększ tekst" type="button">A+</button></div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">☾ Ciemne tło</button>
     </div>
     <div class="reading-head">
+    <div class="reader-inline-actions"><button id="readerReturn" aria-label="Powrót do biblioteki" type="button" class="reader-back-button" title="Wróć do biblioteki">←</button><button class="mobile-library-btn" id="openLibrary" type="button" aria-label="Otwórz bibliotekę"><span aria-hidden="true">☰</span></button>
+        <span class="availability" hidden><span class="availability-dot"></span><span id="statusText">Gotowy do czytania</span></span>
+        <button type="button" id="focusBtn" class="top-button focus-button" aria-pressed="false" title="Tryb skupienia">◫ <span>Skupienie</span></button>
+        <button type="button" id="readerSettings" class="top-button settings-button" aria-expanded="false" aria-controls="readingSettings" title="Ustawienia czytania">Aa</button>
+      </div>
       <div class="reader-cover-thumb" id="readerArtBanner" role="img" aria-label="Ilustracja bajki"></div><div class="reading-head-copy">
         <span class="lesson-tag"><span class="lesson-tag-dot"></span> <span id="storyLevel">A1 · POCZĄTKUJĄCY</span><span class="divider-dot">·</span><span id="storyTag">BAJKA LUDOWA</span></span>
         <h1 id="storyTitle" lang="ru">Репка</h1>
