@@ -1,0 +1,213 @@
+/* UI/UX audit v29 (2026-10-11): surgical fixes after screenshot + computed-layout review.
+   This stylesheet intentionally loads LAST, overriding conflicting legacy rules. */
+
+/* Home: one meaningful heading, four destinations, no duplicated slogans/arrows. */
+body[data-page="home"] .menu-hero-kicker,
+body[data-page="home"] .menu-eyebrow,
+body[data-page="home"] .menu-section-kicker,
+body[data-page="home"] .menu-section-subtitle,
+body[data-page="home"] .menu-destination-copy small,
+body[data-page="home"] .menu-destination-arrow{display:none!important}
+body[data-page="home"] .menu-section-heading{margin-bottom:14px!important}
+body[data-page="home"] .menu-destination-copy{
+  padding:9px 14px!important;
+  min-height:60px!important;
+  height:auto!important;
+  max-height:85px;
+}
+body[data-page="home"] .menu-destination-copy strong{
+  font-weight:750!important;
+  letter-spacing:-.5px!important;
+}
+body[data-page="home"] .menu-destination-icon img{width:100%!important;height:100%!important;object-fit:cover!important}
+body[data-page="home"] .menu-start-button{white-space:nowrap}
+
+/* Reader: remove repeating micro-labels and duplicate information, retain buttons. */
+body[data-page="reader"] .lesson-tag,
+body[data-page="reader"] .story-subtitle .dot-separator,
+body[data-page="reader"] .reader-toolbar,
+body[data-page="reader"] .reading-footer,
+body[data-page="reader"] .mascot-card-top,
+body[data-page="reader"] .side-link b,
+body[data-page="reader"] #installBtn,
+body[data-page="reader"] .player-left{display:none!important}
+body[data-page="reader"] .reading-head{min-width:0!important}
+body[data-page="reader"] .reading-head-copy{min-width:0!important}
+body[data-page="reader"] #storyTitle{
+  overflow-wrap:normal;
+  hyphens:none;
+  font-size:clamp(34px,3.4vw,57px)!important;
+  line-height:1.15!important;
+  margin:3px 0 4px!important;
+}
+body[data-page="reader"] .reader-inline-actions{
+  flex-wrap:nowrap;
+  max-width:100%;
+}
+body[data-page="reader"] .player{
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:20px!important;
+}
+body[data-page="reader"] .transport{
+  grid-column:1!important;
+  min-width:0!important;
+}
+body[data-page="reader"] .player-right{
+  grid-column:2!important;
+  justify-self:end;
+}
+
+/* Severe bug: legacy grid persists 3 tracks when side panels are hidden.
+   Width was 32 px in focus mode. Make a single real grid track. */
+@media (min-width:681px){
+  body[data-page="reader"].focus-mode .app-shell{
+    display:grid!important;
+    width:min(1120px,100%)!important;
+    max-width:1120px!important;
+    margin-inline:auto!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:minmax(0,1fr)!important;
+    justify-items:stretch!important;
+    align-items:stretch!important;
+    min-height:0!important;
+  }
+  body[data-page="reader"].focus-mode .side-nav,
+  body[data-page="reader"].focus-mode .mascot-area{
+    display:none!important;
+  }
+  body[data-page="reader"].focus-mode .main-area{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    height:calc(100dvh - var(--chrome-bottom))!important;
+    margin:0!important;
+    padding:0 clamp(22px,5vw,66px) 12px!important;
+    align-self:stretch!important;
+  }
+  body[data-page="reader"].focus-mode .reading-head{
+    width:100%!important;
+    flex:0 0 auto!important;
+    min-height:110px!important;
+  }
+  body[data-page="reader"].focus-mode .reading-surface{
+    width:100%!important;
+    flex:1 1 auto!important;
+    min-height:0!important;
+  }
+  body[data-page="reader"].focus-mode #reader{
+    min-width:0!important;
+    width:100%!important;
+    overflow-y:auto!important;
+    max-height:none!important;
+  }
+  body[data-page="reader"].focus-mode .player-wrap{
+    width:min(1120px,100%)!important;
+    margin:auto!important;
+  }
+}
+
+/* Dark reader: contrast must follow background.
+   Previously text #eee8e4 was rendered over a forced near-white surface. */
+body[data-page="reader"][data-theme="dark"]{
+  background:#17151b!important;
+  color:#f4edf2!important;
+}
+body[data-page="reader"][data-theme="dark"] .app-shell,
+body[data-page="reader"][data-theme="dark"] .main-area,
+body[data-page="reader"][data-theme="dark"] .side-nav,
+body[data-page="reader"][data-theme="dark"] .mascot-area{
+  background-color:#17151b!important;
+  color:#f4edf2!important;
+}
+body[data-page="reader"][data-theme="dark"] .reading-surface,
+body[data-page="reader"][data-theme="dark"] .reader{
+  background-color:#252129!important;
+  color:#f4edf2!important;
+  border-color:#403542!important;
+}
+body[data-page="reader"][data-theme="dark"] .reader p,
+body[data-page="reader"][data-theme="dark"] #reader .word:not(.current):not(.selected),
+body[data-page="reader"][data-theme="dark"] #reader p span{
+  color:#f4edf2!important;
+  opacity:1!important;
+}
+body[data-page="reader"][data-theme="dark"] #storyTitle{
+  color:#f0a7ce!important;
+}
+body[data-page="reader"][data-theme="dark"] .story-subtitle,
+body[data-page="reader"][data-theme="dark"] #storyTitlePl,
+body[data-page="reader"][data-theme="dark"] .side-title,
+body[data-page="reader"][data-theme="dark"] .story-tile small{
+  color:#c5b5c4!important;
+}
+body[data-page="reader"][data-theme="dark"] #reader .word.current{
+  color:#fff!important;
+  background:#945474!important;
+  box-shadow:0 2px 0 #c677a0!important;
+}
+body[data-page="reader"][data-theme="dark"] #reader .word.selected{
+  color:#fff!important;
+  background:#804668!important;
+}
+body[data-page="reader"][data-theme="dark"] .reading-settings,
+body[data-page="reader"][data-theme="dark"] .dictionary-card{
+  color:#f3e8f2!important;
+  background:#28212b!important;
+  border:1px solid #4d3d4f!important;
+}
+body[data-page="reader"][data-theme="dark"] .reading-settings .theme-toggle,
+body[data-page="reader"][data-theme="dark"] .reading-settings .type-controls button{
+  color:#f3e8f2!important;
+  border-color:#58475e!important;
+  background:#342a38!important;
+}
+body[data-page="reader"][data-theme="dark"] .reading-settings span,
+body[data-page="reader"][data-theme="dark"] .mascot-card-top,
+body[data-page="reader"][data-theme="dark"] .player-right label{color:#cfbfcf!important}
+body[data-page="reader"][data-theme="dark"] .side-nav .story-tile{color:#f5eaf2!important}
+
+/* Light theme restores contrast and a more discreet settings panel. */
+body[data-page="reader"][data-theme="light"] .reading-surface,
+body[data-page="reader"][data-theme="light"] #reader{
+  color:#332830!important;
+  background:#fffbfd!important;
+}
+body[data-page="reader"][data-theme="light"] #reader p,
+body[data-page="reader"][data-theme="light"] #reader .word:not(.current):not(.selected){
+  color:#332830!important;
+  opacity:1!important;
+}
+body[data-page="reader"] .reading-settings{
+  width:min(300px,calc(100vw - 25px))!important;
+  max-width:none!important;
+  gap:12px!important;
+  padding:15px!important;
+  border-radius:14px!important;
+  box-shadow:0 13px 35px #170b1526!important;
+}
+body[data-page="reader"] .reading-settings[hidden]{display:none!important}
+body[data-page="reader"] .reader-inline-actions .top-button{
+  font-size:14px!important;
+}
+
+/* Reduce stray decorations in the reader while retaining actual navigation. */
+body[data-page="reader"] .side-title{letter-spacing:.55px!important}
+body[data-page="reader"] .side-link span{font-size:13px}
+body[data-page="reader"] .reader-cover-thumb{flex-shrink:0}
+@media (max-width:680px){
+  body[data-page="reader"] .player{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:6px!important;
+  }
+  body[data-page="reader"] .transport{grid-column:1!important}
+  body[data-page="reader"] .player-right{grid-column:2!important;max-width:140px}
+  body[data-page="reader"] .reading-head{
+    width:100%!important;
+    min-height:0!important;
+  }
+  body[data-page="reader"] .reader-inline-actions .top-button{
+    padding-inline:7px!important;
+  }
+}
