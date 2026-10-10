@@ -1,0 +1,98 @@
+/* Barti Wan MP4: media only while the corresponding view/gesture is visible.
+ * MP4 has a WHITE background; no fake green-screen mask or automatic alpha.
+ */
+.puppet-film.wan-enabled,
+.barti-mini-puppet .puppet-film.wan-enabled,
+.menu-welcome-character .puppet-film.wan-enabled {
+  background-image:none!important;
+  background:none!important;
+  animation:none!important;
+  overflow:hidden!important;
+}
+.puppet-film.wan-enabled::after,
+.menu-welcome-character .puppet-film.wan-enabled::after,
+body[data-page=reader] .puppet-film.wan-enabled::after {
+  content:none!important;
+  display:none!important;
+}
+.puppet-film.wan-enabled .motion-layer{opacity:0!important;visibility:hidden!important}
+.barti-wan-video {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  pointer-events:none;
+  background:#fff;
+  opacity:0;
+  border:0;
+}
+.wan-enabled>.barti-wan-video{opacity:1}
+.barti-wan-sticker,
+.barti-wan-quiz-sticker{
+  display:block;
+  position:absolute;
+  pointer-events:none;
+  overflow:hidden;
+  background:#fff;
+  border-radius:50%;
+  z-index:2;
+  aspect-ratio:1;
+}
+.barti-wan-sticker .barti-wan-video,
+.barti-wan-quiz-sticker .barti-wan-video{object-fit:contain}
+.library-headline{position:relative}
+.barti-wan-sticker-library{right:12px;top:11px;width:clamp(62px,7vw,105px);height:auto}
+#wordsScreen .words-banner{position:relative}
+.barti-wan-sticker-words{right:8px;top:50%;width:72px;transform:translateY(-50%)}
+#achievementsScreen .v2-profile-wrap,
+#moreScreen .v2-profile-wrap{position:relative}
+.barti-wan-sticker-achievements,
+.barti-wan-sticker-more{right:12px;top:6px;width:clamp(64px,7vw,100px)}
+.quiz-modal{position:relative}
+.barti-wan-quiz-sticker{right:12px;top:74px;width:68px;box-shadow:0 4px 18px #8a447027}
+.barti-wan-sticker .barti-wan-video,
+.barti-wan-quiz-sticker .barti-wan-video{border-radius:50%}
+@media (max-width:700px){
+  .barti-wan-sticker-library{width:64px;top:12px;right:8px}
+  .barti-wan-sticker-words{width:53px;right:6px}
+  .barti-wan-sticker-achievements,.barti-wan-sticker-more{width:64px;right:6px;top:4px}
+  .barti-wan-quiz-sticker{width:52px;top:78px;right:7px}
+}
+@media (prefers-reduced-motion: reduce){
+  .barti-wan-video{display:none!important}
+}
+
+/* White studio background is visually blended into the pastel scene, without
+   destructive chroma key or an artificial hair outline. This does NOT create
+   alpha media; the original MP4 is kept unmodified. */
+#homeBarti .barti-wan-video,
+.mascot-stage .barti-wan-video,
+.head-barti-mobile .barti-wan-video{
+  mix-blend-mode:multiply;
+}
+
+/* Blend entire white-background mascot layer against the actual app scene.
+   The video itself stays untouched; blend is visual only. */
+#homeBarti:has(.wan-enabled),
+.barti-mini-puppet:has(.wan-enabled){
+  mix-blend-mode:multiply;
+  filter:none!important;
+  isolation:auto!important;
+}
+
+/* Rounded feathered WHITE studio field: no chroma key, no black multiply
+   of furry pixels, and no transparency through story illustrations. */
+#homeBarti:has(.wan-enabled),
+.barti-mini-puppet:has(.wan-enabled){
+  mix-blend-mode:normal!important;
+}
+#homeBarti .barti-wan-video,
+.mascot-stage .barti-wan-video,
+.head-barti-mobile .barti-wan-video{
+  mix-blend-mode:normal!important;
+  -webkit-mask-image:radial-gradient(ellipse 58% 65% at 50% 52%,#000 58%,transparent 89%);
+  mask-image:radial-gradient(ellipse 58% 65% at 50% 52%,#000 58%,transparent 89%);
+}

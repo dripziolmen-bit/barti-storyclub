@@ -131,6 +131,7 @@ function navigate(page='home',storyId=null,replace=false){
  const hash='#'+suffix;
  if(location.hash!==hash){(replace?history.replaceState:history.pushState).call(history,{page},'',hash);}
  if(page==='reader')xp('readerReturn')?.focus({preventScroll:true});
+ window.BartiWan?.onPage?.(page,previous);
 }
 function renderWords(){
  const saved=window.BartiBridge?.getVocab?.()||{};
@@ -232,6 +233,7 @@ function updateMotion(mode,initial=false){
 function onMode(mode){
  v2PoseMode=mode;
  updateMotion(mode);
+ window.BartiWan?.onMode?.(mode);
  xp('homeBarti').dataset.mode=mode;
  if(xp('libraryBarti'))xp('libraryBarti').dataset.mode=mode;
  document.querySelectorAll('.barti-mini-puppet').forEach(p=>p.dataset.mode=mode);
@@ -262,7 +264,7 @@ function bindExperience(){
  }));
  document.querySelectorAll('[data-back]').forEach(button=>button.addEventListener('click',()=>navigate('home',null,true)));
  xp('heroContinue').addEventListener('click',()=>{activateReader(localStorage.getItem('barti.lastStory')||'repka');window.BartiBridge?.resumeLast?.()});
- xp('homeBarti').parentElement.addEventListener('click',()=>{onMode('excited');setTimeout(()=>onMode('idle'),1800);});
+ xp('homeBarti').parentElement.addEventListener('click',()=>{window.BartiWan?.react?.('wave','home');onMode('excited');setTimeout(()=>onMode('idle'),1800);});
  xp('storySearch').addEventListener('input',event=>{xpState.query=event.target.value;renderCards();});
  xp('librarySearchToggle').addEventListener('click',()=>{
   const panel=xp('librarySearchPanel'),opening=panel.hidden;
@@ -324,7 +326,7 @@ function initExperience(){
  if(started||!window.BartiBridge?.ready)return;
  started=true;
  xpState.stories=window.BartiBridge.getStories();xpState.ready=true;
- renderCards();renderWords();insertPuppet();bindExperience();startV2PoseAnimation();applyReaderArt();
+ renderCards();renderWords();insertPuppet();bindExperience();startV2PoseAnimation();window.BartiWan?.init?.();applyReaderArt();
  restoreHash();
  window.BartiExperience={onMode,onVocab:()=>{renderWords();renderHomeStats();},onStory:()=>{renderCards();applyReaderArt();renderHomeStats();},onFinished:()=>{renderHomeStats();renderAchievements();}};
  onMode('idle');

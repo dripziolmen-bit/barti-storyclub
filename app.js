@@ -100,7 +100,7 @@ function bind() {
   el.narration.addEventListener('timeupdate',refresh);
   el.narration.addEventListener('play',()=>{s.playing=true;setMode('talking');});
   el.narration.addEventListener('pause',()=>{if(s.playing){s.playing=false;setMode('paused');}});
-  el.narration.addEventListener('ended',()=>{if(s.paragraph+1<s.story.paragraphs.length){loadParagraph(s.paragraph+1,true,0);}else{finishStory();}});
+  el.narration.addEventListener('ended',()=>{if(s.paragraph+1<s.story.paragraphs.length){loadParagraph(s.paragraph+1,true,0);window.BartiWan?.react?.('pageFlip','reader');}else{finishStory();}});
   el.narration.addEventListener('error',()=>{if(el.narration.error){setMode('idle');notify('Błąd wczytywania nagrania.');}});
   el.musicBtn.addEventListener('click',toggleMusic);
   el.saveWord.addEventListener('click',toggleSavedWord);
@@ -159,8 +159,10 @@ function togglePlayback(){
 }
 function jump(delta){
   if(!s.story)return;const wasPlaying=s.playing;
+  const oldParagraph=s.paragraph;
   const target=Math.max(0,Math.min(s.paragraph+delta,s.story.paragraphs.length-1));
   loadParagraph(target,wasPlaying,0);
+  if(target!==oldParagraph)window.BartiWan?.react?.('pageFlip','reader');
 }
 function seekStory(sec){
   if(!s.story)return;
@@ -228,6 +230,7 @@ function chooseWord(original,normalized,button){
   el.wordLabel.textContent=translation?'ROSYJSKI · SŁOWNIK OFFLINE':'ROSYJSKI · BRAK W SŁOWNIKU';
   const prev=el.reader.querySelector('.word.selected');prev?.classList.remove('selected');button.classList.add('selected');
   updateSaveButton();
+  window.BartiWan?.react?.(translation?'explain':'thinking','reader');
   $('dictionaryCard').classList.add('word-picked');
 }
 function clearDict(){s.activeWord=null;el.wordPlaceholder.hidden=false;el.wordDetails.hidden=true;$('dictionaryCard').classList.remove('word-picked');el.reader.querySelector('.word.selected')?.classList.remove('selected');}
@@ -235,8 +238,10 @@ function updateSaveButton(){if(!s.activeWord)return;el.saveWord.textContent=(s.v
 function toggleSavedWord(){
   if(!s.activeWord)return;
   const {word,translation}=s.activeWord;
-  if(s.vocab[word])delete s.vocab[word];else s.vocab[word]=translation;
+  const wasSaved=!!s.vocab[word];
+  if(wasSaved)delete s.vocab[word];else s.vocab[word]=translation;
   saveVocab();updateSaveButton();notify(s.vocab[word]?'Dodano do Twoich słówek':'Usunięto ze słówek');
+  if(!wasSaved)window.BartiWan?.react?.('wordSaved','reader');
 }
 function openVocab(){
   closeLibrary(); el.vocabModal.hidden=false;el.vocabContent.replaceChildren();const pairs=Object.entries(s.vocab);
@@ -256,8 +261,9 @@ function openQuiz(){
     return {word,correct,answers:[correct,...wrong].sort(()=>Math.random()-.5)};
   });
   s.quizIndex=0;s.quizScore=0;el.quizModal.hidden=false;showQuiz();
+  window.BartiWan?.quizOpen?.();
 }
-function closeQuiz(){el.quizModal.hidden=true;}
+function closeQuiz(){el.quizModal.hidden=true;window.BartiWan?.quizClose?.();}
 // Reader-first interaction design: all preferences are stored only in this browser.
 const readSetting=(key,fallback)=>{try{return localStorage.getItem('barti.'+key)??fallback}catch{return fallback}};
 const persistSetting=(key,value)=>{try{localStorage.setItem('barti.'+key,String(value))}catch{}};
@@ -334,6 +340,7 @@ function showQuiz(){
     const btn=document.createElement('button');btn.type='button';btn.className='quiz-choice';btn.textContent=answer;
     btn.addEventListener('click',()=>{
       const good=answer===question.correct;if(good)s.quizScore++;
+      window.BartiWan?.react?.(good?'quizCorrect':'quizIncorrect');
       for(const choice of el.quizAnswers.children){choice.disabled=true;choice.classList.toggle('correct',choice.textContent===question.correct);if(choice===btn&&!good)choice.classList.add('wrong');}
       el.quizFeedback.textContent=good?'Świetnie! Zgadza się.':'Poprawna odpowiedź: '+question.correct;
       el.quizNext.hidden=false;
