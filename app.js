@@ -17,11 +17,14 @@ const s = {
   stories: [], durations: {}, wordTiming: {}, lexicon: {}, story: null, paragraph: 0, playing: false, currentWord: null,
   activeWord: null, wordButtons: [], weights: [], token: 0, music: false, vocab: readVocab(), raf: 0, quiz: [], quizIndex: 0, quizScore: 0,
   voice:'adult', voiceDurations:{}, scenes:{}, currentSceneKey:null,
+  chirpReady:false, chirpDurations:{}, chirpVoiceConfig:{},
 };
-const storyPath = (story, i) => s.voice==='adult' ? `./assets/audio/${story.id}-${i}.mp3` : `./assets/voices/${s.voice}/${story.id}-${i}.mp3`;
+const piperStoryPath = (story, i) => s.voice==='adult' ? `./assets/audio/${story.id}-${i}.mp3` : `./assets/voices/${s.voice}/${story.id}-${i}.mp3`;
+const storyPath = (story, i) => s.chirpReady ? `./assets/voices/chirp3/${s.voice}/${story.id}-${i}.mp3` : piperStoryPath(story,i);
 const fmt = sec => `${Math.floor(Math.max(0, sec)/60)}:${String(Math.floor(Math.max(0,sec)%60)).padStart(2,'0')}`;
 const clean = v => v.toLocaleLowerCase('ru-RU').replace(/[^а-яё-]/gi, '');
-const durations = () => s.voiceDurations[s.voice]?.[s.story?.id] || s.durations[s.story?.id] || [];
+const durations = () => (s.chirpReady ? s.chirpDurations[s.voice]?.[s.story?.id] : null)
+  || s.voiceDurations[s.voice]?.[s.story?.id] || s.durations[s.story?.id] || [];
 const total = () => durations().reduce((a,b) => a+b,0);
 const playedBefore = index => durations().slice(0,index).reduce((a,b) => a+b,0);
 const storyElapsed = () => playedBefore(s.paragraph) + (Number.isFinite(el.narration.currentTime) ? el.narration.currentTime : 0);
@@ -37,6 +40,21 @@ async function boot() {
       const r=await fetch(path,{cache:'no-cache'}); if(!r.ok) throw new Error(`HTTP ${r.status}: ${path}`); return await r.json();
     };
     [s.stories,s.durations,s.lexicon,s.wordTiming,s.scenes,s.voiceDurations]=await Promise.all([fetchJSON('./data/stories.json'),fetchJSON('./data/audio.json'),fetchJSON('./data/lexicon.json'),fetchJSON('./data/word-timing.json'),fetchJSON('./data/sentence-scenes.json'),fetchJSON('./data/voice-durations.json')]);
+    // Optional Google voice library. Deployed only once all 327 MP3s are verified.
+    // Failure or ready:false means continuing with the existing offline Piper.
+    try {
+      const chirp=await fetchJSON('./data/chirp-voices.json');
+      const ids=['adult','female','child'];
+      const valid=chirp.ready===true && chirp.provider==='Google Cloud Text-to-Speech Chirp 3 HD'
+        && ids.every(role=>s.stories.every(story=>Array.isArray(chirp.durations?.[role]?.[story.id])
+          && chirp.durations[role][story.id].length===story.paragraphs.length
+          && chirp.durations[role][story.id].every(x=>Number.isFinite(x)&&x>0)));
+      if(valid){
+        s.chirpReady=true;s.chirpDurations=chirp.durations;s.chirpVoiceConfig=chirp.voices;
+        const labels={adult:'Dorosły',female:'Kobieta',child:'Łagodny'};
+        for(const opt of el.voiceSelect.options)if(labels[opt.value])opt.textContent=labels[opt.value];
+      }
+    }catch(error){console.warn('Chirp not ready, using existing offline voices:',error.message);}
     try {const stored=localStorage.getItem('barti.voice');s.voice=['adult','female','child'].includes(stored)?stored:'adult';}catch{}
     el.voiceSelect.value=s.voice;
     populateStories();
@@ -135,7 +153,18 @@ function bind() {
   el.narration.addEventListener('play',()=>{s.playing=true;setMode('talking');});
   el.narration.addEventListener('pause',()=>{if(s.playing){s.playing=false;setMode('paused');}});
   el.narration.addEventListener('ended',()=>{if(s.paragraph+1<s.story.paragraphs.length){loadParagraph(s.paragraph+1,true,0);window.BartiWan?.react?.('pageFlip','reader');}else{finishStory();}});
-  el.narration.addEventListener('error',()=>{if(el.narration.error){setMode('idle');notify('Błąd wczytywania nagrania.');}});
+  el.narration.addEventListener('error',()=>{
+    if(!el.narration.error)return;
+    if(s.chirpReady){
+      // If a published Cloud MP3 fails, switch to the full offline Piper set.
+      // Never get stuck in a 404 loop or lose the story.
+      s.chirpReady=false;s.chirpDurations={};
+      loadParagraph(s.paragraph,false,0);
+      notify('Lektor Google niedostępny. Włączono głos offline.');
+      return;
+    }
+    setMode('idle');notify('Błąd wczytywania nagrania.');
+  });
   el.musicBtn.addEventListener('click',toggleMusic);
   el.saveWord.addEventListener('click',toggleSavedWord);
   el.closeDict.addEventListener('click',clearDict);

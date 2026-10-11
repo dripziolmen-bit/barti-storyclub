@@ -1,0 +1,1 @@
+{"schema":1,"ready":false,"provider":"Google Cloud Text-to-Speech Chirp 3 HD","profiles":{"adult":"ru-RU-Chirp3-HD-Charon","female":"ru-RU-Chirp3-HD-Kore","child":"ru-RU-Chirp3-HD-Leda"},"note":"No Google credentials on VPS yet. This does not activate Google audio. Piper remains active."}

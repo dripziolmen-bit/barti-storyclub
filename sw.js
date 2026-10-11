@@ -1,12 +1,12 @@
 /* Barti Story Club offline v23 — fast reliable installation + explicit full-library download. */
-const CACHE='barti-storyclub-v31';
+const CACHE='barti-storyclub-v32';
 const STORY_COUNTS={"repka":7,"ryaba":5,"kolobok":7,"teremok":6,"masha":6,"lisa-zhuravl":6,"zaika-lisa-petuh":6,"volk-kozl":6,"gusi-lebedi":6,"snegurochka":6,"morozko":6,"shchuka":6,"carevna":6,"ivan-volk":6,"havroshechka":6,"lisa-rak":6,"tri-medvedya":6,"kot-petuh-lisa":6};
 const SCENE_COUNTS={"repka":19,"ryaba":11,"kolobok":13,"teremok":17,"masha":13,"lisa-zhuravl":12,"zaika-lisa-petuh":13,"volk-kozl":12,"gusi-lebedi":11,"snegurochka":11,"morozko":11,"shchuka":10,"carevna":12,"ivan-volk":11,"havroshechka":11,"lisa-rak":12,"tri-medvedya":12,"kot-petuh-lisa":12};
 const SCENE_FILES=Object.entries(SCENE_COUNTS).flatMap(([id,n])=>Array.from({length:n},(_,i)=>'./assets/visuals/scenes/'+id+'/'+String(i).padStart(3,'0')+'.webp'));
 const VOICE_FILES=['female','child'].flatMap(voice=>Object.entries(STORY_COUNTS).flatMap(([id,n])=>Array.from({length:n},(_,i)=>'./assets/voices/'+voice+'/'+id+'-'+i+'.mp3')));
 const STORY_COVERS=Object.keys(STORY_COUNTS).map(id=>'./assets/visuals/covers/'+id+'.webp');
 const AUDIO=Object.entries(STORY_COUNTS).flatMap(([id,n])=>Array.from({length:n},(_,i)=>'./assets/audio/'+id+'-'+i+'.mp3')).concat('./assets/audio/ambient.mp3');
-const ESSENTIAL=['./','./index.html','./app.js','./experience.js','./barti-wan-player.js?v=27','./barti-wan.css?v=27','./library-clean-v28.css?v=28','./ui-audit-v29.css?v=29','./mascot-clean-v30.css?v=30','./story-scenes-v31.css?v=31','./data/sentence-scenes.json','./data/voice-durations.json','./data/stories.json','./data/audio.json','./data/lexicon.json'];
+const ESSENTIAL=['./','./index.html','./app.js','./experience.js','./barti-wan-player.js?v=27','./barti-wan.css?v=27','./library-clean-v28.css?v=28','./ui-audit-v29.css?v=29','./mascot-clean-v30.css?v=30','./story-scenes-v31.css?v=31','./data/sentence-scenes.json','./data/voice-durations.json','./data/chirp-voices.json','./data/stories.json','./data/audio.json','./data/lexicon.json'];
 const SHELL=['./styles.css','./experience.css','./fairytale.css','./v2.css?v=30','./menu-v20.css?v=24','./menu-v22.css?v=30','./library-v24.css?v=24','./studio-v25.css?v=25','./mobile-v26.css?v=26','./assets/illustrations/home-library.webp','./assets/illustrations/home-words.webp','./assets/illustrations/home-achievements.webp','./assets/illustrations/home-settings.webp','./assets/art/barti-cutout.png','./assets/visuals/covers/kolobok.webp','./assets/visuals/covers/ryaba.webp','./data/word-timing.json','./manifest.webmanifest','./assets/character/idle.webp','./assets/character/video/posters/01_home_idle.jpg','./assets/character/video/posters/17_reuse_reader_idle.jpg','./assets/visuals/covers/repka.webp','./assets/audio/repka-0.mp3','./assets/audio/teremok-0.mp3','./assets/ui/library.svg','./assets/ui/words.svg','./assets/ui/achievements.svg','./assets/ui/more.svg'];
 const ANIMATION=['./assets/character/motion/rest.webp','./assets/character/motion/reading.webp','./assets/character/motion/explain.webp','./assets/character/motion/wave.webp','./assets/character/motion/celebrate.webp'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{
@@ -23,6 +23,15 @@ self.addEventListener('activate',event=>event.waitUntil((async()=>{
 self.addEventListener('fetch',event=>{
  const request=event.request,url=new URL(request.url);
  if(request.method!=='GET'||url.origin!==self.location.origin)return;
+ // Google voice rollout status is network-first so that activation is never
+ // trapped behind an older service-worker cache with ready:false.
+ if(url.pathname.endsWith('/data/chirp-voices.json')){
+  event.respondWith(fetch(request).then(response=>{
+   if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE).then(c=>c.put(request,copy)).catch(()=>{}));}
+   return response;
+  }).catch(()=>caches.match(request)));
+  return;
+ }
  if(request.mode==='navigate'){
   event.respondWith(fetch(request).then(response=>{
    if(response.ok){
