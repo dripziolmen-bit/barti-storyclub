@@ -55,12 +55,6 @@ body:not([data-page=reader]) .experience-topbar{
   z-index:3;
   animation:bartiHeroFloat 5.2s ease-in-out infinite;
 }
-.menu-welcome-character .puppet-film:after{
- content:"";position:absolute;inset:0;z-index:7;
- background-image:url('./assets/character/reader-book.svg');
- background-position:center;background-size:contain;background-repeat:no-repeat;
- pointer-events:none;
-}
 .menu-destinations h2{font-weight:840;}
 .menu-destination{
   isolation:isolate;

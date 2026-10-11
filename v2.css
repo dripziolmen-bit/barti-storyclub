@@ -484,26 +484,6 @@ body[data-page="achievements"],body[data-page="more"]{height:auto!important;min-
   body[data-page="reader"] #reader{flex:1;min-height:0;overflow:auto}
   body[data-page="reader"] .head-barti-mobile {width:61px;height:66px;flex:0 0 61px}
 }
-/* Reader Barti holds an illustrated hardback, not a mobile phone.
-   The book is drawn OVER every frame of the character's animation. */
-body[data-page="reader"] .mascot-stage .barti-mini-puppet .puppet-film::after,
-body[data-page="reader"] .head-barti-mobile .barti-mini-puppet .puppet-film::after {
-  content:"";
-  display:block;
-  position:absolute;inset:0;z-index:5;
-  pointer-events:none;
-  background-image:url('./assets/character/reader-book.svg');
-  background-repeat:no-repeat;
-  background-size:contain;
-  background-position:center;
-  animation:readerBookBreath 4s ease-in-out infinite;
-}
-@keyframes readerBookBreath {0%,100%{transform:translateY(0)}50%{transform:translateY(-1.2px)}}
-@media(prefers-reduced-motion:reduce){
- body[data-page="reader"] .mascot-stage .barti-mini-puppet .puppet-film::after,
- body[data-page="reader"] .head-barti-mobile .barti-mini-puppet .puppet-film::after{animation:none}
-}
-
 /* Final reader character framing: the entire seated Barti and open book remain visible. */
 @media(min-width:1041px) {
  body[data-page="reader"] .mascot-stage {

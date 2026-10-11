@@ -1,0 +1,74 @@
+/* v30: NO generated SVG book overlay.
+   Reader Barti uses a real Wan MP4 with book; if playback fails, its own
+   still frame is the fallback. No separate illustration is pasted over fur. */
+
+/* Remove the conspicuous pink rectangle from the sidebar. */
+body[data-page="reader"] .mascot-stage,
+body[data-page="reader"][data-theme="dark"] .mascot-stage {
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+body[data-page="reader"] .mascot-card {
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+body[data-page="reader"] .mascot-stage .barti-mini-puppet {
+  filter:none!important;
+}
+
+/* Still from Wan reading clip, not a temporary phone sprite and not an SVG. */
+body[data-page="reader"] .mascot-stage .barti-mini-puppet .puppet-film:not(.wan-enabled),
+body[data-page="reader"] .head-barti-mobile .barti-mini-puppet .puppet-film:not(.wan-enabled) {
+  background-image:url('./assets/character/video/posters/17_reuse_reader_idle.jpg')!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-size:contain!important;
+  animation:none!important;
+}
+
+/* The outdated GIF/WebP pose layers otherwise paint another book/phone
+   under the fallback or briefly reappear between video-state changes. */
+body[data-page="reader"] .mascot-stage .barti-mini-puppet .motion-layer,
+body[data-page="reader"] .head-barti-mobile .barti-mini-puppet .motion-layer {
+  display:none!important;
+}
+
+/* The reader video contains its own real book. No more CSS drawn overlays. */
+body[data-page="reader"] .mascot-stage .puppet-film.wan-enabled,
+body[data-page="reader"] .head-barti-mobile .puppet-film.wan-enabled{
+  background:none!important;
+  animation:none!important;
+}
+body[data-page="reader"] .mascot-stage .puppet-film::after,
+body[data-page="reader"] .head-barti-mobile .puppet-film::after,
+.menu-welcome-character .puppet-film::after{
+  content:none!important;
+  display:none!important;
+  background-image:none!important;
+}
+
+/* Mask only the bright OUTER rim of Wan's own white studio footage.
+   The central face, paws, and real book remain completely intact. */
+body[data-page="reader"] .mascot-stage .barti-wan-video{
+  background:transparent!important;
+  object-fit:contain!important;
+  -webkit-mask-image:radial-gradient(ellipse 67% 67% at center,#000 61%,transparent 95%)!important;
+  mask-image:radial-gradient(ellipse 67% 67% at center,#000 61%,transparent 95%)!important;
+  mix-blend-mode:multiply!important;
+}
+body[data-page="reader"][data-theme="dark"] .mascot-stage .barti-wan-video{
+  mix-blend-mode:normal!important;
+}
+/* For no-video and reduced-motion fallback, soften the edge of the static
+   actual Wan frame instead of replacing the physical book with an SVG. */
+body[data-page="reader"] .mascot-stage .puppet-film:not(.wan-enabled){
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at center,#000 60%,transparent 96%);
+  mask-image:radial-gradient(ellipse 70% 70% at center,#000 60%,transparent 96%);
+}
+body[data-page="reader"] .head-barti-mobile>img{
+  object-fit:contain!important;
+  object-position:center!important;
+}
