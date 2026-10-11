@@ -106,6 +106,7 @@ function showSceneForWord(wordIndex){
   const key=s.story.id+':'+first.globalIndex;
   if(key===s.currentSceneKey)return;
   s.currentSceneKey=key;
+  document.dispatchEvent(new CustomEvent('barti:scene-change',{detail:{id:s.story.id,file:first.file,sentence:first.sentence}}));
   for(const [card,img] of [[el.sceneDesktop,el.sceneImgDesktop],[el.sceneMobile,el.sceneImgMobile]]){
     card.hidden=false;
     img.alt='Ilustracja: '+first.sentence;
