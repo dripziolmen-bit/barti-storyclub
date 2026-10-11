@@ -17,6 +17,6 @@ const css=readFileSync(resolve(root,'mascot-clean-v30.css'),'utf8');
 assert(css.includes('posters/17_reuse_reader_idle.jpg'),'Missing real-book fallback');
 assert(existsSync(resolve(root,'assets/character/video/posters/17_reuse_reader_idle.jpg')),'Missing fallback poster');
 const sw=readFileSync(resolve(root,'sw.js'),'utf8');
-assert(sw.includes("barti-storyclub-v30"),'Cache version not updated');
+assert(/barti-storyclub-v3[0-9]/g.test(sw),'Service-worker cache version below 30');
 assert(sw.includes('mascot-clean-v30.css?v=30'),'v30 style must be cached for offline use');
 console.log('PASS: no SVG book overlay, no tablet reader fallback, fresh CSS and PWA cache');

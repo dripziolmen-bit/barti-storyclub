@@ -1,0 +1,105 @@
+/* Sentence art is square at source, never force a portrait crop.
+   Desktop below Barti; mobile immediately after the Barti-in-header title. */
+.sentence-scene-card{
+  margin:0;
+  display:block;
+  background:transparent;
+  border:1px solid #eadde5;
+  border-radius:16px;
+  overflow:hidden;
+  flex:0 0 auto;
+}
+.sentence-scene-card[hidden]{display:none!important}
+.sentence-scene-card img{
+  display:block;
+  width:100%;
+  height:100%;
+  aspect-ratio:1/1;
+  object-fit:contain;
+  object-position:center;
+  background:#fcf4f9;
+}
+.sentence-scene-desktop{
+  width:100%;
+  max-width:230px;
+  max-height:230px;
+  aspect-ratio:1;
+  align-self:center;
+}
+.sentence-scene-mobile{display:none!important}
+body[data-page="reader"] .mascot-area{
+  padding-bottom:110px;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+body[data-page="reader"] .mascot-card{
+  flex:0 0 auto;
+}
+body[data-page="reader"] .dictionary-card{
+  flex:0 0 auto;
+}
+body[data-page="reader"].focus-mode .sentence-scene-card{display:none!important}
+body[data-page="reader"] .player-right{
+  display:flex!important;
+  align-items:center!important;
+  flex-wrap:nowrap!important;
+  gap:8px!important;
+}
+.voice-pick{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--sub)}
+.voice-pick>span{font-size:11px}
+.voice-pick select{
+  min-height:37px;
+  max-width:110px;
+  border:1px solid #755368;
+  color:#fef6fa;
+  background:#4b2a3f;
+  border-radius:9px;
+  padding:5px 6px;
+  font-size:12px;
+}
+body[data-page="reader"][data-theme="dark"] .voice-pick select{
+  color:#fff;
+  border-color:#80586f;
+  background:#3a2637;
+}
+@media(max-width:900px){
+  .voice-pick{gap:4px}
+  .voice-pick>span{display:none}
+  .voice-pick select{max-width:95px}
+}
+@media(max-width:700px){
+  .sentence-scene-desktop{display:none!important}
+  .sentence-scene-mobile:not([hidden]){
+    display:block!important;
+    width:min(150px,41vw);
+    height:auto;
+    aspect-ratio:1;
+    margin:0 12px 12px auto;
+  }
+  body[data-page="reader"] .player-right{
+    gap:4px!important;
+    max-width:none!important;
+  }
+  body[data-page="reader"] .voice-pick select{
+    max-width:89px;
+    font-size:10px;
+    padding:4px 2px;
+    min-height:32px;
+  }
+  body[data-page="reader"] .speed-label{
+    display:none!important;
+  }
+  body[data-page="reader"] .player-right #speed{
+    min-width:51px!important;
+    max-width:58px!important;
+    padding:5px 1px!important;
+    font-size:10px!important;
+  }
+  body[data-page="reader"] .player-right .music-button{min-width:33px!important}
+  body[data-page="reader"] .player-right .music-button span{display:none!important}
+}
+@media(max-width:350px){
+  .sentence-scene-mobile:not([hidden]){width:117px}
+  body[data-page="reader"] .player-right #speed{max-width:48px!important}
+  body[data-page="reader"] .voice-pick select{max-width:75px}
+}

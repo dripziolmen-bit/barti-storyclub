@@ -1,0 +1,2055 @@
+{
+  "schema": 1,
+  "model": "fal-ai/flux/schnell",
+  "size": [
+    512,
+    512
+  ],
+  "priceEstimatePerImageUSD": 0.003,
+  "stories": {
+    "repka": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Посадил дед репку.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/repka/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Выросла репка большая-пребольшая.",
+        "firstWord": 3,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/repka/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Пошёл дед репку тянуть.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/repka/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Тянет-потянет, вытянуть не может.",
+        "firstWord": 4,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/repka/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Позвал дед бабку.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/repka/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Бабка за дедку, дедка за репку.",
+        "firstWord": 3,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/repka/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 2,
+        "sentenceIndex": 2,
+        "sentence": "Тянут-потянут, вытянуть не могут.",
+        "firstWord": 9,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/repka/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Позвала бабка внучку.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/repka/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Внучка за бабку, бабка за дедку, дедка за репку.",
+        "firstWord": 3,
+        "lastWordExclusive": 12,
+        "file": "./assets/visuals/scenes/repka/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 3,
+        "sentenceIndex": 2,
+        "sentence": "Тянут-потянут, вытянуть не могут.",
+        "firstWord": 12,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/repka/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Позвала внучка Жучку.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/repka/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Жучка за внучку, внучка за бабку, бабка за дедку, дедка за репку.",
+        "firstWord": 3,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/repka/011.webp"
+      },
+      {
+        "globalIndex": 12,
+        "paragraph": 4,
+        "sentenceIndex": 2,
+        "sentence": "Тянут-потянут, вытянуть не могут.",
+        "firstWord": 15,
+        "lastWordExclusive": 19,
+        "file": "./assets/visuals/scenes/repka/012.webp"
+      },
+      {
+        "globalIndex": 13,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Позвала Жучка кошку.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/repka/013.webp"
+      },
+      {
+        "globalIndex": 14,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Кошка за Жучку, Жучка за внучку, внучка за бабку, бабка за дедку, дедка за репку.",
+        "firstWord": 3,
+        "lastWordExclusive": 18,
+        "file": "./assets/visuals/scenes/repka/014.webp"
+      },
+      {
+        "globalIndex": 15,
+        "paragraph": 5,
+        "sentenceIndex": 2,
+        "sentence": "Тянут-потянут, вытянуть не могут.",
+        "firstWord": 18,
+        "lastWordExclusive": 22,
+        "file": "./assets/visuals/scenes/repka/015.webp"
+      },
+      {
+        "globalIndex": 16,
+        "paragraph": 6,
+        "sentenceIndex": 0,
+        "sentence": "Позвала кошка мышку.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/repka/016.webp"
+      },
+      {
+        "globalIndex": 17,
+        "paragraph": 6,
+        "sentenceIndex": 1,
+        "sentence": "Мышка за кошку, кошка за Жучку, Жучка за внучку, внучка за бабку, бабка за дедку, дедка за репку.",
+        "firstWord": 3,
+        "lastWordExclusive": 21,
+        "file": "./assets/visuals/scenes/repka/017.webp"
+      },
+      {
+        "globalIndex": 18,
+        "paragraph": 6,
+        "sentenceIndex": 2,
+        "sentence": "Тянут-потянут — вытянули репку!",
+        "firstWord": 21,
+        "lastWordExclusive": 24,
+        "file": "./assets/visuals/scenes/repka/018.webp"
+      }
+    ],
+    "ryaba": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Жили-были дед да баба.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/ryaba/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Была у них курочка Ряба.",
+        "firstWord": 4,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/ryaba/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Снесла курочка яичко.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/ryaba/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Не простое, а золотое.",
+        "firstWord": 3,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/ryaba/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Дед бил, бил — не разбил.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/ryaba/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Баба била, била — не разбила.",
+        "firstWord": 5,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/ryaba/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Мышка бежала, хвостиком махнула.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/ryaba/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Яичко упало и разбилось.",
+        "firstWord": 4,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/ryaba/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Дед плачет, баба плачет.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/ryaba/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "А курочка говорит: «Не плачьте!",
+        "firstWord": 4,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/ryaba/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 4,
+        "sentenceIndex": 2,
+        "sentence": "Я снесу вам новое яичко, не золотое, а простое».",
+        "firstWord": 9,
+        "lastWordExclusive": 18,
+        "file": "./assets/visuals/scenes/ryaba/010.webp"
+      }
+    ],
+    "kolobok": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Жили-были дед да баба.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/kolobok/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Попросил дед: «Испеки мне колобок!»",
+        "firstWord": 4,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/kolobok/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Баба испекла круглый колобок и положила его на окно остывать.",
+        "firstWord": 0,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/kolobok/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Колобок лежал, лежал, потом прыгнул с окна и покатился по дорожке.",
+        "firstWord": 0,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/kolobok/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Навстречу ему заяц: «Колобок, колобок, я тебя съем!»",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/kolobok/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "А колобок отвечает: «Не ешь меня, заяц!",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/kolobok/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Лучше послушай мою песенку».",
+        "firstWord": 7,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/kolobok/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 4,
+        "sentenceIndex": 2,
+        "sentence": "И покатился дальше.",
+        "firstWord": 11,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/kolobok/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Встретил колобок волка.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/kolobok/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Волк сказал: «Я тебя съем!» Но колобок спел песенку и убежал.",
+        "firstWord": 3,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/kolobok/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 6,
+        "sentenceIndex": 0,
+        "sentence": "Потом встретил колобок лису.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/kolobok/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 6,
+        "sentenceIndex": 1,
+        "sentence": "Лиса улыбнулась: «Какая красивая песенка!",
+        "firstWord": 4,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/kolobok/011.webp"
+      },
+      {
+        "globalIndex": 12,
+        "paragraph": 6,
+        "sentenceIndex": 2,
+        "sentence": "Спой ещё раз».",
+        "firstWord": 9,
+        "lastWordExclusive": 12,
+        "file": "./assets/visuals/scenes/kolobok/012.webp"
+      }
+    ],
+    "teremok": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Стоял в лесу маленький домик.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/teremok/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Никто в нём не жил, и было вокруг очень тихо.",
+        "firstWord": 5,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/teremok/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Прибежала мышка.",
+        "firstWord": 0,
+        "lastWordExclusive": 2,
+        "file": "./assets/visuals/scenes/teremok/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Она увидела домик и спросила: «Кто здесь живёт?» Никто не ответил.",
+        "firstWord": 2,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/teremok/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 1,
+        "sentenceIndex": 2,
+        "sentence": "Мышка вошла и осталась.",
+        "firstWord": 13,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/teremok/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Потом пришла лягушка.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/teremok/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "«Можно мне жить с тобой?» — спросила она.",
+        "firstWord": 3,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/teremok/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 2,
+        "sentenceIndex": 2,
+        "sentence": "«Конечно!» — сказала мышка.",
+        "firstWord": 10,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/teremok/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 2,
+        "sentenceIndex": 3,
+        "sentence": "Они стали друзьями.",
+        "firstWord": 13,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/teremok/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Скоро пришли заяц, лиса и волк.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/teremok/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Каждый спрашивал разрешения, и друзья приглашали его внутрь.",
+        "firstWord": 6,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/teremok/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Вдруг появился большой медведь.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/teremok/011.webp"
+      },
+      {
+        "globalIndex": 12,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Домик был слишком маленький для него.",
+        "firstWord": 4,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/teremok/012.webp"
+      },
+      {
+        "globalIndex": 13,
+        "paragraph": 4,
+        "sentenceIndex": 2,
+        "sentence": "Медведь случайно сломал крышу.",
+        "firstWord": 10,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/teremok/013.webp"
+      },
+      {
+        "globalIndex": 14,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Никто не сердился.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/teremok/014.webp"
+      },
+      {
+        "globalIndex": 15,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Все вместе друзья построили новый просторный дом.",
+        "firstWord": 3,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/teremok/015.webp"
+      },
+      {
+        "globalIndex": 16,
+        "paragraph": 5,
+        "sentenceIndex": 2,
+        "sentence": "Теперь места хватило каждому.",
+        "firstWord": 10,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/teremok/016.webp"
+      }
+    ],
+    "masha": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Маша пошла в лес с подругами.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/masha/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Она собирала ягоды и не заметила, как осталась одна.",
+        "firstWord": 6,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/masha/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Девочка увидела деревянный дом.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/masha/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "В доме жил медведь.",
+        "firstWord": 4,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/masha/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 1,
+        "sentenceIndex": 2,
+        "sentence": "Он сказал: «Оставайся у меня и готовь обед».",
+        "firstWord": 8,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/masha/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Маша хотела вернуться к бабушке и дедушке.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/masha/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Она придумала хитрый план и испекла пирожки.",
+        "firstWord": 7,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/masha/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Она посадила корзину у двери и сказала: «Отнеси пирожки моим родным.",
+        "firstWord": 0,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/masha/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Только не открывай корзину по дороге».",
+        "firstWord": 11,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/masha/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Медведь взял тяжёлую корзину и пошёл в деревню.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/masha/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "А Маша тихо сидела внутри и смотрела в маленькую дырочку.",
+        "firstWord": 8,
+        "lastWordExclusive": 18,
+        "file": "./assets/visuals/scenes/masha/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Когда медведь дошёл до дома, Маша выпрыгнула из корзины.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/masha/011.webp"
+      },
+      {
+        "globalIndex": 12,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Бабушка и дедушка крепко обняли её.",
+        "firstWord": 9,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/masha/012.webp"
+      }
+    ],
+    "lisa-zhuravl": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Лиса пригласила журавля на обед.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Она приготовила вкусную кашу и положила её на широкую тарелку.",
+        "firstWord": 5,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Лиса быстро съела свою кашу.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "А журавль стучал длинным клювом по тарелке, но ничего не смог съесть.",
+        "firstWord": 5,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "На следующий день журавль пригласил лису к себе.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Он сварил суп и налил его в высокий узкий кувшин.",
+        "firstWord": 8,
+        "lastWordExclusive": 18,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Журавль легко достал суп своим длинным клювом.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "А лиса не могла достать ни одной капли.",
+        "firstWord": 7,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Лиса поняла, как чувствовал себя гость вчера.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Ей стало стыдно.",
+        "firstWord": 7,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "После этого друзья стали думать не только о себе.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Они научились готовить так, чтобы всем было удобно.",
+        "firstWord": 9,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/lisa-zhuravl/011.webp"
+      }
+    ],
+    "zaika-lisa-petuh": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Жили рядом заяц и лиса.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "У зайца был тёплый деревянный дом, а у лисы — холодный дом из снега.",
+        "firstWord": 5,
+        "lastWordExclusive": 18,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Весной снег растаял, и дом лисы исчез.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Лиса попросилась к зайцу, а потом выгнала его из дома.",
+        "firstWord": 7,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Заяц сидел под деревом и плакал.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Мимо шла собака.",
+        "firstWord": 6,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 2,
+        "sentenceIndex": 2,
+        "sentence": "Она обещала помочь, но испугалась сердитой лисы.",
+        "firstWord": 9,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Пришёл медведь.",
+        "firstWord": 0,
+        "lastWordExclusive": 2,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Он тоже попробовал вернуть дом, но лиса громко закричала, и медведь ушёл.",
+        "firstWord": 2,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Наконец пришёл маленький петух с красивым голосом.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Он смело постучал в дверь и запел громкую песню.",
+        "firstWord": 7,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Лиса испугалась и убежала в лес.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/011.webp"
+      },
+      {
+        "globalIndex": 12,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Заяц вернулся домой и пригласил храброго петуха на чай.",
+        "firstWord": 6,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/zaika-lisa-petuh/012.webp"
+      }
+    ],
+    "volk-kozl": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "У мамы-козы жили семь маленьких козлят.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/volk-kozl/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Однажды утром мама пошла за едой и закрыла дверь.",
+        "firstWord": 6,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/volk-kozl/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "«Никому не открывайте!» — сказала она.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/volk-kozl/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Козлята обещали слушаться маму.",
+        "firstWord": 5,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/volk-kozl/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Через некоторое время в дверь постучал волк.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/volk-kozl/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Он говорил грубым голосом, и козлята его сразу узнали.",
+        "firstWord": 7,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/volk-kozl/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Волк ушёл, а потом вернулся и заговорил тонким голосом.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/volk-kozl/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Но козлята увидели под дверью его серую лапу.",
+        "firstWord": 9,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/volk-kozl/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Они не открыли дверь и громко позвали соседей.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/volk-kozl/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Волк испугался шума и убежал.",
+        "firstWord": 8,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/volk-kozl/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Когда мама вернулась, все семь козлят были дома.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/volk-kozl/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Мама похвалила их за осторожность.",
+        "firstWord": 8,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/volk-kozl/011.webp"
+      }
+    ],
+    "gusi-lebedi": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Жили брат и сестра.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/gusi-lebedi/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Родители ушли на работу и попросили сестру присмотреть за маленьким братом.",
+        "firstWord": 4,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/gusi-lebedi/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Девочка заигралась у дома.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/gusi-lebedi/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Вдруг большие гуси-лебеди прилетели и унесли мальчика далеко в лес.",
+        "firstWord": 4,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/gusi-lebedi/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Сестра побежала искать брата.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/gusi-lebedi/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "По дороге она встретила яблоню и помогла собрать спелые яблоки.",
+        "firstWord": 4,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/gusi-lebedi/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Затем она помогла печке достать горячие пирожки и ручейку убрать ветки из воды.",
+        "firstWord": 0,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/gusi-lebedi/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Добрые друзья показали ей дорогу к маленькой избушке.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/gusi-lebedi/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Там девочка нашла брата и взяла его за руку.",
+        "firstWord": 8,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/gusi-lebedi/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Гуси полетели за детьми, но печка, яблоня и ручей спрятали их.",
+        "firstWord": 0,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/gusi-lebedi/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Брат с сестрой благополучно вернулись домой.",
+        "firstWord": 11,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/gusi-lebedi/010.webp"
+      }
+    ],
+    "snegurochka": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Однажды зимой дедушка и бабушка слепили из чистого снега маленькую девочку.",
+        "firstWord": 0,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/snegurochka/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Вдруг снежная девочка открыла глаза и улыбнулась.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/snegurochka/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Её назвали Снегурочкой, и в доме стало весело.",
+        "firstWord": 7,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/snegurochka/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Снегурочка любила снег, мороз и звёзды.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/snegurochka/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Она пела тихие песни и играла с ребятами.",
+        "firstWord": 6,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/snegurochka/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Но пришла весна.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/snegurochka/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Солнце светило ярче, а снег в лесу начал таять.",
+        "firstWord": 3,
+        "lastWordExclusive": 12,
+        "file": "./assets/visuals/scenes/snegurochka/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Однажды Снегурочка пошла с друзьями в лес и увидела первые цветы.",
+        "firstWord": 0,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/snegurochka/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Ей захотелось остаться в прохладе.",
+        "firstWord": 11,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/snegurochka/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Девочка превратилась в лёгкое белое облачко.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/snegurochka/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Каждую зиму она возвращалась к дедушке и бабушке новым снежным утром.",
+        "firstWord": 6,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/snegurochka/010.webp"
+      }
+    ],
+    "morozko": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Жила добрая девушка.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/morozko/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Она много работала, помогала дома и никогда не жаловалась.",
+        "firstWord": 3,
+        "lastWordExclusive": 12,
+        "file": "./assets/visuals/scenes/morozko/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Однажды она оказалась одна в зимнем лесу.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/morozko/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Было холодно, но девушка не потеряла надежду.",
+        "firstWord": 7,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/morozko/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "На ветке высокого дерева появился Морозко.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/morozko/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "«Тепло ли тебе, девица?» — спросил он.",
+        "firstWord": 6,
+        "lastWordExclusive": 12,
+        "file": "./assets/visuals/scenes/morozko/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "«Спасибо за заботу, дедушка», — вежливо ответила девушка, хотя сильно замёрзла.",
+        "firstWord": 0,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/morozko/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Морозко увидел её доброе сердце.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/morozko/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Он подарил ей тёплую шубу, варежки и мешочек с подарками.",
+        "firstWord": 5,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/morozko/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Девушка вернулась домой счастливой.",
+        "firstWord": 0,
+        "lastWordExclusive": 4,
+        "file": "./assets/visuals/scenes/morozko/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Она поделилась подарками с близкими и долго вспоминала встречу в лесу.",
+        "firstWord": 4,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/morozko/010.webp"
+      }
+    ],
+    "shchuka": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Жил в деревне молодой Емеля.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/shchuka/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Зимой он пошёл к реке за водой и поймал в проруби большую щуку.",
+        "firstWord": 5,
+        "lastWordExclusive": 18,
+        "file": "./assets/visuals/scenes/shchuka/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Рыба вдруг заговорила: «Отпусти меня в воду, и я исполню твоё доброе желание».",
+        "firstWord": 0,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/shchuka/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Емеля пожалел щуку и осторожно отпустил её.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/shchuka/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Он произнёс волшебные слова и попросил вёдра сами идти домой.",
+        "firstWord": 7,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/shchuka/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Вёдра пошли по дороге без помощи человека.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/shchuka/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Все жители деревни удивились.",
+        "firstWord": 7,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/shchuka/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Потом Емеля попросил, чтобы печка согрела дом, а дрова сами сложились возле стены.",
+        "firstWord": 0,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/shchuka/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Он понял, что волшебство полезнее всего, когда помогает другим.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/shchuka/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "С тех пор Емеля часто делал добрые дела.",
+        "firstWord": 9,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/shchuka/009.webp"
+      }
+    ],
+    "carevna": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "У царя было три сына.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/carevna/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Однажды он попросил каждого выпустить стрелу и найти свою будущую невесту.",
+        "firstWord": 5,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/carevna/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Стрела младшего сына Ивана упала в болото.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/carevna/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Там сидела зелёная лягушка и держала стрелу лапкой.",
+        "firstWord": 7,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/carevna/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Иван удивился, но сдержал слово и привёл лягушку домой.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/carevna/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Ночью она превратилась в прекрасную Василису.",
+        "firstWord": 9,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/carevna/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Василиса умела вышивать чудесные узоры и печь ароматный хлеб.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/carevna/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Все были поражены её мастерством.",
+        "firstWord": 9,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/carevna/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Но однажды Иван поспешил и нарушил волшебное правило.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/carevna/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Василисе пришлось уйти в далёкую страну.",
+        "firstWord": 8,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/carevna/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Иван отправился за ней через леса и горы.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/carevna/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Благодаря смелости и добрым друзьям он нашёл Василису, и они вернулись домой.",
+        "firstWord": 8,
+        "lastWordExclusive": 20,
+        "file": "./assets/visuals/scenes/carevna/011.webp"
+      }
+    ],
+    "ivan-volk": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "В царском саду росло дерево с золотыми яблоками.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/ivan-volk/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "По ночам кто-то крал его плоды.",
+        "firstWord": 8,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/ivan-volk/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Молодой Иван отправился искать загадочную птицу.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/ivan-volk/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Он ехал долго и однажды потерял своего коня.",
+        "firstWord": 6,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/ivan-volk/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "В лесу Иван встретил Серого Волка.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/ivan-volk/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Волк умел говорить и предложил помочь ему в путешествии.",
+        "firstWord": 6,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/ivan-volk/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Друзья прошли через тёмный лес и увидели золотую клетку с прекрасной Жар-птицей.",
+        "firstWord": 0,
+        "lastWordExclusive": 12,
+        "file": "./assets/visuals/scenes/ivan-volk/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Иван хотел взять клетку, но волк попросил его быть осторожным.",
+        "firstWord": 0,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/ivan-volk/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Вместе они придумали умный план.",
+        "firstWord": 10,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/ivan-volk/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Иван нашёл птицу и поблагодарил волка за верную дружбу.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/ivan-volk/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Он вернулся домой с чудесной историей.",
+        "firstWord": 9,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/ivan-volk/010.webp"
+      }
+    ],
+    "havroshechka": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Жила девочка Хаврошечка.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/havroshechka/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Каждый день она много работала, но никто не говорил ей добрых слов.",
+        "firstWord": 3,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/havroshechka/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "В поле у девочки была подруга — добрая корова.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/havroshechka/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Хаврошечка рассказывала ей обо всех своих печалях.",
+        "firstWord": 8,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/havroshechka/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Корова внимательно слушала девочку и помогала ей закончить тяжёлую работу.",
+        "firstWord": 0,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/havroshechka/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Однажды корова подарила Хаврошечке волшебное яблоко.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/havroshechka/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Девочка посадила семечко возле дома.",
+        "firstWord": 6,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/havroshechka/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Из семечка выросла красивая яблоня.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/havroshechka/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Её золотистые плоды радовали всю деревню.",
+        "firstWord": 5,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/havroshechka/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Люди увидели доброе сердце Хаврошечки.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/havroshechka/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Девочка нашла новых друзей и больше не чувствовала себя одинокой.",
+        "firstWord": 5,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/havroshechka/010.webp"
+      }
+    ],
+    "lisa-rak": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Лиса шла вдоль реки и встретила маленького рака.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/lisa-rak/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Она засмеялась: «Как же медленно ты ходишь!»",
+        "firstWord": 8,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/lisa-rak/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Рак ответил: «А давай устроим соревнование.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/lisa-rak/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Посмотрим, кто первым доберётся до старой сосны».",
+        "firstWord": 6,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/lisa-rak/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Лиса согласилась и приготовилась быстро бежать.",
+        "firstWord": 0,
+        "lastWordExclusive": 6,
+        "file": "./assets/visuals/scenes/lisa-rak/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Рак незаметно зацепился за её пушистый хвост.",
+        "firstWord": 6,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/lisa-rak/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Лиса помчалась по дорожке и скоро остановилась возле сосны.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/lisa-rak/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Она обернулась и закричала: «Где же ты, рак?»",
+        "firstWord": 9,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/lisa-rak/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Рак отпустил хвост и спокойно сказал: «Я уже здесь.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/lisa-rak/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Давно тебя жду!»",
+        "firstWord": 9,
+        "lastWordExclusive": 12,
+        "file": "./assets/visuals/scenes/lisa-rak/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Лиса очень удивилась.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/lisa-rak/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "А рак улыбнулся: иногда маленькая хитрость помогает победить большую скорость.",
+        "firstWord": 3,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/lisa-rak/011.webp"
+      }
+    ],
+    "tri-medvedya": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "Маленькая девочка гуляла по лесу и увидела уютный домик.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/tri-medvedya/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Дверь была открыта, а дома никого не было.",
+        "firstWord": 9,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/tri-medvedya/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "На столе стояли три миски с кашей: большая, средняя и маленькая.",
+        "firstWord": 0,
+        "lastWordExclusive": 11,
+        "file": "./assets/visuals/scenes/tri-medvedya/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Девочка попробовала кашу из маленькой миски.",
+        "firstWord": 11,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/tri-medvedya/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "В комнате стояли три стула.",
+        "firstWord": 0,
+        "lastWordExclusive": 5,
+        "file": "./assets/visuals/scenes/tri-medvedya/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Большой стул был слишком высоким, а маленький оказался как раз впору.",
+        "firstWord": 5,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/tri-medvedya/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Потом девочка увидела три кровати и устала.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/tri-medvedya/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Она легла в самую маленькую кроватку и уснула.",
+        "firstWord": 7,
+        "lastWordExclusive": 15,
+        "file": "./assets/visuals/scenes/tri-medvedya/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Домой пришли три медведя: папа, мама и маленький медвежонок.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/tri-medvedya/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Они заметили, что кто-то заходил к ним.",
+        "firstWord": 9,
+        "lastWordExclusive": 16,
+        "file": "./assets/visuals/scenes/tri-medvedya/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Девочка проснулась, испугалась и выбежала из дома.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/tri-medvedya/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Она поняла, что нельзя заходить без спроса в чужой дом.",
+        "firstWord": 7,
+        "lastWordExclusive": 17,
+        "file": "./assets/visuals/scenes/tri-medvedya/011.webp"
+      }
+    ],
+    "kot-petuh-lisa": [
+      {
+        "globalIndex": 0,
+        "paragraph": 0,
+        "sentenceIndex": 0,
+        "sentence": "В маленьком домике жили кот и петух.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/000.webp"
+      },
+      {
+        "globalIndex": 1,
+        "paragraph": 0,
+        "sentenceIndex": 1,
+        "sentence": "Каждый день кот уходил в лес за дровами, а петух оставался дома.",
+        "firstWord": 7,
+        "lastWordExclusive": 19,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/001.webp"
+      },
+      {
+        "globalIndex": 2,
+        "paragraph": 1,
+        "sentenceIndex": 0,
+        "sentence": "Кот говорил другу: «Не открывай дверь незнакомым.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/002.webp"
+      },
+      {
+        "globalIndex": 3,
+        "paragraph": 1,
+        "sentenceIndex": 1,
+        "sentence": "Я скоро вернусь».",
+        "firstWord": 7,
+        "lastWordExclusive": 10,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/003.webp"
+      },
+      {
+        "globalIndex": 4,
+        "paragraph": 2,
+        "sentenceIndex": 0,
+        "sentence": "Однажды лиса пришла к окну и запела красивую песню.",
+        "firstWord": 0,
+        "lastWordExclusive": 9,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/004.webp"
+      },
+      {
+        "globalIndex": 5,
+        "paragraph": 2,
+        "sentenceIndex": 1,
+        "sentence": "Петух выглянул посмотреть, кто поёт.",
+        "firstWord": 9,
+        "lastWordExclusive": 14,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/005.webp"
+      },
+      {
+        "globalIndex": 6,
+        "paragraph": 3,
+        "sentenceIndex": 0,
+        "sentence": "Лиса схватила петуха и побежала к лесу.",
+        "firstWord": 0,
+        "lastWordExclusive": 7,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/006.webp"
+      },
+      {
+        "globalIndex": 7,
+        "paragraph": 3,
+        "sentenceIndex": 1,
+        "sentence": "Петух громко закричал: «Котик, помоги мне!»",
+        "firstWord": 7,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/007.webp"
+      },
+      {
+        "globalIndex": 8,
+        "paragraph": 4,
+        "sentenceIndex": 0,
+        "sentence": "Кот услышал крик, быстро прибежал и остановил лису.",
+        "firstWord": 0,
+        "lastWordExclusive": 8,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/008.webp"
+      },
+      {
+        "globalIndex": 9,
+        "paragraph": 4,
+        "sentenceIndex": 1,
+        "sentence": "Она испугалась и отпустила петуха.",
+        "firstWord": 8,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/009.webp"
+      },
+      {
+        "globalIndex": 10,
+        "paragraph": 5,
+        "sentenceIndex": 0,
+        "sentence": "Друзья вернулись домой.",
+        "firstWord": 0,
+        "lastWordExclusive": 3,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/010.webp"
+      },
+      {
+        "globalIndex": 11,
+        "paragraph": 5,
+        "sentenceIndex": 1,
+        "sentence": "Петух поблагодарил кота и пообещал больше не открывать окно незнакомым.",
+        "firstWord": 3,
+        "lastWordExclusive": 13,
+        "file": "./assets/visuals/scenes/kot-petuh-lisa/011.webp"
+      }
+    ]
+  },
+  "imagesGenerated": 0
+}

@@ -4,6 +4,8 @@ const el = {
   storyLevel: $('storyLevel'), storyTag: $('storyTag'), storyDuration: $('storyDuration'), storySource: $('storySource'),
   currentParagraph: $('currentParagraph'), playerStory: $('playerStory'), playerState: $('playerState'),
   statusText: $('statusText'), bartiMessage: $('bartiMessage'), mascotStage: $('mascotStage'),
+  voiceSelect: $('voiceSelect'), sceneDesktop: $('sentenceSceneDesktop'), sceneMobile: $('sentenceSceneMobile'),
+  sceneImgDesktop: $('sentenceIllustrationDesktop'), sceneImgMobile: $('sentenceIllustrationMobile'),
   playBtn: $('playBtn'), playSymbol: $('playSymbol'), previousBtn: $('previousBtn'), nextBtn: $('nextBtn'),
   progress: $('progress'), timeCurrent: $('timeCurrent'), timeTotal: $('timeTotal'), speed: $('speed'), musicBtn: $('musicBtn'),
   narration: $('narration'), ambientTrack: $('ambientTrack'), wordPlaceholder: $('wordPlaceholder'), wordDetails: $('wordDetails'),
@@ -14,11 +16,12 @@ const el = {
 const s = {
   stories: [], durations: {}, wordTiming: {}, lexicon: {}, story: null, paragraph: 0, playing: false, currentWord: null,
   activeWord: null, wordButtons: [], weights: [], token: 0, music: false, vocab: readVocab(), raf: 0, quiz: [], quizIndex: 0, quizScore: 0,
+  voice:'adult', voiceDurations:{}, scenes:{}, currentSceneKey:null,
 };
-const storyPath = (story, i) => `./assets/audio/${story.id}-${i}.mp3`;
+const storyPath = (story, i) => s.voice==='adult' ? `./assets/audio/${story.id}-${i}.mp3` : `./assets/voices/${s.voice}/${story.id}-${i}.mp3`;
 const fmt = sec => `${Math.floor(Math.max(0, sec)/60)}:${String(Math.floor(Math.max(0,sec)%60)).padStart(2,'0')}`;
 const clean = v => v.toLocaleLowerCase('ru-RU').replace(/[^а-яё-]/gi, '');
-const durations = () => s.durations[s.story?.id] || [];
+const durations = () => s.voiceDurations[s.voice]?.[s.story?.id] || s.durations[s.story?.id] || [];
 const total = () => durations().reduce((a,b) => a+b,0);
 const playedBefore = index => durations().slice(0,index).reduce((a,b) => a+b,0);
 const storyElapsed = () => playedBefore(s.paragraph) + (Number.isFinite(el.narration.currentTime) ? el.narration.currentTime : 0);
@@ -33,7 +36,9 @@ async function boot() {
     const fetchJSON = async path => {
       const r=await fetch(path,{cache:'no-cache'}); if(!r.ok) throw new Error(`HTTP ${r.status}: ${path}`); return await r.json();
     };
-    [s.stories,s.durations,s.lexicon,s.wordTiming]=await Promise.all([fetchJSON('./data/stories.json'),fetchJSON('./data/audio.json'),fetchJSON('./data/lexicon.json'),fetchJSON('./data/word-timing.json')]);
+    [s.stories,s.durations,s.lexicon,s.wordTiming,s.scenes,s.voiceDurations]=await Promise.all([fetchJSON('./data/stories.json'),fetchJSON('./data/audio.json'),fetchJSON('./data/lexicon.json'),fetchJSON('./data/word-timing.json'),fetchJSON('./data/sentence-scenes.json'),fetchJSON('./data/voice-durations.json')]);
+    try {const stored=localStorage.getItem('barti.voice');s.voice=['adult','female','child'].includes(stored)?stored:'adult';}catch{}
+    el.voiceSelect.value=s.voice;
     populateStories();
     const last=localStorage.getItem('barti.lastStory');
     selectStory(s.stories.find(v=>v.id===last)?.id || s.stories[0].id);
@@ -64,7 +69,7 @@ function populateStories() {
 function selectStory(id) {
   const story=s.stories.find(item=>item.id===id); if(!story)return;
   s.token++; el.narration.pause();s.playing=false;
-  s.story=story;s.paragraph=0;s.currentWord=null;s.activeWord=null;s.wordButtons=[];
+  s.story=story;s.paragraph=0;s.currentWord=null;s.activeWord=null;s.wordButtons=[];s.currentSceneKey=null;
   try{localStorage.setItem('barti.lastStory',story.id)}catch{}
   el.storyTitle.textContent=story.title;el.storyTitlePl.textContent=story.titlePl;
   el.storyLevel.textContent=`${story.level} · ${story.level==='A1'?'POCZĄTKUJĄCY':'POCZĄTKUJĄCY+'}`;
@@ -73,6 +78,34 @@ function selectStory(id) {
   document.querySelectorAll('.story-tile').forEach(btn=>{const active=btn.dataset.storyId===id;btn.classList.toggle('active',active);btn.setAttribute('aria-current',active?'true':'false');});
   renderText();loadParagraph(0,false,0);clearDict();setMode('idle');closeLibrary();
   el.reader.scrollTop=0; window.BartiExperience?.onStory?.();
+}
+function showSceneForWord(wordIndex){
+  const all=s.scenes?.stories?.[s.story?.id];
+  if(!Array.isArray(all))return;
+  const rec=all.find(x=>x.paragraph===s.paragraph && wordIndex>=x.firstWord && wordIndex<x.lastWordExclusive);
+  const first=rec||all.find(x=>x.paragraph===s.paragraph);
+  if(!first)return;
+  const key=s.story.id+':'+first.globalIndex;
+  if(key===s.currentSceneKey)return;
+  s.currentSceneKey=key;
+  for(const [card,img] of [[el.sceneDesktop,el.sceneImgDesktop],[el.sceneMobile,el.sceneImgMobile]]){
+    card.hidden=false;
+    img.alt='Ilustracja: '+first.sentence;
+    img.src=first.file;
+  }
+}
+function changeVoice(){
+  if(!s.story)return;
+  const choice=el.voiceSelect.value;
+  if(!['adult','female','child'].includes(choice))return;
+  const wasPlaying=!el.narration.paused;
+  const oldDuration=durations()[s.paragraph]||el.narration.duration||1;
+  const oldPosition=Number.isFinite(el.narration.currentTime)?el.narration.currentTime:0;
+  s.voice=choice;
+  try{localStorage.setItem('barti.voice',choice);}catch{}
+  const newDuration=durations()[s.paragraph]||oldDuration;
+  loadParagraph(s.paragraph,wasPlaying,Math.min(newDuration-.1,oldPosition/Math.max(.1,oldDuration)*newDuration));
+  notify('Głos: '+el.voiceSelect.options[el.voiceSelect.selectedIndex].textContent);
 }
 function renderText() {
   el.reader.replaceChildren();s.wordButtons=[];
@@ -96,6 +129,7 @@ function bind() {
   el.previousBtn.addEventListener('click',()=>jump(-1));
   el.nextBtn.addEventListener('click',()=>jump(1));
   el.speed.addEventListener('change',()=>{el.narration.playbackRate=Number(el.speed.value); notify(`Tempo: ${el.speed.value}×`);});
+  el.voiceSelect.addEventListener('change',changeVoice);
   el.progress.addEventListener('input',()=>seekStory(Number(el.progress.value)/1000*total()));
   el.narration.addEventListener('timeupdate',refresh);
   el.narration.addEventListener('play',()=>{s.playing=true;setMode('talking');});
@@ -124,6 +158,7 @@ function loadParagraph(index,auto=false,seek=0) {
   if(!s.story)return;
   index=Math.max(0,Math.min(index,s.story.paragraphs.length-1));
   s.paragraph=index;s.currentWord=null;s.token++;
+  showSceneForWord(0);
   try{localStorage.setItem('barti.lastParagraph',String(index))}catch{}
   const token=s.token;
   el.narration.pause();el.narration.src=storyPath(s.story,index);el.narration.playbackRate=Number(el.speed.value);
@@ -192,7 +227,7 @@ function refresh(){
 function highlightCurrentWord(){
   if(!s.story||!el.narration.duration)return;
   const time=Math.max(0,el.narration.currentTime);
-  const actual=s.wordTiming[s.story.id]?.[s.paragraph];
+  const actual=s.voice==='adult'?s.wordTiming[s.story.id]?.[s.paragraph]:null;
   let index=0;
   if(Array.isArray(actual) && actual.length===s.weights.length){
     for(let i=0;i<actual.length;i++) if(time>=actual[i]) index=i;
@@ -200,6 +235,7 @@ function highlightCurrentWord(){
     const ratio=Math.max(0,Math.min(.9999,time/(durations()[s.paragraph]||1)));
     for(let i=0;i<s.weights.length;i++) if(ratio>=s.weights[i])index=i;
   }
+  showSceneForWord(index);
   if(index===s.currentWord)return;
   s.currentWord=index;
   const previous=el.reader.querySelector('.word.current');previous?.classList.remove('current');
@@ -230,6 +266,7 @@ function chooseWord(original,normalized,button){
   el.wordLabel.textContent=translation?'ROSYJSKI · SŁOWNIK OFFLINE':'ROSYJSKI · BRAK W SŁOWNIKU';
   const prev=el.reader.querySelector('.word.selected');prev?.classList.remove('selected');button.classList.add('selected');
   updateSaveButton();
+  showSceneForWord(Number(button.dataset.w));
   window.BartiWan?.react?.(translation?'explain':'thinking','reader');
   $('dictionaryCard').classList.add('word-picked');
 }
