@@ -438,6 +438,7 @@ window.BartiBridge={
  durations:()=>s.durations,
  getVocab:()=>({...s.vocab}),
  getCurrentId:()=>s.story?.id||'repka',
+ getSceneFiles:(id)=>s.scenes?.stories?.[id]?.map(scene=>scene.file)||[],
  openStory:selectStory,
  resumeLast:()=>{try{const last=JSON.parse(localStorage.getItem('barti.lastPlayback')||'null');if(last&&last.id===s.story.id&&Number.isFinite(last.paragraph))loadParagraph(last.paragraph,false,Number(last.time)||0)}catch{}},
  getProgress:()=>{try{return JSON.parse(localStorage.getItem('barti.storyProgress')||'{}')}catch{return {}}},

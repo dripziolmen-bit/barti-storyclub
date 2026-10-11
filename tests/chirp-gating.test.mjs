@@ -30,6 +30,6 @@ if(!status.ready){
 const app=fs.readFileSync(path.join(root,'app.js'),'utf8');
 assert(app.includes('s.chirpReady')&&app.includes('chirp3/'),'Chirp app integration missing');
 const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
-assert(/barti-storyclub-v3[3-9]/.test(sw),'PWA cache must invalidate older versions');
+assert(/barti-storyclub-v3[4-9]/.test(sw),'PWA cache must invalidate older versions');
 assert(sw.includes("url.pathname.endsWith('/data/chirp-voices.json')"),'Chirp readiness must be network-first');
 console.log('CHIRP_COMPAT_CHECK_PASS',JSON.stringify({ready:status.ready,stories:18,segments:327,characters:29292}));

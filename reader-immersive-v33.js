@@ -1,4 +1,4 @@
-/* Reader v32 interaction glue. Keep the original narration and dictionary engine intact. */
+/* Reader v33 interaction glue. Keep the original narration and dictionary engine intact. */
 (()=>{
   'use strict';
   const $=id=>document.getElementById(id);
@@ -39,6 +39,24 @@
     preload.src=file;
   }
   document.addEventListener('barti:scene-change',changeScene);
+  // Images animate without playing audio. During narration, sentence-aligned images win.
+  // Stop the gallery for reduced-motion and background tabs; no GPU/3D generation is used.
+  const narration=$('narration');
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ROTATION_MS=7500;
+  window.setInterval(()=>{
+    if(document.body.dataset.page!=='reader'||document.hidden||reducedMotion.matches)return;
+    if(!window.BartiBridge?.ready||!narration?.paused)return;
+    const id=window.BartiBridge.getCurrentId?.();
+    if(!id||id!==storyId)return;
+    const files=window.BartiBridge.getSceneFiles?.(id)||[];
+    if(files.length<2)return;
+    const shown=slots[currentSlot]?.getAttribute('src');
+    const index=files.indexOf(shown);
+    const next=files[(index+1)%files.length];
+    if(next)changeScene({detail:{id,file:next,sentence:'Kolejna ilustracja bajki'}});
+  },ROTATION_MS);
+
   const voice=$('voiceSelect'),speed=$('speed'),voiceButton=$('voiceCycleBtn'),speedButton=$('speedCycleBtn');
   function sync(){
     if(!voice||!speed)return;
